@@ -1,0 +1,197 @@
+---
+import PageLayout from '~/layouts/PageLayout.astro';
+import SeoMeta from '~/components/common/SeoMeta.astro';
+import CallToActionBanner from '~/components/ui/CallToActionBanner.astro';
+---
+
+<SeoMeta 
+  title="SalesTag Changelog & Roadmap – Product Updates & Future Plans"
+  description="Follow our product updates and see what's coming next. Track SalesTag's development progress and upcoming AI sales intelligence features."
+  url="https://salestag.io/changelog"
+  image="/og/changelog.jpg"
+  schemaType="WebPage"
+/>
+
+<PageLayout>
+  <main class="px-4 py-16 mx-auto max-w-4xl">
+    <div class="prose prose-lg max-w-none dark:prose-invert">
+      <!-- Header -->
+      <div class="text-center mb-12">
+        <h1 class="text-4xl font-bold mb-6 flex items-center justify-center">
+          🚀 SalesTag Changelog
+        </h1>
+        <p class="text-xl text-gray-600 dark:text-gray-300">
+          Stay updated with the latest features, improvements, and fixes.
+        </p>
+      </div>
+
+      <!-- Current Version -->
+      <section class="mb-16">
+        <div class="bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/30 rounded-lg p-8 border border-blue-200 dark:border-blue-700">
+          <div class="flex items-center mb-4">
+            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-600 text-white mr-3">
+              v1.0.0
+            </span>
+            <span class="text-gray-600 dark:text-gray-400">2025-07-12</span>
+          </div>
+          
+          <h2 class="text-2xl font-semibold mb-4 text-blue-800 dark:text-blue-200">
+            🎉 Initial Public Launch
+          </h2>
+          
+          <ul class="space-y-2 text-gray-700 dark:text-gray-300">
+            <li class="flex items-start">
+              <span class="text-green-600 mr-2 mt-1">✅</span>
+              <span>Initial public launch of SalesTag Vault</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-600 mr-2 mt-1">✅</span>
+              <span>Global dark mode with full Tailwind support</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-600 mr-2 mt-1">✅</span>
+              <span>Live <code class="bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded text-sm">/metrics</code> dashboard connected to Supabase</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-600 mr-2 mt-1">✅</span>
+              <span>Responsive <code class="bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded text-sm">/subscribe</code> waitlist form</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-600 mr-2 mt-1">✅</span>
+              <span>CTA system with conversion funnel optimization</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-600 mr-2 mt-1">✅</span>
+              <span>JSON-LD schema + SEO polish sitewide</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <hr class="border-gray-300 dark:border-gray-600 my-16">
+
+      <!-- Roadmap -->
+      <section>
+        <div class="text-center mb-12">
+          <h1 class="text-4xl font-bold mb-6 flex items-center justify-center">
+            🔭 SalesTag Roadmap
+          </h1>
+          <p class="text-xl text-gray-600 dark:text-gray-300">
+            Here's what we're working on next:
+          </p>
+        </div>
+
+        <!-- Roadmap Items -->
+        <div class="space-y-8">
+          <!-- v1.1 - AI Coaching Engine -->
+          <div class="bg-white dark:bg-gray-800 rounded-lg p-8 shadow-sm border border-gray-200 dark:border-gray-600">
+            <div class="flex items-center mb-4">
+              <span class="text-2xl mr-3">🧠</span>
+              <div>
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100">AI Coaching Engine</h3>
+                <span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200 mt-1">
+                  v1.1 - Coming Soon
+                </span>
+              </div>
+            </div>
+            <ul class="space-y-2 text-gray-700 dark:text-gray-300">
+              <li class="flex items-start">
+                <span class="text-blue-600 mr-2 mt-1">•</span>
+                <span>Real-time call scoring and objection tagging</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-blue-600 mr-2 mt-1">•</span>
+                <span>Personalized rep feedback via Supabase Edge Functions</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-blue-600 mr-2 mt-1">•</span>
+                <span>Metrics comparison vs. team average</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- v1.2 - iOS App -->
+          <div class="bg-white dark:bg-gray-800 rounded-lg p-8 shadow-sm border border-gray-200 dark:border-gray-600">
+            <div class="flex items-center mb-4">
+              <span class="text-2xl mr-3">📱</span>
+              <div>
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100">iOS App</h3>
+                <span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200 mt-1">
+                  v1.2 - In Development
+                </span>
+              </div>
+            </div>
+            <ul class="space-y-2 text-gray-700 dark:text-gray-300">
+              <li class="flex items-start">
+                <span class="text-blue-600 mr-2 mt-1">•</span>
+                <span>Voice badge integration</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-blue-600 mr-2 mt-1">•</span>
+                <span>Push-to-transcribe field recorder</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-blue-600 mr-2 mt-1">•</span>
+                <span>Agent leaderboard and live tag feed</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- v1.3 - Vault Pro Features -->
+          <div class="bg-white dark:bg-gray-800 rounded-lg p-8 shadow-sm border border-gray-200 dark:border-gray-600">
+            <div class="flex items-center mb-4">
+              <span class="text-2xl mr-3">🔐</span>
+              <div>
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100">Vault Pro Features</h3>
+                <span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200 mt-1">
+                  v1.3 - Planned
+                </span>
+              </div>
+            </div>
+            <ul class="space-y-2 text-gray-700 dark:text-gray-300">
+              <li class="flex items-start">
+                <span class="text-blue-600 mr-2 mt-1">•</span>
+                <span>Private team dashboards</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-blue-600 mr-2 mt-1">•</span>
+                <span>Call snippet bookmarking</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-blue-600 mr-2 mt-1">•</span>
+                <span>CRM integrations (HubSpot, Salesforce)</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Feedback Section -->
+        <div class="mt-12 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 rounded-lg p-8 text-center">
+          <h3 class="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100 flex items-center justify-center">
+            💬 Feedback Loop
+          </h3>
+          <p class="text-gray-700 dark:text-gray-300 mb-6">
+            Have a feature request? Help shape the future of SalesTag by joining our community.
+          </p>
+          <a href="/subscribe" class="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium">
+            Join the Discussion →
+          </a>
+        </div>
+      </section>
+
+      <!-- Footer Note -->
+      <div class="mt-16 text-center text-sm text-gray-500 dark:text-gray-400 border-t border-gray-200 dark:border-gray-600 pt-8">
+        <em>Updated automatically with each version. Last updated: July 12, 2025</em>
+      </div>
+
+      <!-- CTA Section -->
+      <section class="mt-16 not-prose">
+        <CallToActionBanner 
+          title="Ready to Experience SalesTag?"
+          description="Join forward-thinking sales teams who are already transforming their conversations into valuable insights."
+          buttonText="Get Early Access"
+        />
+      </section>
+    </div>
+  </main>
+</PageLayout> 

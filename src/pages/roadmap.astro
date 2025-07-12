@@ -1,0 +1,212 @@
+---
+import PageLayout from '~/layouts/PageLayout.astro';
+import SeoMeta from '~/components/common/SeoMeta.astro';
+import CallToActionBanner from '~/components/ui/CallToActionBanner.astro';
+---
+
+<SeoMeta 
+  title="SalesTag Roadmap – Upcoming AI Sales Intelligence Features"
+  description="Discover what's coming next for SalesTag. View our product roadmap including AI coaching engine, iOS app, and advanced vault features."
+  url="https://salestag.io/roadmap"
+  image="/og/roadmap.jpg"
+  schemaType="WebPage"
+/>
+
+<PageLayout>
+  <main class="px-4 py-16 mx-auto max-w-4xl">
+    <div class="prose prose-lg max-w-none dark:prose-invert">
+      <!-- Header -->
+      <div class="text-center mb-12">
+        <h1 class="text-4xl font-bold mb-6 flex items-center justify-center">
+          🔭 SalesTag Roadmap
+        </h1>
+        <p class="text-xl text-gray-600 dark:text-gray-300">
+          Here's what we're working on next to transform sales intelligence.
+        </p>
+      </div>
+
+      <!-- Navigation Links -->
+      <div class="flex justify-center mb-12">
+        <div class="flex space-x-1 bg-gray-100 dark:bg-gray-800 rounded-lg p-1">
+          <a href="/changelog" class="px-4 py-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors">
+            📜 Changelog
+          </a>
+          <span class="px-4 py-2 text-sm font-medium bg-blue-600 text-white rounded-md">
+            🔭 Roadmap
+          </span>
+        </div>
+      </div>
+
+      <!-- Roadmap Items -->
+      <div class="space-y-8">
+        <!-- v1.1 - AI Coaching Engine -->
+        <div class="bg-white dark:bg-gray-800 rounded-lg p-8 shadow-sm border border-gray-200 dark:border-gray-600">
+          <div class="flex items-center mb-4">
+            <span class="text-2xl mr-3">🧠</span>
+            <div>
+              <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100">AI Coaching Engine</h3>
+              <span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200 mt-1">
+                v1.1 - Coming Soon
+              </span>
+            </div>
+          </div>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">
+            Transform conversations into actionable coaching insights with real-time AI analysis.
+          </p>
+          <ul class="space-y-2 text-gray-700 dark:text-gray-300">
+            <li class="flex items-start">
+              <span class="text-blue-600 mr-2 mt-1">•</span>
+              <span>Real-time call scoring and objection tagging</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-blue-600 mr-2 mt-1">•</span>
+              <span>Personalized rep feedback via Supabase Edge Functions</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-blue-600 mr-2 mt-1">•</span>
+              <span>Metrics comparison vs. team average</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-blue-600 mr-2 mt-1">•</span>
+              <span>Automated coaching recommendations</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- v1.2 - iOS App -->
+        <div class="bg-white dark:bg-gray-800 rounded-lg p-8 shadow-sm border border-gray-200 dark:border-gray-600">
+          <div class="flex items-center mb-4">
+            <span class="text-2xl mr-3">📱</span>
+            <div>
+              <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100">iOS App</h3>
+              <span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200 mt-1">
+                v1.2 - In Development
+              </span>
+            </div>
+          </div>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">
+            Native mobile experience for field sales teams with seamless badge integration.
+          </p>
+          <ul class="space-y-2 text-gray-700 dark:text-gray-300">
+            <li class="flex items-start">
+              <span class="text-blue-600 mr-2 mt-1">•</span>
+              <span>Voice badge integration and pairing</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-blue-600 mr-2 mt-1">•</span>
+              <span>Push-to-transcribe field recorder</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-blue-600 mr-2 mt-1">•</span>
+              <span>Agent leaderboard and live tag feed</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-blue-600 mr-2 mt-1">•</span>
+              <span>Offline conversation storage and sync</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- v1.3 - Vault Pro Features -->
+        <div class="bg-white dark:bg-gray-800 rounded-lg p-8 shadow-sm border border-gray-200 dark:border-gray-600">
+          <div class="flex items-center mb-4">
+            <span class="text-2xl mr-3">🔐</span>
+            <div>
+              <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100">Vault Pro Features</h3>
+              <span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200 mt-1">
+                v1.3 - Planned
+              </span>
+            </div>
+          </div>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">
+            Advanced enterprise features for teams managing large conversation datasets.
+          </p>
+          <ul class="space-y-2 text-gray-700 dark:text-gray-300">
+            <li class="flex items-start">
+              <span class="text-blue-600 mr-2 mt-1">•</span>
+              <span>Private team dashboards with role-based access</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-blue-600 mr-2 mt-1">•</span>
+              <span>Call snippet bookmarking and sharing</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-blue-600 mr-2 mt-1">•</span>
+              <span>CRM integrations (HubSpot, Salesforce, Pipedrive)</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-blue-600 mr-2 mt-1">•</span>
+              <span>Advanced search and filtering capabilities</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- v1.4 - AI Sales Agent -->
+        <div class="bg-white dark:bg-gray-800 rounded-lg p-8 shadow-sm border border-gray-200 dark:border-gray-600">
+          <div class="flex items-center mb-4">
+            <span class="text-2xl mr-3">🤖</span>
+            <div>
+              <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100">AI Sales Agent</h3>
+              <span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 mt-1">
+                v1.4 - Future Vision
+              </span>
+            </div>
+          </div>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">
+            AGI-powered sales assistant trained on your vault's conversation data.
+          </p>
+          <ul class="space-y-2 text-gray-700 dark:text-gray-300">
+            <li class="flex items-start">
+              <span class="text-blue-600 mr-2 mt-1">•</span>
+              <span>Fine-tuned LLM on company conversation data</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-blue-600 mr-2 mt-1">•</span>
+              <span>Real-time objection handling suggestions</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-blue-600 mr-2 mt-1">•</span>
+              <span>Predictive conversation outcome scoring</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-blue-600 mr-2 mt-1">•</span>
+              <span>Automated follow-up recommendations</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Feedback Section -->
+      <div class="mt-12 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 rounded-lg p-8 text-center">
+        <h3 class="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100 flex items-center justify-center">
+          💬 Feedback Loop
+        </h3>
+        <p class="text-gray-700 dark:text-gray-300 mb-6">
+          Have a feature request? Help shape the future of SalesTag by joining our community and sharing your ideas.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a href="/subscribe" class="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium">
+            Join the Discussion →
+          </a>
+          <a href="/contact" class="inline-flex items-center px-6 py-3 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors font-medium">
+            Contact Team
+          </a>
+        </div>
+      </div>
+
+      <!-- Footer Note -->
+      <div class="mt-16 text-center text-sm text-gray-500 dark:text-gray-400 border-t border-gray-200 dark:border-gray-600 pt-8">
+        <em>Roadmap updated quarterly. Features and timelines subject to change based on user feedback and technical requirements.</em>
+      </div>
+
+      <!-- CTA Section -->
+      <section class="mt-16 not-prose">
+        <CallToActionBanner 
+          title="Ready to Shape the Future of Sales?"
+          description="Join early adopters who are already experiencing the power of AI-driven sales intelligence."
+          buttonText="Get Early Access"
+        />
+      </section>
+    </div>
+  </main>
+</PageLayout> 

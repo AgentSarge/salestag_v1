@@ -1,0 +1,56 @@
+---
+import PageLayout from '~/layouts/PageLayout.astro';
+import SeoMeta from '~/components/common/SeoMeta.astro';
+---
+
+<SeoMeta 
+  title="SalesTag Data Use Policy — Ethical Data Handling"
+  description="SalesTag's commitment to ethical, secure, and transparent data handling. Learn how we collect, store, and protect your conversation data with full user control."
+/>
+
+<PageLayout>
+  <main class="px-4 py-16 mx-auto max-w-4xl">
+    <div class="prose lg:prose-lg max-w-none">
+      <h1 class="text-4xl font-bold mb-6">Data Use Policy</h1>
+      
+      <p class="text-xl mb-12 text-gray-600">
+        SalesTag is committed to ethical, secure, and transparent data handling. This policy explains exactly how we collect, store, and protect your conversation data — and why you always maintain control.
+      </p>
+
+      <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4 scroll-mt-24">What We Collect</h2>
+        <p class="text-lg leading-relaxed">
+          SalesTag captures audio recordings of your sales conversations, along with automatically generated transcriptions, sentiment analysis, objection labels, and review metadata. We also collect timing, location data, and rep identification to provide context and coaching insights.
+        </p>
+      </section>
+
+      <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4 scroll-mt-24">How It's Stored</h2>
+        <p class="text-lg leading-relaxed">
+          All data is stored in our secure Supabase Vault with end-to-end encryption. Every access is logged with full audit trails, and we use role-based permissions to ensure only authorized users can view your conversations. Your data never touches third-party advertising networks.
+        </p>
+      </section>
+
+      <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4 scroll-mt-24">Who Can Access It</h2>
+        <p class="text-lg leading-relaxed">
+          Access is strictly controlled through role-based permissions. Individual reps can access their own conversations, coaches can review their team's calls, and admins can manage organization-wide data. Every access is logged and traceable — no backdoors, no exceptions.
+        </p>
+      </section>
+
+      <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4 scroll-mt-24">Your Rights</h2>
+        <p class="text-lg leading-relaxed">
+          You maintain full control over your data. Reps can review, flag, or delete their own conversations at any time. We provide transparency tools so you can see exactly who accessed your data and when. Your consent is required for any use beyond coaching and performance improvement.
+        </p>
+      </section>
+
+      <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4 scroll-mt-24">Post-AGI Commitment</h2>
+        <p class="text-lg leading-relaxed">
+          We will never commercialize your conversation data without explicit consent — even in a future where AGI systems could benefit from this high-value training data. Your SalesTag Vault remains your property, and we're committed to keeping it that way as technology evolves.
+        </p>
+      </section>
+    </div>
+  </main>
+</PageLayout> 

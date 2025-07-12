@@ -1,0 +1,52 @@
+---
+import PageLayout from '~/layouts/PageLayout.astro';
+import SeoMeta from '~/components/common/SeoMeta.astro';
+---
+
+<SeoMeta 
+  title="The SalesTag Whitepaper — Technical Architecture"
+  description="Strategic and technical overview of the SalesTag system. Preview our AGI-first architecture, tech stack, research goals, and comprehensive system design."
+  url="https://salestag.io/whitepaper"
+  image="/assets/images/whitepaper-og.png"
+  schemaType="WebPage"
+/>
+
+<PageLayout>
+  <main class="px-4 py-16 mx-auto max-w-4xl">
+    <div class="prose prose-lg max-w-none">
+      <h1 class="text-4xl font-bold mb-6">The SalesTag Whitepaper</h1>
+      
+      <p class="text-xl mb-12 text-gray-600">
+        We built SalesTag to solve a real-world problem: how to capture, analyze, and improve high-stakes human sales conversations. This page previews our system architecture and long-term research goals.
+      </p>
+
+      <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4 scroll-mt-24">AGI-First Architecture</h2>
+        <p class="text-lg leading-relaxed">
+          SalesTag is designed not just for today's LLMs, but for future AGI agents. Every layer — from audio to embeddings — is optimized for privacy, extensibility, and future-proofing. <a href="#future" class="hover:text-blue-600 transition-colors underline">See future plans</a>.
+        </p>
+      </section>
+
+      <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4 scroll-mt-24">The Tech Stack</h2>
+        <p class="text-lg leading-relaxed">
+          Our system combines edge recording (ESP32 badge), Supabase pipelines, pgvector semantic search, LLM tagging (via OpenAI or Claude), and human-in-the-loop scoring — all into one self-updating vault.
+        </p>
+      </section>
+
+      <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4 scroll-mt-24">Research Goals</h2>
+        <p class="text-lg leading-relaxed">
+          SalesTag isn't just a product — it's a dataset, a fine-tuning pipeline, and a testbed for alignment, RLHF, agent behavior, and safety experiments. We're open to research partnerships and joint papers.
+        </p>
+      </section>
+
+      <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4 scroll-mt-24">Want the Full Whitepaper?</h2>
+        <p class="text-lg leading-relaxed">
+          We're preparing a full 20+ page PDF version covering our architecture, claims, benchmarks, roadmap, and early results. Reach out to get access or collaborate on the next phase.
+        </p>
+      </section>
+    </div>
+  </main>
+</PageLayout> 

@@ -13,6 +13,7 @@ import Stats from '~/components/widgets/Stats.astro';
 
 import Button from '~/components/ui/Button.astro';
 import Image from '~/components/common/Image.astro';
+import SeoMeta from '~/components/common/SeoMeta.astro';
 
 const appStoreImg = '~/assets/images/app-store.png';
 const appStoreDownloadLink = 'https://github.com/onwidget/astrowind';
@@ -24,6 +25,12 @@ const metadata = {
   title: 'Mobile App Homepage',
 };
 ---
+
+<SeoMeta 
+  title="AstroWind Mobile App Homepage Demo"
+  description="Mobile app homepage demo: Download, preview, and use professional website templates with the AstroWind app."
+  image="https://images.unsplash.com/photo-1535303311164-664fc9ec6532?ixlib=rb-4.0.3&auto=format&fit=crop&w=987&q=80"
+/>
 
 <Layout metadata={metadata}>
   <Fragment slot="announcement"></Fragment>

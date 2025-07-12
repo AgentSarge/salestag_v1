@@ -1,0 +1,46 @@
+---
+export interface Props {
+  title?: string;
+  description?: string;
+  buttonText?: string;
+  buttonUrl?: string;
+  variant?: 'default' | 'hero' | 'footer' | 'sidebar';
+  class?: string;
+}
+
+const {
+  title = "Request Early Access to SalesTag",
+  description = "Join forward-thinking sales teams using AI to capture, analyze, and improve their conversations.",
+  buttonText = "Join Waitlist",
+  buttonUrl = "/subscribe",
+  variant = "default",
+  class: className = ""
+} = Astro.props;
+
+const variants = {
+  default: "bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-lg p-8 shadow-sm",
+  hero: "bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl p-8",
+  footer: "bg-blue-600 dark:bg-blue-500 text-white p-8 rounded-lg",
+  sidebar: "bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-lg p-6"
+};
+---
+
+<div class={`${variants[variant]} ${className}`}>
+  <div class="text-center">
+    <h3 class={`text-2xl font-bold mb-4 ${variant === 'footer' ? 'text-white' : 'dark:text-gray-100'}`}>
+      {title}
+    </h3>
+    <p class={`text-lg mb-6 ${variant === 'footer' ? 'text-blue-100' : 'text-gray-600 dark:text-gray-300'}`}>
+      {description}
+    </p>
+    <a 
+      href={buttonUrl} 
+      class="inline-flex items-center px-6 py-3 bg-blue-600 text-white dark:bg-blue-400 dark:text-black hover:opacity-90 transition rounded-lg font-medium"
+    >
+      {buttonText}
+      <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+      </svg>
+    </a>
+  </div>
+</div> 

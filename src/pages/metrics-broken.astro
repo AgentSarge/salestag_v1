@@ -1,0 +1,220 @@
+---
+import PageLayout from '~/layouts/PageLayout.astro';
+import SeoMeta from '~/components/common/SeoMeta.astro';
+// import { createClient } from '@supabase/supabase-js';
+// import AuthGuard from '~/components/common/AuthGuard.jsx';
+// import ChartTrends from '~/components/common/ChartTrends.jsx';
+
+function MetricCard({ label, value, positive }) {
+  return (
+    <div class="bg-white dark:bg-gray-900 rounded-lg shadow p-6 flex flex-col items-start border border-gray-100 dark:border-gray-800">
+      <div class="flex items-center mb-2">
+        {positive && <span class="text-green-500 mr-1">↑</span>}
+        <span class="text-2xl font-bold">{value}</span>
+      </div>
+      <div class="text-gray-500 text-sm">{label}</div>
+    </div>
+  );
+}
+
+// Supabase config (temporarily disabled for demo)
+// const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL || '';
+// const supabaseAnonKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY || '';
+// const hasSupabaseConfig = supabaseUrl && supabaseAnonKey;
+// const supabase = hasSupabaseConfig ? createClient(supabaseUrl, supabaseAnonKey) : null;
+const hasSupabaseConfig = false;
+const supabase = null;
+
+// Timeframe logic
+const timeframeOptions = [
+  { value: '7d', label: 'Last 7 Days' },
+  { value: '30d', label: 'Last 30 Days' },
+  { value: 'all', label: 'All Time' },
+];
+let selectedTimeframe = 'all';
+if (Astro.request && Astro.request.url) {
+  const url = new URL(Astro.request.url);
+  selectedTimeframe = url.searchParams.get('timeframe') || 'all';
+}
+
+// Fetch dashboard_metrics with timeframe param (assume rpc or query param supported)
+let data = null;
+let error: any = null;
+  if (hasSupabaseConfig && supabase) {
+    try {
+      let res;
+      if (selectedTimeframe === 'all') {
+        res = await supabase!.from('dashboard_metrics').select('*').single();
+      } else {
+        // Use rpc or query param for timeframe filtering
+        res = await supabase!.rpc('dashboard_metrics_with_timeframe', { timeframe: selectedTimeframe });
+      // Assume the RPC returns an array, take the first result
+      res = { data: res.data?.[0] ?? null, error: res.error };
+    }
+    data = res.data;
+    error = res.error;
+  } catch (e) {
+    error = e;
+  }
+}
+
+// Fetch rep_leaderboard (optionally, could also support timeframe)
+let leaderboard: any[] = [];
+let leaderboardError: any = null;
+  if (hasSupabaseConfig && supabase) {
+    try {
+      let res;
+      if (selectedTimeframe === 'all') {
+        res = await supabase!.from('rep_leaderboard').select('*');
+      } else {
+        res = await supabase!.rpc('rep_leaderboard_with_timeframe', { timeframe: selectedTimeframe });
+      // Assume the RPC returns an array
+      res = { data: res.data ?? [], error: res.error };
+    }
+    leaderboard = res.data || [];
+    leaderboardError = res.error;
+  } catch (e) {
+    leaderboardError = e;
+  }
+}
+
+// Fetch call_trends for chart data
+let trendData: any[] = [];
+let trendError: any = null;
+  if (hasSupabaseConfig && supabase) {
+    try {
+      let res;
+      if (selectedTimeframe === 'all') {
+        res = await supabase!.from('call_trends').select('*');
+      } else {
+        res = await supabase!.rpc('call_trends_with_timeframe', { timeframe: selectedTimeframe });
+      res = { data: res.data ?? [], error: res.error };
+    }
+    trendData = res.data || [];
+    trendError = res.error;
+  } catch (e) {
+    trendError = e;
+  }
+}
+
+// Dummy trend data fallback
+const dummyTrends = [
+  { date: '2024-05-01', tag_volume: 120, close_rate: 0.22, revenue: 8000 },
+  { date: '2024-05-02', tag_volume: 140, close_rate: 0.25, revenue: 9000 },
+  { date: '2024-05-03', tag_volume: 110, close_rate: 0.20, revenue: 7000 },
+  { date: '2024-05-04', tag_volume: 160, close_rate: 0.28, revenue: 11000 },
+  { date: '2024-05-05', tag_volume: 180, close_rate: 0.30, revenue: 12000 },
+  { date: '2024-05-06', tag_volume: 150, close_rate: 0.27, revenue: 10000 },
+  { date: '2024-05-07', tag_volume: 170, close_rate: 0.29, revenue: 11500 },
+];
+const trends = trendData.length > 0 ? trendData : dummyTrends;
+
+const demo = {
+  total_calls: 12345,
+  tagged_calls: 11000,
+  reviewed_calls: 9000,
+  avg_call_length: 7.2,
+  close_rate: 0.23,
+  revenue_attributed: 154000,
+};
+
+const demoLeaderboard = [
+  { rep_name: 'Alex Johnson', close_rate: 0.32, avg_call_length: 6.8, revenue_total: 54000 },
+  { rep_name: 'Morgan Lee', close_rate: 0.28, avg_call_length: 7.1, revenue_total: 48000 },
+  { rep_name: 'Taylor Smith', close_rate: 0.25, avg_call_length: 7.5, revenue_total: 42000 },
+];
+
+const metrics = data ?? demo;
+const repsRaw = leaderboard.length > 0 ? leaderboard : demoLeaderboard;
+
+// Sorting logic
+const sortOptions = [
+  { value: 'close_rate', label: 'Close Rate' },
+  { value: 'revenue_total', label: 'Revenue' },
+  { value: 'avg_call_length', label: 'Avg Call Length' },
+];
+let selectedSort = 'close_rate';
+if (Astro.request && Astro.request.url) {
+  const url = new URL(Astro.request.url);
+  selectedSort = url.searchParams.get('sort') || 'close_rate';
+}
+const getSortedReps = (reps, sortKey) => {
+  return [...reps].sort((a, b) => b[sortKey] - a[sortKey]);
+};
+const reps = getSortedReps(repsRaw, selectedSort);
+---
+
+<SeoMeta 
+  title="Sales Intelligence Dashboard – SalesTag Metrics & Analytics"
+  description="Track AI-tagged sales call metrics, conversion trends, and rep performance with SalesTag. Real-time analytics for field sales teams."
+  url="https://salestag.io/metrics"
+  image="/og/metrics.jpg"
+  schemaType="WebPage"
+/>
+
+<PageLayout>
+  <main class="px-4 py-16 mx-auto max-w-4xl">
+    <h1 class="text-4xl font-bold mb-6">Sales Intelligence Dashboard</h1>
+    <form method="get" class="mb-8 flex flex-row gap-2">
+      {timeframeOptions.map(opt => (
+        <button
+          type="submit"
+          name="timeframe"
+          value={opt.value}
+          class={`px-4 py-2 rounded-md text-sm font-medium border transition-colors
+            ${selectedTimeframe === opt.value ? 'bg-blue-600 text-white border-blue-600' : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 dark:hover:bg-gray-700'}`}
+        >
+          {opt.label}
+        </button>
+      ))}
+      {/* Preserve sort param if present */}
+      {selectedSort && <input type="hidden" name="sort" value={selectedSort} />}
+    </form>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-2">
+      <MetricCard label="Total Calls" value={metrics.total_calls?.toLocaleString()} positive={true} />
+      <MetricCard label="Tagged Calls" value={metrics.tagged_calls?.toLocaleString()} positive={true} />
+      <MetricCard label="Reviewed Calls" value={metrics.reviewed_calls?.toLocaleString()} positive={true} />
+      <MetricCard label="Avg. Call Length (min)" value={metrics.avg_call_length?.toFixed(2)} positive={metrics.avg_call_length > 0} />
+      <MetricCard label="Close Rate" value={(metrics.close_rate * 100).toFixed(2) + '%'} positive={metrics.close_rate > 0} />
+      <MetricCard label="Revenue Attributed" value={'$' + metrics.revenue_attributed?.toLocaleString()} positive={metrics.revenue_attributed > 0} />
+    </div>
+    {error && <div class="mt-6 text-red-600">Error loading metrics: {typeof error === 'object' && error && 'message' in error ? error.message : String(error)}</div>}
+
+    <!-- <ChartTrends client:only="react" trends={trends} /> -->
+
+    <section class="mt-16">
+      <h2 class="text-2xl font-semibold mb-6">Top Performing Reps</h2>
+      <form method="get" class="mb-6 flex items-center gap-3">
+        <label for="sort" class="text-sm font-medium">Sort by</label>
+        <select id="sort" name="sort" class="border px-3 py-2 rounded-md bg-white dark:bg-gray-800 shadow-sm text-sm border-gray-200 dark:border-gray-600 dark:text-gray-300">
+          {sortOptions.map(opt => (
+            <option value={opt.value} selected={selectedSort === opt.value}>{opt.label}</option>
+          ))}
+        </select>
+        {/* Preserve timeframe param if present */}
+        {selectedTimeframe && <input type="hidden" name="timeframe" value={selectedTimeframe} />}
+        <button type="submit" class="ml-2 px-3 py-2 rounded-md bg-gray-100 dark:bg-gray-700 text-sm border border-gray-200 dark:border-gray-600 hover:bg-gray-200 dark:hover:bg-gray-600 dark:text-gray-300">Apply</button>
+      </form>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {reps.map(rep => (
+          <div class="bg-white dark:bg-gray-900 shadow-md rounded-xl p-6 flex flex-col items-start border border-gray-100 dark:border-gray-800">
+            <div class="text-2xl font-bold mb-2 text-gray-900 dark:text-gray-100">{rep.rep_name}</div>
+            <div class="flex items-center mb-1">
+              <span class="text-green-600 font-semibold text-lg mr-2">{(rep.close_rate * 100).toFixed(2)}%</span>
+              <span class="text-gray-500 text-sm">Close Rate</span>
+            </div>
+            <div class="mb-1">
+              <span class="font-medium">{rep.avg_call_length?.toFixed(2)}</span>
+              <span class="text-gray-500 text-sm ml-1">min avg call</span>
+            </div>
+            <div>
+              <span class="font-medium">${rep.revenue_total?.toLocaleString()}</span>
+              <span class="text-gray-500 text-sm ml-1">revenue</span>
+            </div>
+          </div>
+        ))}
+      </div>
+      {leaderboardError && <div class="mt-6 text-red-600">Error loading leaderboard: {typeof leaderboardError === 'object' && leaderboardError && 'message' in leaderboardError ? leaderboardError.message : String(leaderboardError)}</div>}
+    </section>
+  </main>
+</PageLayout> 

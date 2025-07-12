@@ -1,5 +1,6 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
+import SeoMeta from '~/components/common/SeoMeta.astro';
 import HeroText from '~/components/widgets/HeroText.astro';
 import Prices from '~/components/widgets/Pricing.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
@@ -8,9 +9,17 @@ import Features3 from '~/components/widgets/Features3.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
-  title: 'Pricing',
+  title: 'SalesTag Pricing – AI Sales Intelligence Plans',
 };
 ---
+
+<SeoMeta 
+  title="SalesTag Pricing – AI Sales Intelligence Plans & Features"
+  description="Choose the perfect SalesTag plan for your sales team. AI-powered conversation capture, coaching insights, and performance analytics starting at $99/month per rep."
+  url="https://salestag.io/pricing"
+  image="/og/pricing.jpg"
+  schemaType="WebPage"
+/>
 
 <Layout metadata={metadata}>
   <!-- HeroText Widget ******************* -->

@@ -5,11 +5,20 @@ import Hero from '~/components/widgets/Hero.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import Steps2 from '~/components/widgets/Steps2.astro';
 import Layout from '~/layouts/PageLayout.astro';
+import SeoMeta from '~/components/common/SeoMeta.astro';
 
 const metadata = {
-  title: 'About us',
+  title: 'About SalesTag – AI Sales Intelligence Company',
 };
 ---
+
+<SeoMeta 
+  title="About SalesTag – AI Sales Intelligence Company"
+  description="Learn about SalesTag's mission to transform field sales with AI-powered conversation capture and coaching. Founded to help sales teams unlock their potential through data."
+  url="https://salestag.io/about"
+  image="/og/about.jpg"
+  schemaType="WebPage"
+/>
 
 <Layout metadata={metadata}>
   <!-- Hero Widget ******************* -->

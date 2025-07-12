@@ -1,0 +1,82 @@
+---
+import PageLayout from '~/layouts/PageLayout.astro';
+import SeoMeta from '~/components/common/SeoMeta.astro';
+
+const howToSchemaData = {
+  steps: [
+    {
+      "@type": "HowToStep",
+      "name": "Capture a Call",
+      "text": "The rep wears a badge. It records audio, uploads it automatically, and attaches metadata like location, time, and product vertical."
+    },
+    {
+      "@type": "HowToStep", 
+      "name": "Transcription & Tagging",
+      "text": "The system generates a transcript and uses LLM agents to extract objections, emotional tone, key phrases, and close attempts."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Review & Coaching", 
+      "text": "The rep sees a summary and tags. A coach can score the call, leave feedback, or compare it against top performers. It's like having a virtual mentor for every rep."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Vaulting & Search",
+      "text": "Each call enters the SalesTag Vault, tagged and embedded for fast retrieval. Want to hear how reps handled 'price objections' in Phoenix last month? Just search."
+    }
+  ]
+};
+---
+
+<SeoMeta 
+  title="SalesTag Demo – See AI Sales Intelligence in Action"
+  description="Watch how SalesTag captures, analyzes, and improves sales conversations. 4-step walkthrough of our AI-powered badge and coaching platform."
+  url="https://salestag.io/demo"
+  image="/og/demo.jpg"
+  schemaType="HowTo"
+  schemaData={howToSchemaData}
+/>
+
+
+<PageLayout>
+  <main class="px-4 py-16 mx-auto max-w-4xl">
+    <h1 class="text-4xl font-bold mb-6">See SalesTag in Action</h1>
+    
+    <p class="text-xl mb-12 text-gray-600">
+      Whether you're a rep, a coach, or a founder, the power of SalesTag is best understood live. 
+      Here's how our system works — and how you can try it.
+    </p>
+
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-4 scroll-mt-24">Step 1 — Capture a Call</h2>
+      <p class="text-lg leading-relaxed">
+        The rep wears a badge. It records audio, uploads it automatically, and attaches metadata 
+        like location, time, and product vertical.
+      </p>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-4 scroll-mt-24">Step 2 — Transcription & Tagging</h2>
+      <p class="text-lg leading-relaxed">
+        The system generates a transcript and uses LLM agents to extract objections, emotional tone, 
+        key phrases, and close attempts.
+      </p>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-4 scroll-mt-24">Step 3 — Review & Coaching</h2>
+      <p class="text-lg leading-relaxed">
+        The rep sees a summary and tags. A coach can score the call, leave feedback, or compare it 
+        against top performers. It's like having a virtual mentor for every rep.
+      </p>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-4 scroll-mt-24">Step 4 — Vaulting & Search</h2>
+      <p class="text-lg leading-relaxed">
+        Each call enters the SalesTag Vault, tagged and embedded for fast retrieval. Want to hear 
+        how reps handled "price objections" in Phoenix last month? Just search.
+      </p>
+    </section>
+  </main>
+</PageLayout> 

@@ -11,11 +11,18 @@ import Pricing from '~/components/widgets/Pricing.astro';
 import { headerData } from '~/navigation';
 import FAQs from '~/components/widgets/FAQs.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
+import SeoMeta from '~/components/common/SeoMeta.astro';
 
 const metadata = {
   title: 'SaaS Landing Page',
 };
 ---
+
+<SeoMeta 
+  title="AstroWind SaaS Landing Page"
+  description="SaaS web demo: Build modern, fast, and beautiful SaaS websites with AstroWind, Astro 5.0, and Tailwind CSS."
+  image="https://images.unsplash.com/photo-1580481072645-022f9a6dbf27?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+/>
 
 <Layout metadata={metadata}>
   <Fragment slot="header">

@@ -10,11 +10,18 @@ import Testimonials from '~/components/widgets/Testimonials.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 import { getPermalink } from '~/utils/permalinks';
+import SeoMeta from '~/components/common/SeoMeta.astro';
 
 const metadata = {
   title: 'Personal Homepage Demo',
 };
 ---
+
+<SeoMeta 
+  title="AstroWind Personal Homepage Demo"
+  description="Personal homepage demo: Showcase your creative work and personal brand with AstroWind's modern, customizable templates."
+  image="https://images.unsplash.com/photo-1491349174775-aaafddd81942?ixlib=rb-4.0.3&auto=format&fit=crop&w=774&q=80"
+/>
 
 <Layout metadata={metadata}>
   <Fragment slot="announcement"></Fragment>

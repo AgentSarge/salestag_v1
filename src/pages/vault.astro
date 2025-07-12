@@ -1,0 +1,61 @@
+---
+import PageLayout from '~/layouts/PageLayout.astro';
+import SeoMeta from '~/components/common/SeoMeta.astro';
+import CallToActionBanner from '~/components/ui/CallToActionBanner.astro';
+---
+
+<SeoMeta 
+  title="SalesTag Vault – AI Sales Intelligence"
+  description="Unlock your team's top field sales moments with AI-tagged call insights, rep coaching, and performance tracking."
+  url="https://salestag.io/vault"
+  image="/og/vault.jpg"
+  schemaType="WebPage"
+/>
+
+<PageLayout>
+  <main class="px-4 py-16 mx-auto max-w-4xl">
+    <h1 class="text-4xl font-bold mb-6">The SalesTag Vault</h1>
+    
+    <p class="text-xl mb-12 text-gray-600">
+      Where human sales meets future intelligence. SalesTag captures every rep-to-homeowner conversation, 
+      processes it with advanced labeling pipelines, and stores it in a private, AGI-aligned vault. 
+      Perfect for fine-tuning LLMs or training safe autonomous agents.
+    </p>
+
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-4 scroll-mt-24">Structured for Alignment</h2>
+      <p class="text-lg leading-relaxed">
+        Most data is noisy and unstructured. SalesTag organizes call audio, transcripts, objections, 
+        sentiment, trust moments, and outcome metadata — giving future AIs a crystal-clear record of 
+        how humans persuade, resist, and decide.
+      </p>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-4 scroll-mt-24">Vertical-Aware Vaults</h2>
+      <p class="text-lg leading-relaxed">
+        Every vertical behaves differently. That's why we maintain separate vaults for solar, roofing, 
+        alarms, and more — each with tailored labels, tags, and outcome taxonomies. Perfect for LLM 
+        fine-tuning, safety evals, or agent simulation.
+      </p>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-4 scroll-mt-24">Why It Matters</h2>
+      <p class="text-lg leading-relaxed">
+        Post-AGI, the greatest need will be high-signal human interaction data. Not scraped web content — 
+        real decisions, tension, conflict, alignment. SalesTag gives you ownership of the most valuable 
+        behavioral dataset in existence.
+      </p>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="mt-16">
+      <CallToActionBanner 
+        title="Unlock Your Sales Intelligence Vault"
+        description="Start building your team's private vault of AI-tagged conversations and coaching insights today."
+        buttonText="Join Waitlist"
+      />
+    </section>
+  </main>
+</PageLayout> 

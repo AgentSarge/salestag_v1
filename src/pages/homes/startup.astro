@@ -12,11 +12,18 @@ import FAQs from '~/components/widgets/FAQs.astro';
 import Brands from '~/components/widgets/Brands.astro';
 
 import { YouTube } from 'astro-embed';
+import SeoMeta from '~/components/common/SeoMeta.astro';
 
 const metadata = {
   title: 'Startup Landing Page',
 };
 ---
+
+<SeoMeta 
+  title="AstroWind Startup Landing Page"
+  description="Startup web demo: Launch your startup with beautiful, modern templates powered by AstroWind, Astro 5.0, and Tailwind CSS."
+  image="https://images.unsplash.com/photo-1620558138198-cfb9b4f3c294?ixlib=rb-4.0.3&auto=format&fit=crop&w=1671&q=80"
+/>
 
 <Layout metadata={metadata}>
   <!-- Hero Widget ******************* -->

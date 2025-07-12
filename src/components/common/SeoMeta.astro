@@ -1,0 +1,126 @@
+---
+export interface Props {
+  title?: string;
+  description?: string;
+  url?: string;
+  image?: string;
+  schemaType?: 'WebPage' | 'FAQPage' | 'ContactPage' | 'HowTo' | 'WebSite';
+  schemaData?: any;
+}
+
+const { 
+  title = "SalesTag — AI Sales Memory, Built for Field Teams",
+  description = "SalesTag captures, tags, and stores real sales conversations using wearable badges and LLMs. Transform door-to-door pitches into valuable coaching data and AGI-ready training material.",
+  url = Astro.url.href,
+  image = new URL('/assets/images/hero-image.png', Astro.url).href,
+  schemaType = 'WebPage',
+  schemaData = {}
+} = Astro.props;
+
+// Site defaults
+const siteName = "SalesTag";
+const siteUrl = Astro.site?.href || "https://salestag.io";
+
+// Build schema based on type
+const buildSchema = () => {
+  const baseSchema = {
+    "@context": "https://schema.org",
+    "@type": schemaType,
+    "name": title,
+    "description": description,
+    "url": url,
+    "image": image,
+    "publisher": {
+      "@type": "Organization",
+      "name": siteName,
+      "url": siteUrl,
+      "description": "AI-powered sales conversation analysis and coaching platform for field teams"
+    }
+  };
+
+  // Add specific schema data based on type
+  if (schemaType === 'WebSite') {
+    return {
+      ...baseSchema,
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": `${siteUrl}/search?q={search_term_string}`,
+        "query-input": "required name=search_term_string"
+      }
+    };
+  }
+
+  if (schemaType === 'FAQPage') {
+    return {
+      ...baseSchema,
+      "mainEntity": schemaData.faqs || []
+    };
+  }
+
+  if (schemaType === 'HowTo') {
+    return {
+      ...baseSchema,
+      "step": schemaData.steps || []
+    };
+  }
+
+  if (schemaType === 'ContactPage') {
+    return {
+      ...baseSchema,
+      "contactPoint": schemaData.contactPoint || {
+        "@type": "ContactPoint",
+        "contactType": "sales",
+        "availableLanguage": "English"
+      }
+    };
+  }
+
+  // Default WebPage with SoftwareApplication mainEntity
+  return {
+    ...baseSchema,
+    "mainEntity": {
+      "@type": "SoftwareApplication",
+      "name": "SalesTag",
+      "applicationCategory": "Sales Analytics Software",
+      "operatingSystem": "Web, iOS, Android",
+      "description": "Wearable badge and AI platform for capturing, analyzing, and improving sales conversations",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    ...schemaData
+  };
+};
+---
+
+<!-- Basic Meta Tags -->
+<title>{title}</title>
+<meta name="description" content={description} />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="utf-8" />
+
+<!-- OpenGraph Tags -->
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={url} />
+<meta property="og:image" content={image} />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content={siteName} />
+<meta property="og:locale" content="en_US" />
+
+<!-- Twitter Card Tags -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={image} />
+<meta name="twitter:url" content={url} />
+
+<!-- Additional SEO Tags -->
+<meta name="robots" content="index, follow" />
+<meta name="googlebot" content="index, follow" />
+<link rel="canonical" href={url} />
+
+<!-- JSON-LD Schema -->
+<script type="application/ld+json" set:html={JSON.stringify(buildSchema())}></script> 

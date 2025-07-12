@@ -1,0 +1,144 @@
+---
+import PageLayout from '~/layouts/PageLayout.astro';
+import SeoMeta from '~/components/common/SeoMeta.astro';
+import CallToActionBanner from '~/components/ui/CallToActionBanner.astro';
+
+const faqSchemaData = {
+  faqs: [
+    {
+      "@type": "Question",
+      "name": "How does the wearable badge work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Our lightweight badge clips to your shirt or lanyard and uses voice activation to detect when you're in conversation. It automatically starts recording when it hears multiple voices and stops when the conversation ends."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my conversation data secure?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutely. All audio is encrypted end-to-end and stored in your private vault. You control who has access, and data never leaves your organization without explicit permission. We're SOC 2 compliant and follow enterprise-grade security practices."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What kind of insights does the AI provide?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Our AI identifies objections, sentiment changes, buying signals, talk time ratios, and conversation flow patterns. You'll get actionable coaching recommendations and performance metrics that help reps improve their approach."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does setup take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Setup is typically completed in under 30 minutes. We provide pre-configured badges, a simple mobile app for syncing, and white-glove onboarding support. Most teams are capturing conversations on day one."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I integrate with my existing CRM?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, we offer native integrations with Salesforce, HubSpot, and Pipedrive. Conversation insights and coaching notes can automatically sync to your existing lead records and workflows."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the pricing model?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We offer flexible pricing based on team size and features needed. Plans start at $99/month per rep and include the badge hardware, AI analysis, and coaching dashboard. Enterprise plans available for larger organizations."
+      }
+    }
+  ]
+};
+---
+
+<SeoMeta 
+  title="Frequently Asked Questions – SalesTag AI Sales Platform"
+  description="Common questions about SalesTag's AI-powered sales conversation capture, security, integrations, pricing, and setup process for field sales teams."
+  url="https://salestag.io/faq"
+  image="/og/faq.jpg"
+  schemaType="FAQPage"
+  schemaData={faqSchemaData}
+/>
+
+<PageLayout>
+  <main class="px-4 py-16 mx-auto max-w-4xl">
+    <div class="prose prose-lg max-w-none">
+      <h1 class="text-4xl font-bold mb-6">Frequently Asked Questions</h1>
+      
+      <p class="text-xl mb-12 text-gray-600">
+        Common questions from reps, admins, and data teams about SalesTag's capabilities, privacy, integrations, and future roadmap.
+      </p>
+
+      <div class="space-y-6">
+        <details class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-lg p-6 shadow-sm">
+          <summary class="text-xl font-semibold cursor-pointer dark:text-gray-100">
+            How does the wearable badge work?
+          </summary>
+          <div class="mt-4 text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+            Our lightweight badge clips to your shirt or lanyard and uses voice activation to detect when you're in conversation. It automatically starts recording when it hears multiple voices and stops when the conversation ends.
+          </div>
+        </details>
+
+        <details class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-lg p-6 shadow-sm">
+          <summary class="text-xl font-semibold cursor-pointer dark:text-gray-100">
+            Is my conversation data secure?
+          </summary>
+          <div class="mt-4 text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+            Absolutely. All audio is encrypted end-to-end and stored in your private vault. You control who has access, and data never leaves your organization without explicit permission. We're SOC 2 compliant and follow enterprise-grade security practices.
+          </div>
+        </details>
+
+        <details class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-lg p-6 shadow-sm">
+          <summary class="text-xl font-semibold cursor-pointer dark:text-gray-100">
+            What kind of insights does the AI provide?
+          </summary>
+          <div class="mt-4 text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+            Our AI identifies objections, sentiment changes, buying signals, talk time ratios, and conversation flow patterns. You'll get actionable coaching recommendations and performance metrics that help reps improve their approach.
+          </div>
+        </details>
+
+        <details class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-lg p-6 shadow-sm">
+          <summary class="text-xl font-semibold cursor-pointer dark:text-gray-100">
+            How long does setup take?
+          </summary>
+          <div class="mt-4 text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+            Setup is typically completed in under 30 minutes. We provide pre-configured badges, a simple mobile app for syncing, and white-glove onboarding support. Most teams are capturing conversations on day one.
+          </div>
+        </details>
+
+        <details class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-lg p-6 shadow-sm">
+          <summary class="text-xl font-semibold cursor-pointer dark:text-gray-100">
+            Can I integrate with my existing CRM?
+          </summary>
+          <div class="mt-4 text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+            Yes, we offer native integrations with Salesforce, HubSpot, and Pipedrive. Conversation insights and coaching notes can automatically sync to your existing lead records and workflows.
+          </div>
+        </details>
+
+        <details class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-lg p-6 shadow-sm">
+          <summary class="text-xl font-semibold cursor-pointer dark:text-gray-100">
+            What's the pricing model?
+          </summary>
+          <div class="mt-4 text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+            We offer flexible pricing based on team size and features needed. Plans start at $99/month per rep and include the badge hardware, AI analysis, and coaching dashboard. Enterprise plans available for larger organizations.
+          </div>
+        </details>
+      </div>
+
+      <!-- CTA Section -->
+      <section class="mt-16 not-prose">
+        <CallToActionBanner 
+          title="Still Have Questions?"
+          description="Get answers from our team and learn how SalesTag can transform your sales conversations."
+          buttonText="Join Waitlist"
+        />
+      </section>
+    </div>
+  </main>
+</PageLayout> 

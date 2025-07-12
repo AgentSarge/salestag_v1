@@ -1,13 +1,33 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
+import SeoMeta from '~/components/common/SeoMeta.astro';
 import HeroText from '~/components/widgets/HeroText.astro';
 import ContactUs from '~/components/widgets/Contact.astro';
 import Features2 from '~/components/widgets/Features2.astro';
 
 const metadata = {
-  title: 'Contact',
+  title: 'Contact SalesTag – Get in Touch with Our Sales Team',
+};
+
+const contactSchemaData = {
+  contactPoint: {
+    "@type": "ContactPoint",
+    "contactType": "sales",
+    "availableLanguage": "English",
+    "areaServed": "US",
+    "serviceType": "AI Sales Intelligence Platform"
+  }
 };
 ---
+
+<SeoMeta 
+  title="Contact SalesTag – Get in Touch with Our Sales Team"
+  description="Contact SalesTag for AI sales intelligence solutions. Get support, schedule a demo, or discuss how our platform can transform your field sales team's performance."
+  url="https://salestag.io/contact"
+  image="/og/contact.jpg"
+  schemaType="ContactPage"
+  schemaData={contactSchemaData}
+/>
 
 <Layout metadata={metadata}>
   <!-- HeroText Widget ******************* -->
