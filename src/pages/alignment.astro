@@ -1,49 +1,201 @@
 ---
 import PageLayout from '~/layouts/PageLayout.astro';
 import SeoMeta from '~/components/common/SeoMeta.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Features from '~/components/widgets/Features.astro';
+import Content from '~/components/widgets/Content.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+import heroImage from '~/assets/images/hero-image.png';
+import defaultImage from '~/assets/images/default.png';
+
+const metadata = {
+  title: 'AI Alignment Through Sales — SalesTag\'s AGI Vision',
+};
 ---
 
 <SeoMeta 
   title="AI Alignment Through Sales — SalesTag's AGI Vision"
   description="SalesTag aligns future AGI through human sales conversations. Our system learns from real interactions to create safer, more aligned AI that understands human communication patterns."
+  url="https://salestag.io/alignment"
+  image="/og/alignment.jpg"
+  schemaType="WebPage"
 />
 
-<PageLayout>
-  <main class="px-4 py-16 mx-auto max-w-4xl">
-    <h1 class="text-4xl font-bold mb-6">AGI Alignment Starts with Human Reality</h1>
-    
-    <p class="text-xl mb-12 text-gray-600">
-      Aligning AGI with humanity starts with real human behavior — not benchmarks or synthetic tokens. 
-      SalesTag captures authentic decision-making, persuasion, resistance, and trust in action. 
-      It's the missing layer in scalable AI safety.
-    </p>
+<PageLayout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+  <Hero
+    tagline="AGI Alignment"
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Explore Alignment',
+        href: '#alignment',
+        icon: 'tabler:target',
+      },
+      { text: 'Join Research', href: '/subscribe' },
+    ]}
+    image={{
+      src: defaultImage,
+      alt: 'SalesTag AGI Alignment Research',
+    }}
+  >
+    <Fragment slot="title">
+      AGI Alignment Starts with <br />
+      <span class="text-accent dark:text-white">Human Reality</span>
+    </Fragment>
 
-    <section class="mb-12">
-      <h2 class="text-2xl font-semibold mb-4 scroll-mt-24">From Theory to Data</h2>
-      <p class="text-lg leading-relaxed">
-        Most alignment research is abstract. But models learn from examples. SalesTag provides high-fidelity 
-        interaction sequences — every sales call is a lesson in goals, incentives, and interpersonal strategy. 
-        Ideal for reinforcement learning from human feedback (RLHF), supervised fine-tuning, or safety 
-        evaluation datasets.
-      </p>
-    </section>
+    <Fragment slot="subtitle">
+      Aligning AGI with humanity starts with real human behavior — not benchmarks or synthetic tokens. SalesTag captures authentic decision-making, persuasion, resistance, and trust in action. It's the missing layer in scalable AI safety.
+    </Fragment>
+  </Hero>
 
-    <section class="mb-12">
-      <h2 class="text-2xl font-semibold mb-4 scroll-mt-24">The Alignment Bottleneck</h2>
-      <p class="text-lg leading-relaxed">
-        The biggest blockers to aligned AGI are: (1) lack of real-world data, (2) lack of contested decisions, 
-        and (3) lack of structured annotation. SalesTag solves all three — producing labeled, reviewed, and 
-        indexed episodes of value negotiation.
-      </p>
-    </section>
+  <!-- Features Widget *************** -->
+  <Features
+    id="alignment"
+    title="From Theory to Data"
+    subtitle="Real-world human interaction data for safer AI development"
+    items={[
+      {
+        title: 'Authentic Human Behavior',
+        description: 'Capture real decision-making processes, not synthetic or artificial training examples.',
+        icon: 'tabler:users',
+      },
+      {
+        title: 'RLHF-Ready Data',
+        description: 'High-fidelity interaction sequences ideal for reinforcement learning from human feedback.',
+        icon: 'tabler:brain',
+      },
+      {
+        title: 'Supervised Fine-Tuning',
+        description: 'Structured conversation examples perfect for training more aligned language models.',
+        icon: 'tabler:settings',
+      },
+      {
+        title: 'Safety Evaluation',
+        description: 'Comprehensive datasets for testing AI safety measures and alignment effectiveness.',
+        icon: 'tabler:shield-check',
+      },
+    ]}
+  />
 
-    <section class="mb-12">
-      <h2 class="text-2xl font-semibold mb-4 scroll-mt-24">Why It's Urgent</h2>
-      <p class="text-lg leading-relaxed">
-        As AGI capabilities accelerate, alignment lags behind. SalesTag helps rebalance the equation — not 
-        through theory, but through evidence. High-signal, human-grounded episodes of conflict, persuasion, 
-        and trust-building. A vault for learning how humans really think.
-      </p>
-    </section>
-  </main>
+  <!-- Content Widget **************** -->
+  <Content
+    title="The Alignment Bottleneck"
+    subtitle="Solving the core challenges blocking aligned AGI development"
+    isReversed
+    items={[
+      {
+        title: 'Real-World Data Scarcity',
+        description: 'Most AI training relies on synthetic or low-quality data that doesn\'t reflect authentic human interactions.',
+      },
+      {
+        title: 'Lack of Contested Decisions',
+        description: 'Training data rarely captures the complex negotiations and value conflicts that define human relationships.',
+      },
+      {
+        title: 'Missing Structured Annotation',
+        description: 'Even when real interaction data exists, it lacks the detailed labeling needed for effective AI training.',
+      },
+    ]}
+    image={{
+      src: heroImage,
+      alt: 'SalesTag Alignment Research Data',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Solving All Three <br /><span class="text-2xl">Core Challenges</span>
+      </h3>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Features2 Widget ************** -->
+  <Features2
+    title="Why It's Urgent"
+    subtitle="The alignment gap is widening as AI capabilities accelerate"
+    columns={2}
+    items={[
+      {
+        title: 'Capability Acceleration',
+        description: 'AI systems are becoming more powerful faster than our ability to align them with human values and intentions.',
+        icon: 'tabler:rocket',
+      },
+      {
+        title: 'Alignment Lag',
+        description: 'Current alignment research relies too heavily on theoretical frameworks rather than empirical human data.',
+        icon: 'tabler:clock',
+      },
+      {
+        title: 'Evidence-Based Solutions',
+        description: 'SalesTag provides the missing empirical foundation for alignment research through real human interaction data.',
+        icon: 'tabler:database',
+      },
+      {
+        title: 'Human-Grounded Learning',
+        description: 'High-signal episodes of conflict, persuasion, and trust-building teach AI systems how humans actually think and decide.',
+        icon: 'tabler:brain',
+      },
+    ]}
+  />
+
+  <!-- Content Widget **************** -->
+  <Content
+    isAfterContent
+    items={[
+      {
+        title: 'Research Partnerships',
+        description: 'Collaborate with leading AI safety researchers and institutions on alignment challenges.',
+      },
+      {
+        title: 'Open Data Initiative',
+        description: 'Share anonymized conversation patterns with the research community to accelerate alignment progress.',
+      },
+      {
+        title: 'Safety Evaluation',
+        description: 'Test AI safety measures using real human interaction scenarios rather than artificial benchmarks.',
+      },
+      {
+        title: 'Ethical Framework',
+        description: 'Develop responsible AI systems that understand and respect human communication patterns and social norms.',
+      },
+    ]}
+    image={{
+      src: defaultImage,
+      alt: 'SalesTag AI Safety Research',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        A Vault for Learning <br /><span class="text-2xl">How Humans Think</span>
+      </h3>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- CallToAction Widget *********** -->
+  <CallToAction
+    title="Join the Alignment Research"
+    subtitle="Help us build the data foundation needed for safe, aligned AGI. Partner with us to solve humanity's most important AI challenge."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Research Partnership',
+        href: '/contact',
+      },
+      {
+        variant: 'secondary',
+        text: 'Learn About Vault',
+        href: '/vault',
+      },
+    ]}
+  />
 </PageLayout> 

@@ -1,6 +1,17 @@
 ---
 import PageLayout from '~/layouts/PageLayout.astro';
 import SeoMeta from '~/components/common/SeoMeta.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Features from '~/components/widgets/Features.astro';
+import ContactUs from '~/components/widgets/Contact.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+import defaultImage from '~/assets/images/default.png';
+
+const metadata = {
+  title: 'Join SalesTag Early Access – AI Sales Intelligence Platform',
+};
 
 const contactSchemaData = {
   contactPoint: {
@@ -22,75 +33,163 @@ const contactSchemaData = {
   schemaData={contactSchemaData}
 />
 
-<PageLayout>
-  <main class="px-4 py-16 mx-auto max-w-2xl">
-    <h1 class="text-4xl font-bold mb-8 text-center">Join the SalesTag Early Access List</h1>
-    <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-lg p-8 shadow-sm">
-      <h2 class="text-2xl font-semibold mb-6 dark:text-gray-100">Request Early Access</h2>
-      <p class="text-gray-600 dark:text-gray-300 mb-8">
-        Join the waitlist to be among the first to experience SalesTag. We'll keep you updated on our progress and notify you when early access becomes available.
-      </p>
-      
-      <form action="/api/subscribe" method="POST" class="space-y-6">
-        <div>
-          <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Full Name</label>
-          <input 
-            type="text" 
-            id="name" 
-            name="name" 
-            required 
-            class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition bg-white dark:bg-gray-700 dark:text-gray-100"
-            placeholder="John Smith"
-          >
-        </div>
-        
-        <div>
-          <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Work Email</label>
-          <input 
-            type="email" 
-            id="email" 
-            name="email" 
-            required 
-            class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition bg-white dark:bg-gray-700 dark:text-gray-100"
-            placeholder="john@company.com"
-          >
-        </div>
-        
-        <div>
-          <label for="company" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Company</label>
-          <input 
-            type="text" 
-            id="company" 
-            name="company" 
-            class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition bg-white dark:bg-gray-700 dark:text-gray-100"
-            placeholder="Acme Solar"
-          >
-        </div>
-        
-        <div>
-          <label for="vertical" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Sales Vertical</label>
-          <select 
-            id="vertical" 
-            name="vertical" 
-            class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition bg-white dark:bg-gray-700 dark:text-gray-100"
-          >
-            <option value="">Select your industry</option>
-            <option value="solar">Solar</option>
-            <option value="roofing">Roofing</option>
-            <option value="smart-home">Smart Home</option>
-            <option value="pest-control">Pest Control</option>
-            <option value="security">Security/Alarms</option>
-            <option value="automotive">Automotive</option>
-            <option value="other">Other</option>
-          </select>
-        </div>
-        <button 
-          type="submit" 
-          class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-md shadow-sm transition focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-        >
-          Get Early Access
-        </button>
-      </form>
-    </div>
-  </main>
+<PageLayout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+  <Hero
+    tagline="Early Access"
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Join Waitlist',
+        href: '#signup',
+        icon: 'tabler:rocket',
+      },
+      { text: 'Learn More', href: '/demo' },
+    ]}
+    image={{
+      src: defaultImage,
+      alt: 'SalesTag Early Access Program',
+    }}
+  >
+    <Fragment slot="title">
+      Join the SalesTag <br />
+      <span class="text-accent dark:text-white">Early Access List</span>
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      Be among the first to experience the future of sales intelligence. Join forward-thinking sales teams who are already transforming their conversations into competitive advantages.
+    </Fragment>
+  </Hero>
+
+  <!-- Features Widget *************** -->
+  <Features
+    title="Early Access Benefits"
+    subtitle="Exclusive advantages for early adopters of SalesTag's AI platform"
+    items={[
+      {
+        title: 'Priority Access',
+        description: 'Skip the line and get immediate access to SalesTag when we launch new features and capabilities.',
+        icon: 'tabler:star',
+      },
+      {
+        title: 'Special Pricing',
+        description: 'Lock in discounted rates and exclusive pricing tiers available only to early access members.',
+        icon: 'tabler:discount',
+      },
+      {
+        title: 'Direct Feedback',
+        description: 'Shape the product roadmap with your input and help us build features that matter most to your team.',
+        icon: 'tabler:message-circle',
+      },
+      {
+        title: 'Dedicated Support',
+        description: 'White-glove onboarding and personalized training to ensure your team succeeds from day one.',
+        icon: 'tabler:headset',
+      },
+    ]}
+  />
+
+  <!-- ContactUs Widget *************** -->
+  <ContactUs
+    id="signup"
+    title="Request Early Access"
+    subtitle="Join the waitlist to be notified when SalesTag becomes available. We'll keep you updated on our progress and development milestones."
+    inputs={[
+      {
+        type: 'text',
+        name: 'name',
+        label: 'Full Name',
+        placeholder: 'John Smith',
+      },
+      {
+        type: 'email',
+        name: 'email',
+        label: 'Work Email',
+        placeholder: 'john@company.com',
+      },
+      {
+        type: 'text',
+        name: 'company',
+        label: 'Company Name',
+        placeholder: 'Acme Solar Solutions',
+      },
+      {
+        type: 'text',
+        name: 'vertical',
+        label: 'Sales Vertical',
+        placeholder: 'e.g. Solar, Roofing, Security, etc.',
+      },
+      {
+        type: 'text',
+        name: 'team_size',
+        label: 'Sales Team Size',
+        placeholder: '5-10 reps',
+      },
+    ]}
+    textarea={{
+      label: 'Tell us about your sales challenges',
+      placeholder: 'What specific challenges is your sales team facing? What would you like to achieve with AI-powered conversation analysis?',
+    }}
+    disclaimer={{
+      label: 'By submitting this form, you agree to receive communications from SalesTag about our AI sales intelligence platform and early access opportunities.',
+    }}
+    description="We'll respond within 24 hours with early access details and program information."
+  />
+
+  <!-- Features2 Widget ************** -->
+  <Features2
+    title="What to Expect"
+    subtitle="Your journey from waitlist to AI-powered sales success"
+    columns={3}
+    items={[
+      {
+        title: 'Immediate Updates',
+        description: 'Get notified about product development milestones, feature releases, and beta testing opportunities.',
+        icon: 'tabler:bell',
+      },
+      {
+        title: 'Exclusive Demos',
+        description: 'Access to special demonstrations and behind-the-scenes looks at SalesTag development.',
+        icon: 'tabler:eye',
+      },
+      {
+        title: 'Beta Testing',
+        description: 'Opportunity to test new features before general release and provide feedback to our development team.',
+        icon: 'tabler:flask',
+      },
+      {
+        title: 'Community Access',
+        description: 'Join our private community of forward-thinking sales professionals and AI early adopters.',
+        icon: 'tabler:users',
+      },
+      {
+        title: 'Implementation Support',
+        description: 'When you\'re ready to deploy, get priority access to our customer success team.',
+        icon: 'tabler:rocket',
+      },
+      {
+        title: 'Success Metrics',
+        description: 'Track your team\'s improvement with detailed analytics and performance benchmarking.',
+        icon: 'tabler:chart-line',
+      },
+    ]}
+  />
+
+  <!-- CallToAction Widget *********** -->
+  <CallToAction
+    title="Ready to Transform Your Sales Process?"
+    subtitle="Don't wait for your competition to gain the AI advantage. Join the early access program and start building your sales intelligence vault today."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Join Waitlist Now',
+        href: '#signup',
+      },
+      {
+        variant: 'secondary',
+        text: 'Schedule Demo',
+        href: '/demo',
+      },
+    ]}
+  />
 </PageLayout> 

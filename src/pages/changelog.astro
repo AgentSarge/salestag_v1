@@ -1,7 +1,17 @@
 ---
 import PageLayout from '~/layouts/PageLayout.astro';
 import SeoMeta from '~/components/common/SeoMeta.astro';
-import CallToActionBanner from '~/components/ui/CallToActionBanner.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import Content from '~/components/widgets/Content.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+import defaultImage from '~/assets/images/default.png';
+
+const metadata = {
+  title: 'SalesTag Changelog – Product Updates & Version History',
+};
 
 const changelogSchemaData = {
   releases: [
@@ -33,174 +43,210 @@ const changelogSchemaData = {
   schemaData={changelogSchemaData}
 />
 
-<PageLayout>
-  <main class="px-4 py-16 mx-auto max-w-4xl">
-    <div class="prose prose-lg max-w-none dark:prose-invert">
-      <!-- Header -->
-      <div class="text-center mb-12">
-        <h1 class="text-4xl font-bold mb-6 flex items-center justify-center">
-          📜 SalesTag Changelog
-        </h1>
-        <p class="text-xl text-gray-600 dark:text-gray-300">
-          Stay updated with the latest features, improvements, and fixes.
-        </p>
+<PageLayout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+  <Hero
+    tagline="Product Updates"
+    actions={[
+      {
+        variant: 'primary',
+        text: 'View Roadmap',
+        href: '/roadmap',
+        icon: 'tabler:telescope',
+      },
+      { text: 'Join Waitlist', href: '/subscribe' },
+    ]}
+    image={{
+      src: defaultImage,
+      alt: 'SalesTag Product Development Timeline',
+    }}
+  >
+    <Fragment slot="title">
+      📜 SalesTag <br />
+      <span class="text-accent dark:text-white">Changelog</span>
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      Stay updated with the latest features, improvements, and fixes. Track our journey from concept to the leading AI-powered sales intelligence platform.
+    </Fragment>
+  </Hero>
+
+  <!-- Content Widget **************** -->
+  <Content
+    title="Latest Release: v1.0.0"
+    subtitle="July 12, 2025 - Initial Public Launch"
+    isReversed
+    items={[
+      {
+        title: '🎉 Public Launch',
+        description: 'The first public release of SalesTag, featuring core conversation capture, AI tagging, and analytics capabilities.',
+      },
+      {
+        title: '✨ Core Features',
+        description: 'SalesTag Vault, live metrics dashboard, responsive waitlist system, and global CTA conversion tracking.',
+      },
+      {
+        title: '🛠️ Technical Foundation',
+        description: 'Full dark mode support, JSON-LD schema optimization, Astro static generation, and mobile-responsive design.',
+      },
+    ]}
+    image={{
+      src: defaultImage,
+      alt: 'SalesTag v1.0.0 Launch',
+    }}
+  >
+    <Fragment slot="content">
+      <div class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-600 text-white mb-4">
+        v1.0.0 - Current Release
       </div>
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        🎉 Initial Public Launch
+      </h3>
+    </Fragment>
 
-      <!-- Navigation Links -->
-      <div class="flex justify-center mb-12">
-        <div class="flex space-x-1 bg-gray-100 dark:bg-gray-800 rounded-lg p-1">
-          <span class="px-4 py-2 text-sm font-medium bg-blue-600 text-white rounded-md">
-            📜 Changelog
-          </span>
-          <a href="/roadmap" class="px-4 py-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors">
-            🔭 Roadmap
-          </a>
-        </div>
-      </div>
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/30"></div>
+    </Fragment>
+  </Content>
 
-      <!-- Version History -->
-      <div class="space-y-8">
-        <!-- v1.0.0 - Current Release -->
-        <div class="bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/30 rounded-lg p-8 border border-blue-200 dark:border-blue-700">
-          <div class="flex items-center mb-4">
-            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-600 text-white mr-3">
-              v1.0.0
-            </span>
-            <span class="text-gray-600 dark:text-gray-400">July 12, 2025</span>
-            <span class="ml-3 inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
-              Current Release
-            </span>
-          </div>
-          
-          <h2 class="text-2xl font-semibold mb-4 text-blue-800 dark:text-blue-200">
-            🎉 Initial Public Launch
-          </h2>
-          
-          <p class="text-gray-700 dark:text-gray-300 mb-4">
-            The first public release of SalesTag, featuring core conversation capture, AI tagging, and analytics capabilities.
-          </p>
+  <!-- Features2 Widget ************** -->
+  <Features2
+    title="v1.0.0 Feature Highlights"
+    subtitle="What's included in our inaugural release"
+    columns={2}
+    items={[
+      {
+        title: 'SalesTag Vault',
+        description: 'Secure, encrypted storage for all conversation data with enterprise-grade compliance and future AI training capabilities.',
+        icon: 'tabler:database',
+      },
+      {
+        title: 'Live Metrics Dashboard',
+        description: 'Real-time analytics powered by Supabase, providing instant insights into team performance and conversation patterns.',
+        icon: 'tabler:dashboard',
+      },
+      {
+        title: 'Intelligent Waitlist System',
+        description: 'Responsive subscription forms with automated follow-up and early access program management.',
+        icon: 'tabler:users',
+      },
+      {
+        title: 'Global CTA System',
+        description: 'Comprehensive conversion tracking and optimization across all customer touchpoints and user journeys.',
+        icon: 'tabler:target',
+      },
+      {
+        title: 'Dark Mode Support',
+        description: 'Complete dark/light theme system built with Tailwind CSS for optimal user experience across devices.',
+        icon: 'tabler:moon',
+      },
+      {
+        title: 'SEO Optimization',
+        description: 'Advanced JSON-LD schema implementation, meta tags, and search engine optimization for maximum visibility.',
+        icon: 'tabler:search',
+      },
+    ]}
+  />
 
-          <div class="grid md:grid-cols-2 gap-6">
-            <div>
-              <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">✨ New Features</h4>
-              <ul class="space-y-1 text-gray-700 dark:text-gray-300 text-sm">
-                <li class="flex items-start">
-                  <span class="text-green-600 mr-2 mt-0.5">✅</span>
-                  <span>SalesTag Vault for conversation storage</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="text-green-600 mr-2 mt-0.5">✅</span>
-                  <span>Live metrics dashboard with Supabase</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="text-green-600 mr-2 mt-0.5">✅</span>
-                  <span>Responsive waitlist subscription form</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="text-green-600 mr-2 mt-0.5">✅</span>
-                  <span>Global CTA conversion system</span>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h4 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">🛠️ Technical</h4>
-              <ul class="space-y-1 text-gray-700 dark:text-gray-300 text-sm">
-                <li class="flex items-start">
-                  <span class="text-blue-600 mr-2 mt-0.5">•</span>
-                  <span>Full dark mode with Tailwind CSS</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="text-blue-600 mr-2 mt-0.5">•</span>
-                  <span>JSON-LD schema for SEO optimization</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="text-blue-600 mr-2 mt-0.5">•</span>
-                  <span>Astro static site generation</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="text-blue-600 mr-2 mt-0.5">•</span>
-                  <span>Mobile-responsive design</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
+  <!-- Stats Widget ****************** -->
+  <Stats
+    title="Launch Stats"
+    subtitle="By the numbers - our initial release"
+    stats={[
+      { amount: '13', title: 'Pages Launched' },
+      { amount: '4', title: 'Schema Types' },
+      { amount: '100%', title: 'SEO Coverage' },
+      { amount: '95%', title: 'Launch Ready' },
+    ]}
+  />
 
-        <!-- Placeholder for future releases -->
-        <div class="text-center py-12 border-2 border-dashed border-gray-200 dark:border-gray-600 rounded-lg">
-          <div class="text-gray-400 dark:text-gray-500 mb-4">
-            <svg class="w-12 h-12 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-            </svg>
-          </div>
-          <h3 class="text-lg font-medium text-gray-500 dark:text-gray-400 mb-2">
-            More Updates Coming Soon
-          </h3>
-          <p class="text-gray-400 dark:text-gray-500 mb-4">
-            Check our roadmap to see what features are coming next.
-          </p>
-          <a href="/roadmap" class="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium text-sm">
-            View Roadmap →
-          </a>
-        </div>
-      </div>
+  <!-- Features2 Widget ************** -->
+  <Features2
+    title="Coming Next"
+    subtitle="Preview of upcoming features and improvements"
+    columns={3}
+    items={[
+      {
+        title: 'Mobile App',
+        description: 'Native iOS and Android apps for badge management and real-time conversation insights.',
+        icon: 'tabler:device-mobile',
+      },
+      {
+        title: 'Advanced AI Models',
+        description: 'Industry-specific AI training and enhanced objection detection for better coaching insights.',
+        icon: 'tabler:brain',
+      },
+      {
+        title: 'CRM Integrations',
+        description: 'Native connections to Salesforce, HubSpot, and other popular sales platforms.',
+        icon: 'tabler:plug',
+      },
+      {
+        title: 'Team Analytics',
+        description: 'Advanced team performance metrics and comparative analysis across sales representatives.',
+        icon: 'tabler:chart-line',
+      },
+      {
+        title: 'Real-time Coaching',
+        description: 'Live conversation coaching with instant feedback and objection handling suggestions.',
+        icon: 'tabler:headset',
+      },
+      {
+        title: 'API Access',
+        description: 'Developer API for custom integrations and workflow automation with external systems.',
+        icon: 'tabler:code',
+      },
+    ]}
+  />
 
-      <!-- Stats Section -->
-      <div class="mt-16 bg-white dark:bg-gray-800 rounded-lg p-8 shadow-sm border border-gray-200 dark:border-gray-600">
-        <h3 class="text-xl font-semibold mb-6 text-gray-900 dark:text-gray-100 text-center">
-          📊 Launch Stats
-        </h3>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-          <div>
-            <div class="text-2xl font-bold text-blue-600 mb-1">13</div>
-            <div class="text-sm text-gray-600 dark:text-gray-400">Pages Launched</div>
-          </div>
-          <div>
-            <div class="text-2xl font-bold text-green-600 mb-1">4</div>
-            <div class="text-sm text-gray-600 dark:text-gray-400">Schema Types</div>
-          </div>
-          <div>
-            <div class="text-2xl font-bold text-purple-600 mb-1">100%</div>
-            <div class="text-sm text-gray-600 dark:text-gray-400">SEO Coverage</div>
-          </div>
-          <div>
-            <div class="text-2xl font-bold text-orange-600 mb-1">95%</div>
-            <div class="text-sm text-gray-600 dark:text-gray-400">Launch Ready</div>
-          </div>
-        </div>
-      </div>
+  <!-- Content Widget **************** -->
+  <Content
+    isAfterContent
+    items={[
+      {
+        title: 'Release Feedback',
+        description: 'Experiencing issues or have suggestions? We\'d love to hear from early users and beta testers.',
+      },
+      {
+        title: 'Community Updates',
+        description: 'Join our community to stay informed about new features, best practices, and upcoming releases.',
+      },
+      {
+        title: 'Future Roadmap',
+        description: 'Check our detailed roadmap to see what\'s coming next and how we\'re building the future of sales AI.',
+      },
+    ]}
+    image={{
+      src: defaultImage,
+      alt: 'SalesTag Community and Feedback',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        💭 Release Feedback
+      </h3>
+    </Fragment>
 
-      <!-- Feedback Section -->
-      <div class="mt-12 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 rounded-lg p-8 text-center">
-        <h3 class="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100 flex items-center justify-center">
-          💭 Release Feedback
-        </h3>
-        <p class="text-gray-700 dark:text-gray-300 mb-6">
-          Experiencing issues or have suggestions for improvements? We'd love to hear from you.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <a href="/contact" class="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium">
-            Report Issues
-          </a>
-          <a href="/subscribe" class="inline-flex items-center px-6 py-3 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors font-medium">
-            Join Community
-          </a>
-        </div>
-      </div>
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700"></div>
+    </Fragment>
+  </Content>
 
-      <!-- Footer Note -->
-      <div class="mt-16 text-center text-sm text-gray-500 dark:text-gray-400 border-t border-gray-200 dark:border-gray-600 pt-8">
-        <em>Changelog updated with each release. For upcoming features, visit our <a href="/roadmap" class="text-blue-600 dark:text-blue-400 hover:underline">roadmap</a>.</em>
-      </div>
-
-      <!-- CTA Section -->
-      <section class="mt-16 not-prose">
-        <CallToActionBanner 
-          title="Ready to Experience SalesTag?"
-          description="Join forward-thinking sales teams who are already transforming their conversations into valuable insights."
-          buttonText="Get Early Access"
-        />
-      </section>
-    </div>
-  </main>
+  <!-- CallToAction Widget *********** -->
+  <CallToAction
+    title="Ready to Experience SalesTag?"
+    subtitle="Join forward-thinking sales teams who are already transforming their conversations into valuable insights."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Get Early Access',
+        href: '/subscribe',
+      },
+      {
+        variant: 'secondary',
+        text: 'View Roadmap',
+        href: '/roadmap',
+      },
+    ]}
+  />
 </PageLayout> 

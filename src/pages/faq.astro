@@ -1,7 +1,16 @@
 ---
 import PageLayout from '~/layouts/PageLayout.astro';
 import SeoMeta from '~/components/common/SeoMeta.astro';
-import CallToActionBanner from '~/components/ui/CallToActionBanner.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import Features from '~/components/widgets/Features.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+import defaultImage from '~/assets/images/default.png';
+
+const metadata = {
+  title: 'Frequently Asked Questions – SalesTag AI Sales Platform',
+};
 
 const faqSchemaData = {
   faqs: [
@@ -66,79 +75,137 @@ const faqSchemaData = {
   schemaData={faqSchemaData}
 />
 
-<PageLayout>
-  <main class="px-4 py-16 mx-auto max-w-4xl">
-    <div class="prose prose-lg max-w-none">
-      <h1 class="text-4xl font-bold mb-6">Frequently Asked Questions</h1>
-      
-      <p class="text-xl mb-12 text-gray-600">
-        Common questions from reps, admins, and data teams about SalesTag's capabilities, privacy, integrations, and future roadmap.
-      </p>
+<PageLayout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+  <Hero
+    tagline="FAQ"
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Browse Questions',
+        href: '#faqs',
+        icon: 'tabler:help',
+      },
+      { text: 'Contact Support', href: '/contact' },
+    ]}
+    image={{
+      src: defaultImage,
+      alt: 'SalesTag Frequently Asked Questions',
+    }}
+  >
+    <Fragment slot="title">
+      Frequently Asked <br />
+      <span class="text-accent dark:text-white">Questions</span>
+    </Fragment>
 
-      <div class="space-y-6">
-        <details class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-lg p-6 shadow-sm">
-          <summary class="text-xl font-semibold cursor-pointer dark:text-gray-100">
-            How does the wearable badge work?
-          </summary>
-          <div class="mt-4 text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-            Our lightweight badge clips to your shirt or lanyard and uses voice activation to detect when you're in conversation. It automatically starts recording when it hears multiple voices and stops when the conversation ends.
-          </div>
-        </details>
+    <Fragment slot="subtitle">
+      Common questions from reps, admins, and data teams about SalesTag's capabilities, privacy, integrations, and future roadmap. Get the answers you need to make informed decisions about AI-powered sales intelligence.
+    </Fragment>
+  </Hero>
 
-        <details class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-lg p-6 shadow-sm">
-          <summary class="text-xl font-semibold cursor-pointer dark:text-gray-100">
-            Is my conversation data secure?
-          </summary>
-          <div class="mt-4 text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-            Absolutely. All audio is encrypted end-to-end and stored in your private vault. You control who has access, and data never leaves your organization without explicit permission. We're SOC 2 compliant and follow enterprise-grade security practices.
-          </div>
-        </details>
+  <!-- FAQs Widget ******************* -->
+  <FAQs
+    id="faqs"
+    title="Get Your Answers"
+    subtitle="Everything you need to know about SalesTag's AI sales intelligence platform"
+    columns={1}
+    items={[
+      {
+        title: 'How does the wearable badge work?',
+        description:
+          'Our lightweight badge clips to your shirt or lanyard and uses voice activation to detect when you\'re in conversation. It automatically starts recording when it hears multiple voices and stops when the conversation ends.',
+      },
+      {
+        title: 'Is my conversation data secure?',
+        description:
+          'Absolutely. All audio is encrypted end-to-end and stored in your private vault. You control who has access, and data never leaves your organization without explicit permission. We\'re SOC 2 compliant and follow enterprise-grade security practices.',
+      },
+      {
+        title: 'What kind of insights does the AI provide?',
+        description:
+          'Our AI identifies objections, sentiment changes, buying signals, talk time ratios, and conversation flow patterns. You\'ll get actionable coaching recommendations and performance metrics that help reps improve their approach.',
+      },
+      {
+        title: 'How long does setup take?',
+        description:
+          'Setup is typically completed in under 30 minutes. We provide pre-configured badges, a simple mobile app for syncing, and white-glove onboarding support. Most teams are capturing conversations on day one.',
+      },
+      {
+        title: 'Can I integrate with my existing CRM?',
+        description:
+          'Yes, we offer native integrations with Salesforce, HubSpot, and Pipedrive. Conversation insights and coaching notes can automatically sync to your existing lead records and workflows.',
+      },
+      {
+        title: 'What\'s the pricing model?',
+        description:
+          'We offer flexible pricing based on team size and features needed. Plans start at $99/month per rep and include the badge hardware, AI analysis, and coaching dashboard. Enterprise plans available for larger organizations.',
+      },
+      {
+        title: 'Which industries do you support?',
+        description:
+          'SalesTag specializes in high-trust verticals including solar, roofing, smart home security, pest control, HVAC, and automotive sales. Our AI models are trained specifically for consultative, relationship-based selling.',
+      },
+      {
+        title: 'How accurate is the AI analysis?',
+        description:
+          'Our conversation analysis achieves 95%+ accuracy in objection detection and sentiment analysis. Models are continuously improved with new conversation data and feedback from sales teams.',
+      },
+      {
+        title: 'Can I try SalesTag before purchasing?',
+        description:
+          'Yes! We offer a 30-day pilot program for qualified sales teams. This includes badge hardware, full AI analysis, and dedicated support to ensure you see value before committing.',
+      },
+      {
+        title: 'What happens to my data if I cancel?',
+        description:
+          'You maintain full ownership of your conversation data. We provide complete data export in standard formats and secure deletion of all records upon request. Your intellectual property always belongs to you.',
+      },
+    ]}
+  />
 
-        <details class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-lg p-6 shadow-sm">
-          <summary class="text-xl font-semibold cursor-pointer dark:text-gray-100">
-            What kind of insights does the AI provide?
-          </summary>
-          <div class="mt-4 text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-            Our AI identifies objections, sentiment changes, buying signals, talk time ratios, and conversation flow patterns. You'll get actionable coaching recommendations and performance metrics that help reps improve their approach.
-          </div>
-        </details>
+  <!-- Features Widget *************** -->
+  <Features
+    title="Why Teams Choose SalesTag"
+    subtitle="Key benefits that make SalesTag the preferred AI sales intelligence platform"
+    items={[
+      {
+        title: 'Proven Results',
+        description: 'Average 23% improvement in close rates within 90 days of implementation.',
+        icon: 'tabler:trending-up',
+      },
+      {
+        title: 'Easy Setup',
+        description: 'Most teams are capturing and analyzing conversations on day one with minimal training.',
+        icon: 'tabler:rocket',
+      },
+      {
+        title: 'Industry Focus',
+        description: 'Built specifically for high-trust field sales environments with specialized AI models.',
+        icon: 'tabler:target',
+      },
+      {
+        title: 'Enterprise Security',
+        description: 'SOC 2 compliant with enterprise-grade encryption and data protection measures.',
+        icon: 'tabler:shield-lock',
+      },
+    ]}
+  />
 
-        <details class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-lg p-6 shadow-sm">
-          <summary class="text-xl font-semibold cursor-pointer dark:text-gray-100">
-            How long does setup take?
-          </summary>
-          <div class="mt-4 text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-            Setup is typically completed in under 30 minutes. We provide pre-configured badges, a simple mobile app for syncing, and white-glove onboarding support. Most teams are capturing conversations on day one.
-          </div>
-        </details>
-
-        <details class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-lg p-6 shadow-sm">
-          <summary class="text-xl font-semibold cursor-pointer dark:text-gray-100">
-            Can I integrate with my existing CRM?
-          </summary>
-          <div class="mt-4 text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-            Yes, we offer native integrations with Salesforce, HubSpot, and Pipedrive. Conversation insights and coaching notes can automatically sync to your existing lead records and workflows.
-          </div>
-        </details>
-
-        <details class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-lg p-6 shadow-sm">
-          <summary class="text-xl font-semibold cursor-pointer dark:text-gray-100">
-            What's the pricing model?
-          </summary>
-          <div class="mt-4 text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-            We offer flexible pricing based on team size and features needed. Plans start at $99/month per rep and include the badge hardware, AI analysis, and coaching dashboard. Enterprise plans available for larger organizations.
-          </div>
-        </details>
-      </div>
-
-      <!-- CTA Section -->
-      <section class="mt-16 not-prose">
-        <CallToActionBanner 
-          title="Still Have Questions?"
-          description="Get answers from our team and learn how SalesTag can transform your sales conversations."
-          buttonText="Join Waitlist"
-        />
-      </section>
-    </div>
-  </main>
+  <!-- CallToAction Widget *********** -->
+  <CallToAction
+    title="Still Have Questions?"
+    subtitle="Our sales engineering team is ready to help you understand how SalesTag can transform your sales conversations into competitive intelligence."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Contact Sales Team',
+        href: '/contact',
+      },
+      {
+        variant: 'secondary',
+        text: 'Join Waitlist',
+        href: '/subscribe',
+      },
+    ]}
+  />
 </PageLayout> 

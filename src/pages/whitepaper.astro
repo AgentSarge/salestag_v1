@@ -1,52 +1,252 @@
 ---
 import PageLayout from '~/layouts/PageLayout.astro';
 import SeoMeta from '~/components/common/SeoMeta.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Features from '~/components/widgets/Features.astro';
+import Content from '~/components/widgets/Content.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+import heroImage from '~/assets/images/hero-image.png';
+import defaultImage from '~/assets/images/default.png';
+
+const metadata = {
+  title: 'The SalesTag Whitepaper — Technical Architecture',
+};
 ---
 
 <SeoMeta 
-  title="The SalesTag Whitepaper — Technical Architecture"
+  title="The SalesTag Whitepaper — Technical Architecture & Research Goals"
   description="Strategic and technical overview of the SalesTag system. Preview our AGI-first architecture, tech stack, research goals, and comprehensive system design."
   url="https://salestag.io/whitepaper"
-  image="/assets/images/whitepaper-og.png"
+  image="/og/whitepaper.jpg"
   schemaType="WebPage"
 />
 
-<PageLayout>
-  <main class="px-4 py-16 mx-auto max-w-4xl">
-    <div class="prose prose-lg max-w-none">
-      <h1 class="text-4xl font-bold mb-6">The SalesTag Whitepaper</h1>
-      
-      <p class="text-xl mb-12 text-gray-600">
-        We built SalesTag to solve a real-world problem: how to capture, analyze, and improve high-stakes human sales conversations. This page previews our system architecture and long-term research goals.
-      </p>
+<PageLayout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+  <Hero
+    tagline="Technical Whitepaper"
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Download PDF',
+        href: '/contact',
+        icon: 'tabler:download',
+      },
+      { text: 'Research Partnership', href: '/contact' },
+    ]}
+    image={{
+      src: defaultImage,
+      alt: 'SalesTag Technical Architecture',
+    }}
+  >
+    <Fragment slot="title">
+      The SalesTag <br />
+      <span class="text-accent dark:text-white">Whitepaper</span>
+    </Fragment>
 
-      <section class="mb-12">
-        <h2 class="text-2xl font-semibold mb-4 scroll-mt-24">AGI-First Architecture</h2>
-        <p class="text-lg leading-relaxed">
-          SalesTag is designed not just for today's LLMs, but for future AGI agents. Every layer — from audio to embeddings — is optimized for privacy, extensibility, and future-proofing. <a href="#future" class="hover:text-blue-600 transition-colors underline">See future plans</a>.
-        </p>
-      </section>
+    <Fragment slot="subtitle">
+      We built SalesTag to solve a real-world problem: how to capture, analyze, and improve high-stakes human sales conversations. This whitepaper previews our system architecture and long-term research goals.
+    </Fragment>
+  </Hero>
 
-      <section class="mb-12">
-        <h2 class="text-2xl font-semibold mb-4 scroll-mt-24">The Tech Stack</h2>
-        <p class="text-lg leading-relaxed">
-          Our system combines edge recording (ESP32 badge), Supabase pipelines, pgvector semantic search, LLM tagging (via OpenAI or Claude), and human-in-the-loop scoring — all into one self-updating vault.
-        </p>
-      </section>
+  <!-- Features Widget *************** -->
+  <Features
+    title="AGI-First Architecture"
+    subtitle="Designed not just for today's LLMs, but for future AGI agents"
+    items={[
+      {
+        title: 'Privacy by Design',
+        description: 'End-to-end encryption and zero-trust architecture ensure conversation data remains secure and private.',
+        icon: 'tabler:shield-lock',
+      },
+      {
+        title: 'Extensible Framework',
+        description: 'Modular system design allows for seamless integration with future AI models and technologies.',
+        icon: 'tabler:puzzle',
+      },
+      {
+        title: 'Future-Proof Storage',
+        description: 'Data structures optimized for emerging AI paradigms and advanced reasoning systems.',
+        icon: 'tabler:database',
+      },
+      {
+        title: 'Scalable Intelligence',
+        description: 'Architecture designed to handle millions of conversations and complex AI workloads.',
+        icon: 'tabler:trending-up',
+      },
+    ]}
+  />
 
-      <section class="mb-12">
-        <h2 class="text-2xl font-semibold mb-4 scroll-mt-24">Research Goals</h2>
-        <p class="text-lg leading-relaxed">
-          SalesTag isn't just a product — it's a dataset, a fine-tuning pipeline, and a testbed for alignment, RLHF, agent behavior, and safety experiments. We're open to research partnerships and joint papers.
-        </p>
-      </section>
+  <!-- Content Widget **************** -->
+  <Content
+    title="The Tech Stack"
+    subtitle="Cutting-edge technology powering the future of sales intelligence"
+    isReversed
+    items={[
+      {
+        title: 'Edge Recording',
+        description: 'ESP32-based wearable badges capture audio with voice activation and automatic conversation detection.',
+      },
+      {
+        title: 'Cloud Pipeline',
+        description: 'Supabase-powered backend handles real-time processing, storage, and analytics with enterprise-grade reliability.',
+      },
+      {
+        title: 'Semantic Search',
+        description: 'pgvector integration enables lightning-fast similarity search across millions of conversation snippets.',
+      },
+      {
+        title: 'AI Processing',
+        description: 'Advanced LLM tagging via OpenAI and Claude APIs with human-in-the-loop validation and scoring.',
+      },
+    ]}
+    image={{
+      src: heroImage,
+      alt: 'SalesTag Technical Stack',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Self-Updating <br /><span class="text-2xl">Intelligence Vault</span>
+      </h3>
+    </Fragment>
 
-      <section class="mb-12">
-        <h2 class="text-2xl font-semibold mb-4 scroll-mt-24">Want the Full Whitepaper?</h2>
-        <p class="text-lg leading-relaxed">
-          We're preparing a full 20+ page PDF version covering our architecture, claims, benchmarks, roadmap, and early results. Reach out to get access or collaborate on the next phase.
-        </p>
-      </section>
-    </div>
-  </main>
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Steps Widget ****************** -->
+  <Steps
+    title="System Architecture"
+    tagline="From Edge to Intelligence"
+    items={[
+      {
+        title: 'Conversation Capture',
+        description: 'Wearable badges automatically detect and record sales conversations using advanced voice activation.',
+        icon: 'tabler:microphone',
+      },
+      {
+        title: 'Real-Time Processing',
+        description: 'Cloud pipelines transcribe audio and extract metadata including location, duration, and participants.',
+        icon: 'tabler:cpu',
+      },
+      {
+        title: 'AI Analysis',
+        description: 'Large language models identify objections, sentiment, buying signals, and conversation patterns.',
+        icon: 'tabler:brain',
+      },
+      {
+        title: 'Human Validation',
+        description: 'Sales managers and coaches review and score AI-generated insights for continuous improvement.',
+        icon: 'tabler:users',
+      },
+      {
+        title: 'Intelligent Storage',
+        description: 'Processed conversations enter the vault with rich metadata and semantic embeddings for instant search.',
+        icon: 'tabler:database',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      alt: 'SalesTag System Architecture Flow',
+    }}
+  />
+
+  <!-- Features2 Widget ************** -->
+  <Features2
+    title="Research Goals"
+    subtitle="Beyond product development - advancing AI research and safety"
+    columns={2}
+    items={[
+      {
+        title: 'Dataset Creation',
+        description: 'Building the world\'s largest repository of labeled, high-quality human sales conversation data.',
+        icon: 'tabler:database',
+      },
+      {
+        title: 'Fine-Tuning Pipeline',
+        description: 'Developing methodologies for training industry-specific AI models on real conversation data.',
+        icon: 'tabler:adjustments',
+      },
+      {
+        title: 'Alignment Research',
+        description: 'Contributing to AI safety research through real-world human behavior and decision-making patterns.',
+        icon: 'tabler:target',
+      },
+      {
+        title: 'RLHF Advancement',
+        description: 'Pioneering reinforcement learning from human feedback using authentic sales interaction scenarios.',
+        icon: 'tabler:refresh',
+      },
+      {
+        title: 'Agent Behavior',
+        description: 'Testing AI agent capabilities in controlled, real-world sales environments and scenarios.',
+        icon: 'tabler:robot',
+      },
+      {
+        title: 'Safety Experiments',
+        description: 'Developing and validating AI safety measures using high-stakes human interaction data.',
+        icon: 'tabler:shield-check',
+      },
+    ]}
+  />
+
+  <!-- Content Widget **************** -->
+  <Content
+    isAfterContent
+    items={[
+      {
+        title: 'Open Research',
+        description: 'Collaborate with leading AI research institutions and contribute to open science initiatives.',
+      },
+      {
+        title: 'Joint Papers',
+        description: 'Partner with academic researchers on publications advancing the field of conversational AI.',
+      },
+      {
+        title: 'Conference Presentations',
+        description: 'Share findings at top AI conferences including NeurIPS, ICML, and specialized sales technology events.',
+      },
+      {
+        title: 'Full Documentation',
+        description: 'Complete 20+ page PDF covering architecture, benchmarks, methodologies, and research findings.',
+      },
+    ]}
+    image={{
+      src: defaultImage,
+      alt: 'SalesTag Research Collaboration',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Research <br /><span class="text-2xl">Partnerships</span>
+      </h3>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- CallToAction Widget *********** -->
+  <CallToAction
+    title="Want the Full Whitepaper?"
+    subtitle="Get access to our complete technical documentation including architecture details, research findings, and collaboration opportunities."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Request Full PDF',
+        href: '/contact',
+      },
+      {
+        variant: 'secondary',
+        text: 'Research Partnership',
+        href: '/contact',
+      },
+    ]}
+  />
 </PageLayout> 
