@@ -1,6 +1,14 @@
 ---
 import PageLayout from '~/layouts/PageLayout.astro';
 import SeoMeta from '~/components/common/SeoMeta.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import Features from '~/components/widgets/Features.astro';
+import Content from '~/components/widgets/Content.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+
+import heroImage from '~/assets/images/hero-image.png';
 
 const howToSchemaData = {
   steps: [
@@ -37,46 +45,202 @@ const howToSchemaData = {
   schemaData={howToSchemaData}
 />
 
-
 <PageLayout>
-  <main class="px-4 py-16 mx-auto max-w-4xl">
-    <h1 class="text-4xl font-bold mb-6">See SalesTag in Action</h1>
-    
-    <p class="text-xl mb-12 text-gray-600">
-      Whether you're a rep, a coach, or a founder, the power of SalesTag is best understood live. 
-      Here's how our system works — and how you can try it.
-    </p>
+  <!-- Hero Widget ******************* -->
+  <Hero
+    tagline="Live Demo"
+    title="See SalesTag in Action"
+    subtitle="Whether you're a rep, a coach, or a founder, the power of SalesTag is best understood live. Here's how our system works — and how you can try it."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Schedule Live Demo',
+        href: '/contact',
+        icon: 'tabler:calendar',
+      },
+      { text: 'Join Waitlist', href: '/subscribe' },
+    ]}
+    image={{
+      src: '/press-kit/product/salestag-badge.png',
+      alt: 'SalesTag Wearable Badge Demo',
+    }}
+  />
 
-    <section class="mb-12">
-      <h2 class="text-2xl font-semibold mb-4 scroll-mt-24">Step 1 — Capture a Call</h2>
-      <p class="text-lg leading-relaxed">
-        The rep wears a badge. It records audio, uploads it automatically, and attaches metadata 
-        like location, time, and product vertical.
-      </p>
-    </section>
+  <!-- Steps Widget ****************** -->
+  <Steps
+    title="How SalesTag Works"
+    tagline="4-Step Process"
+    items={[
+      {
+        title: 'Capture a Call',
+        description: 'The rep wears a badge. It records audio, uploads it automatically, and attaches metadata like location, time, and product vertical.',
+        icon: 'tabler:microphone',
+      },
+      {
+        title: 'Transcription & Tagging',
+        description: 'The system generates a transcript and uses LLM agents to extract objections, emotional tone, key phrases, and close attempts.',
+        icon: 'tabler:brain',
+      },
+      {
+        title: 'Review & Coaching',
+        description: 'The rep sees a summary and tags. A coach can score the call, leave feedback, or compare it against top performers. It\'s like having a virtual mentor for every rep.',
+        icon: 'tabler:users',
+      },
+      {
+        title: 'Vaulting & Search',
+        description: 'Each call enters the SalesTag Vault, tagged and embedded for fast retrieval. Want to hear how reps handled "price objections" in Phoenix last month? Just search.',
+        icon: 'tabler:database',
+      },
+    ]}
+    image={{
+      src: '/press-kit/product/salestag-diagram.png',
+      alt: 'SalesTag Process Flow',
+    }}
+  />
 
-    <section class="mb-12">
-      <h2 class="text-2xl font-semibold mb-4 scroll-mt-24">Step 2 — Transcription & Tagging</h2>
-      <p class="text-lg leading-relaxed">
-        The system generates a transcript and uses LLM agents to extract objections, emotional tone, 
-        key phrases, and close attempts.
-      </p>
-    </section>
+  <!-- Features Widget *************** -->
+  <Features
+    title="Demo Highlights"
+    subtitle="Key capabilities you'll see in our live demonstration"
+    items={[
+      {
+        title: 'Real-Time Processing',
+        description: 'Watch conversations get transcribed and analyzed in real-time as they happen.',
+        icon: 'tabler:clock',
+      },
+      {
+        title: 'Objection Detection',
+        description: 'See how our AI instantly identifies and categorizes different types of customer objections.',
+        icon: 'tabler:target',
+      },
+      {
+        title: 'Coaching Insights',
+        description: 'Experience personalized coaching recommendations based on conversation analysis.',
+        icon: 'tabler:lightbulb',
+      },
+      {
+        title: 'Performance Analytics',
+        description: 'Explore comprehensive dashboards showing team performance and improvement trends.',
+        icon: 'tabler:chart-line',
+      },
+    ]}
+  />
 
-    <section class="mb-12">
-      <h2 class="text-2xl font-semibold mb-4 scroll-mt-24">Step 3 — Review & Coaching</h2>
-      <p class="text-lg leading-relaxed">
-        The rep sees a summary and tags. A coach can score the call, leave feedback, or compare it 
-        against top performers. It's like having a virtual mentor for every rep.
-      </p>
-    </section>
+  <!-- Content Widget **************** -->
+  <Content
+    title="Interactive Demo Features"
+    subtitle="Experience the full power of SalesTag's AI-powered sales intelligence"
+    isReversed
+    items={[
+      {
+        title: 'Live Badge Demonstration',
+        description: 'See the actual hardware in action, from setup to conversation capture.',
+      },
+      {
+        title: 'AI Analysis Walkthrough',
+        description: 'Watch real conversations get processed and tagged by our AI systems.',
+      },
+      {
+        title: 'Coaching Dashboard Tour',
+        description: 'Explore the manager interface and see how teams track performance improvements.',
+      },
+      {
+        title: 'ROI Calculator',
+        description: 'Calculate potential impact on your team\'s close rates and revenue.',
+      },
+    ]}
+    image={{
+      src: '/press-kit/product/salestag-app-ui.png',
+      alt: 'SalesTag Demo Interface',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        What You'll Experience
+      </h3>
+    </Fragment>
 
-    <section class="mb-12">
-      <h2 class="text-2xl font-semibold mb-4 scroll-mt-24">Step 4 — Vaulting & Search</h2>
-      <p class="text-lg leading-relaxed">
-        Each call enters the SalesTag Vault, tagged and embedded for fast retrieval. Want to hear 
-        how reps handled "price objections" in Phoenix last month? Just search.
-      </p>
-    </section>
-  </main>
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Features2 Widget ************** -->
+  <Features2
+    title="Demo Options"
+    subtitle="Choose the demonstration format that works best for your team"
+    columns={3}
+    items={[
+      {
+        title: 'Live Video Demo',
+        description: 'Interactive 30-minute session with our sales engineering team. Ask questions and see custom scenarios.',
+        icon: 'tabler:video',
+      },
+      {
+        title: 'Self-Guided Tour',
+        description: 'Explore our interactive demo environment at your own pace with guided tutorials.',
+        icon: 'tabler:route',
+      },
+      {
+        title: 'Pilot Program',
+        description: '30-day trial with your actual sales team. Real conversations, real results, real insights.',
+        icon: 'tabler:rocket',
+      },
+    ]}
+  />
+
+  <!-- Content Widget **************** -->
+  <Content
+    isAfterContent
+    items={[
+      {
+        title: 'Industry-Specific Examples',
+        description: 'See demos tailored to your vertical - solar, roofing, security, or other high-trust sales.',
+      },
+      {
+        title: 'Custom Use Cases',
+        description: 'We\'ll show scenarios specific to your team\'s challenges and sales process.',
+      },
+      {
+        title: 'Technical Deep Dive',
+        description: 'For technical teams, explore our API, data models, and integration capabilities.',
+      },
+      {
+        title: 'Implementation Planning',
+        description: 'Discuss rollout strategy, training requirements, and success metrics for your organization.',
+      },
+    ]}
+    image={{
+      src: heroImage,
+      alt: 'SalesTag Implementation Success',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Tailored to Your Needs
+      </h3>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- CallToAction Widget *********** -->
+  <CallToAction
+    title="Ready to See SalesTag in Action?"
+    subtitle="Schedule a personalized demo with our team or join our waitlist for early access."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Schedule Live Demo',
+        href: '/contact',
+      },
+      {
+        variant: 'secondary',
+        text: 'Join Waitlist',
+        href: '/subscribe',
+      },
+    ]}
+  />
 </PageLayout> 

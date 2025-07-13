@@ -4,6 +4,8 @@ import SeoMeta from '~/components/common/SeoMeta.astro';
 import HeroText from '~/components/widgets/HeroText.astro';
 import ContactUs from '~/components/widgets/Contact.astro';
 import Features2 from '~/components/widgets/Features2.astro';
+import Features from '~/components/widgets/Features.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
   title: 'Contact SalesTag – Get in Touch with Our Sales Team',
@@ -31,68 +33,159 @@ const contactSchemaData = {
 
 <Layout metadata={metadata}>
   <!-- HeroText Widget ******************* -->
+  <HeroText 
+    tagline="Contact" 
+    title="Let's Transform Your Sales Team Together!" 
+    subtitle="Ready to see how AI can revolutionize your field sales process? Get in touch with our team for a personalized consultation."
+  />
 
-  <HeroText tagline="Contact" title="Let's Connect!" />
-
+  <!-- ContactUs Widget *************** -->
   <ContactUs
     id="form"
-    title="Drop us a message today!"
-    subtitle="For quicker answers, explore our FAQs section. You may find the solution you're looking  for right there! If not, our support team is delighted to help you."
+    title="Schedule Your Demo Today!"
+    subtitle="Want to see SalesTag in action? Fill out the form below and our sales engineering team will reach out to schedule a personalized demonstration."
     inputs={[
       {
         type: 'text',
         name: 'name',
-        label: 'Name',
+        label: 'Full Name',
       },
       {
         type: 'email',
         name: 'email',
-        label: 'Email',
+        label: 'Work Email',
+      },
+      {
+        type: 'text',
+        name: 'company',
+        label: 'Company Name',
+      },
+      {
+        type: 'text',
+        name: 'industry',
+        label: 'Industry (Solar, Roofing, Security, etc.)',
+      },
+      {
+        type: 'text',
+        name: 'team_size',
+        label: 'Sales Team Size',
       },
     ]}
     textarea={{
-      label: 'Message',
+      label: 'Tell us about your current sales challenges',
+      placeholder: 'What specific challenges is your sales team facing? What would you like to see in a demo?',
     }}
     disclaimer={{
       label:
-        'By submitting this contact form, you acknowledge and agree to the collection of your personal information.',
+        'By submitting this form, you agree to receive communications from SalesTag about our AI sales intelligence platform.',
     }}
-    description="Our support team typically responds within 24 business hours."
+    description="Our sales engineering team will respond within 4 business hours to schedule your personalized demo."
+  />
+
+  <!-- Features Widget *************** -->
+  <Features
+    title="Why Contact SalesTag?"
+    subtitle="We're here to help you succeed with AI-powered sales intelligence"
+    items={[
+      {
+        title: 'Personalized Demo',
+        description: 'See SalesTag in action with scenarios specific to your industry and sales process.',
+        icon: 'tabler:presentation',
+      },
+      {
+        title: 'ROI Assessment',
+        description: 'Calculate the potential impact on your team\'s close rates and revenue.',
+        icon: 'tabler:calculator',
+      },
+      {
+        title: 'Implementation Planning',
+        description: 'Discuss rollout strategy, training requirements, and success metrics.',
+        icon: 'tabler:checklist',
+      },
+      {
+        title: 'Technical Integration',
+        description: 'Explore how SalesTag integrates with your existing CRM and sales tools.',
+        icon: 'tabler:plug',
+      },
+    ]}
   />
 
   <!-- Features2 Widget ************** -->
-
   <Features2
-    title="We are here to help!"
+    title="How We Can Help You"
+    subtitle="Multiple ways to get the support and information you need"
     items={[
       {
-        title: 'General support',
-        description: `Chat with us for inquiries related to account management, website navigation, payment issues, accessing purchased templates or general questions about the website's functionality.`,
+        title: 'Sales Consultation',
+        description: 'Speak with our sales engineering team about how SalesTag can transform your field sales operations. Get answers about pricing, implementation, and ROI.',
+        icon: 'tabler:users',
       },
       {
-        title: 'Contact sales',
-        description:
-          'Chat with us for questions about purchases, customization options, licensing for commercial use, inquiries about specific template, etc.',
+        title: 'Technical Support',
+        description: 'Get help with platform setup, badge configuration, AI model training, and integration with your existing sales tools and CRM systems.',
+        icon: 'tabler:settings',
       },
       {
-        title: 'Technical support',
-        description:
-          'Chat with us when facing issues like template installation, problems editing difficulties, compatibility issues with software or download errors, or other technical challenges related to using the templates.',
+        title: 'Industry Expertise',
+        description: 'Connect with specialists who understand your vertical. Whether you\'re in solar, roofing, security, or another field sales industry.',
+        icon: 'tabler:building',
       },
       {
-        title: 'Phone',
-        description: '+1 (234) 567-890',
+        title: 'Demo Scheduling',
+        description: 'Book a live demonstration of SalesTag\'s AI-powered conversation capture and coaching platform tailored to your team\'s needs.',
+        icon: 'tabler:calendar',
+      },
+      {
+        title: 'Partnership Inquiries',
+        description: 'Interested in becoming a SalesTag partner or integrating our technology? Reach out to discuss collaboration opportunities.',
+        icon: 'tabler:handshake',
+      },
+      {
+        title: 'Media & Press',
+        description: 'For media inquiries, press coverage, or speaking opportunities, contact our communications team.',
+        icon: 'tabler:news',
+      },
+    ]}
+  />
+
+  <!-- Features2 Widget ************** -->
+  <Features2
+    title="Get In Touch"
+    subtitle="Multiple ways to reach the SalesTag team"
+    columns={3}
+    items={[
+      {
+        title: 'Sales Team',
+        description: 'Ready to see SalesTag in action? Schedule a personalized demo with our sales engineering team.',
+        icon: 'tabler:rocket',
+      },
+      {
+        title: 'Support Team',
+        description: 'Need help with your SalesTag implementation? Our technical support team is here to help.',
         icon: 'tabler:headset',
       },
       {
-        title: 'Email',
-        description: 'contact@support.com',
-        icon: 'tabler:mail',
+        title: 'Partnership Team',
+        description: 'Interested in partnering with SalesTag? Let\'s discuss collaboration opportunities.',
+        icon: 'tabler:handshake',
+      },
+    ]}
+  />
+
+  <!-- CallToAction Widget *********** -->
+  <CallToAction
+    title="Ready to Get Started?"
+    subtitle="Join forward-thinking sales teams who are already using SalesTag to improve their close rates and rep performance."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Schedule Demo',
+        href: '#form',
       },
       {
-        title: 'Location',
-        description: '1234 Lorem Ipsum St, 12345, Miami, EEUU',
-        icon: 'tabler:map-pin',
+        variant: 'secondary',
+        text: 'Join Waitlist',
+        href: '/subscribe',
       },
     ]}
   />

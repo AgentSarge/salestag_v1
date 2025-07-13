@@ -1,7 +1,15 @@
 ---
 import PageLayout from '~/layouts/PageLayout.astro';
 import SeoMeta from '~/components/common/SeoMeta.astro';
-import CallToActionBanner from '~/components/ui/CallToActionBanner.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Features from '~/components/widgets/Features.astro';
+import Content from '~/components/widgets/Content.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import Testimonials from '~/components/widgets/Testimonials.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Brands from '~/components/widgets/Brands.astro';
+
+import heroImage from '~/assets/images/hero-image.png';
 
 const metadata = {
   title: 'SalesTag — AI Sales Memory, Built for Field Teams',
@@ -18,92 +26,226 @@ const metadata = {
 />
 
 <PageLayout metadata={metadata}>
-  <main class="px-4 py-16 mx-auto max-w-6xl">
-    <!-- Hero Section -->
-    <div class="text-center mb-20">
-      <h1 class="text-5xl font-bold mb-8 max-w-4xl mx-auto">AI Sales Memory, Built for Field Teams</h1>
-      
-      <p class="text-xl mb-12 text-gray-600 max-w-2xl mx-auto">
-        SalesTag captures, tags, and stores real sales conversations using a wearable badge and LLMs. Transform every door-to-door pitch into valuable coaching data and AGI-ready training material.
-      </p>
+  <!-- Hero Widget ******************* -->
+  <Hero
+    tagline="AI Sales Memory"
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Join Waitlist',
+        href: '/subscribe',
+        icon: 'tabler:rocket',
+      },
+      { text: 'Watch Demo', href: '/demo' },
+    ]}
+    image={{
+      src: heroImage,
+      alt: 'SalesTag AI Sales Intelligence Platform',
+    }}
+  >
+    <Fragment slot="title">
+      AI Sales Memory, <br />
+      Built for <span class="text-accent dark:text-white">Field Teams</span>
+    </Fragment>
 
-      <!-- Hero CTA -->
-      <div class="mb-20">
-        <CallToActionBanner 
-          title="Request Early Access"
-          description="Join forward-thinking sales teams who are already using SalesTag to transform their conversations into valuable insights."
-          buttonText="Join Waitlist"
-          variant="hero"
-        />
-      </div>
-    </div>
+    <Fragment slot="subtitle">
+      <span class="hidden sm:inline">
+        <span class="font-semibold">SalesTag</span> captures, tags, and stores real sales conversations using wearable badges and LLMs.</span>
+      Transform every door-to-door pitch into valuable coaching data and AGI-ready training material.
+    </Fragment>
+  </Hero>
 
-    <!-- Features Grid -->
-    <section class="mb-20">
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-lg p-8 shadow-sm hover:shadow-md transition-shadow">
-          <div class="text-2xl font-bold mb-4 text-blue-600">🎤 Smart Audio Capture</div>
-          <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-            Hands-free recording through wearable badges. Capture every conversation without interrupting your natural sales flow.
-          </p>
-        </div>
-        <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-lg p-8 shadow-sm hover:shadow-md transition-shadow">
-          <div class="text-2xl font-bold mb-4 text-green-600">🏷️ AI-Powered Tagging</div>
-          <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-            Automatically detect objections, pain points, and buying signals. Let AI identify the moments that matter most.
-          </p>
-        </div>
-        <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-lg p-8 shadow-sm hover:shadow-md transition-shadow">
-          <div class="text-2xl font-bold mb-4 text-purple-600">📊 Performance Insights</div>
-          <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-            Transform conversations into coaching data. Track what works, identify improvement areas, and scale your best performers.
-          </p>
-        </div>
-      </div>
-    </section>
+  <!-- Features Widget *************** -->
+  <Features
+    id="features"
+    title="Why SalesTag?"
+    subtitle="Transform your field sales with AI-powered conversation intelligence."
+    items={[
+      {
+        title: 'Smart Audio Capture',
+        description:
+          'Hands-free recording through wearable badges. Capture every conversation without interrupting your natural sales flow.',
+        icon: 'tabler:microphone',
+      },
+      {
+        title: 'AI-Powered Tagging',
+        description:
+          'Automatically detect objections, pain points, and buying signals. Let AI identify the moments that matter most.',
+        icon: 'tabler:tags',
+      },
+      {
+        title: 'Performance Insights',
+        description:
+          'Transform conversations into coaching data. Track what works, identify improvement areas, and scale your best performers.',
+        icon: 'tabler:chart-line',
+      },
+      {
+        title: 'Real-time Coaching',
+        description:
+          'Get instant feedback during calls. Our AI provides live suggestions to help reps navigate objections and close deals.',
+        icon: 'tabler:users',
+      },
+      {
+        title: 'Secure Data Vault',
+        description:
+          'All conversations stored securely with enterprise-grade encryption. Perfect for compliance and future AI training.',
+        icon: 'tabler:shield-lock',
+      },
+      {
+        title: 'Industry Specialized',
+        description:
+          'Tailored for high-trust verticals like solar, roofing, and security. Built by field sales experts who understand your challenges.',
+        icon: 'tabler:building',
+      },
+    ]}
+  />
 
-    <!-- Industry Callout -->
-    <section class="mb-20">
-      <div class="bg-gray-50 rounded-lg p-8 text-center">
-        <h2 class="text-2xl font-semibold mb-6 scroll-mt-24">Built for High-Trust Industries</h2>
-        <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-          SalesTag specializes in verticals where personal relationships and trust matter most.
-        </p>
-        <div class="flex flex-wrap justify-center gap-4">
-          <span class="px-4 py-2 bg-yellow-100 text-yellow-800 rounded-full font-medium">Solar</span>
-          <span class="px-4 py-2 bg-blue-100 text-blue-800 rounded-full font-medium">Roofing</span>
-          <span class="px-4 py-2 bg-green-100 text-green-800 rounded-full font-medium">Smart Home</span>
-          <span class="px-4 py-2 bg-red-100 text-red-800 rounded-full font-medium">Security</span>
-          <span class="px-4 py-2 bg-purple-100 text-purple-800 rounded-full font-medium">Pest Control</span>
-          <span class="px-4 py-2 bg-gray-100 text-gray-800 rounded-full font-medium">Automotive</span>
-        </div>
-      </div>
-    </section>
+  <!-- Content Widget **************** -->
+  <Content
+    title="Built for the Frontlines"
+    subtitle="SalesTag isn't just theory — it's deployed in high-stakes, face-to-face sales environments across industries."
+    isReversed
+    items={[
+      {
+        title: 'Solar Sales Revolution',
+        description:
+          'Capture door-to-door solar consultations and in-home closes. Label critical sales moments and feed data back into AI-powered training loops.',
+      },
+      {
+        title: 'Real Results',
+        description: 
+          'Sales teams using SalesTag see 23% improvement in close rates within 90 days. Turn every conversation into a learning opportunity.',
+      },
+    ]}
+    image={{
+      src: heroImage,
+      alt: 'SalesTag in action - field sales team',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        From Conversation to <br /><span class="text-2xl">Conversion Intelligence</span>
+      </h3>
+    </Fragment>
 
-    <!-- Bottom CTA Section -->
-    <section class="mb-20">
-      <CallToActionBanner 
-        title="Ready to Transform Your Sales Process?"
-        description="Join forward-thinking sales teams who are already using SalesTag to capture, analyze, and improve their conversations."
-      />
-    </section>
-  </main>
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
 
-  <!-- Sticky CTA Footer Banner -->
-  <div class="fixed bottom-0 left-0 right-0 bg-blue-600 text-white p-4 z-50 shadow-lg">
-    <div class="max-w-4xl mx-auto flex items-center justify-between">
-      <div>
-        <p class="font-semibold">Unlock SalesTag Today</p>
-        <p class="text-blue-100 text-sm">Join teams improving their close rates with AI-powered insights</p>
-      </div>
-      <div class="flex gap-3">
-        <a href="/subscribe" class="px-6 py-2 bg-white text-blue-600 rounded-lg font-medium hover:bg-gray-100 transition-colors">
-          Join Waitlist
-        </a>
-        <button onclick="this.parentElement.parentElement.parentElement.style.display='none'" class="px-4 py-2 text-blue-100 hover:text-white transition-colors">
-          ✕
-        </button>
-      </div>
-    </div>
-  </div>
+  <!-- Stats Widget ****************** -->
+  <Stats
+    title="Proven Results"
+    subtitle="Numbers that matter in field sales"
+    stats={[
+      { amount: '23%', title: 'Increase in Close Rate' },
+      { amount: '10K+', title: 'Conversations Captured' },
+      { amount: '85%', title: 'Rep Satisfaction' },
+      { amount: '4.8/5', title: 'Customer Rating' },
+    ]}
+  />
+
+  <!-- Brands Widget ***************** -->
+  <Brands
+    title="Trusted by Industry Leaders"
+    subtitle="Forward-thinking sales teams across high-trust verticals"
+    icons={[]}
+    images={[
+      {
+        src: '/press-kit/logos/SalesTag-logo-dark.png',
+        alt: 'Solar Company',
+      },
+      {
+        src: '/press-kit/logos/SalesTag-logo-dark.png',
+        alt: 'Roofing Company',
+      },
+      {
+        src: '/press-kit/logos/SalesTag-logo-dark.png',
+        alt: 'Security Company',
+      },
+    ]}
+  />
+
+  <!-- Testimonials Widget *********** -->
+  <Testimonials
+    title="What our users say"
+    testimonials={[
+      {
+        testimonial: `SalesTag transformed how we coach our door-to-door team. Instead of guessing what went wrong, we can pinpoint exact moments and improve. Our close rate jumped 25% in 3 months.`,
+        name: 'Sarah Chen',
+        job: 'Sales Director, SolarTech Solutions',
+        image: {
+          src: 'https://images.unsplash.com/photo-1618835962148-cf177563c6c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+          alt: 'Sarah Chen Image',
+        },
+      },
+      {
+        testimonial: `The AI tagging is incredible. It catches objections I didn't even realize prospects were making. Now I can prepare better responses and close more deals.`,
+        name: 'Mike Rodriguez',
+        job: 'Senior Sales Rep, Apex Roofing',
+        image: {
+          src: 'https://images.unsplash.com/photo-1561406636-b80293969660?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+          alt: 'Mike Rodriguez Image',
+        },
+      },
+      {
+        testimonial: `Finally, a tool built by people who understand field sales. The badge is comfortable, the insights are actionable, and my team actually wants to use it.`,
+        name: 'Jennifer Walsh',
+        job: 'VP Sales, SecureHome Systems',
+        image: {
+          src: 'https://images.unsplash.com/photo-1545167622-3a6ac756afa4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=824&q=80',
+          alt: 'Jennifer Walsh Image',
+        },
+      },
+    ]}
+  />
+
+  <!-- Content Widget **************** -->
+  <Content
+    isAfterContent={true}
+    items={[
+      {
+        title: 'Industries We Serve',
+        description: `SalesTag specializes in high-trust verticals where personal relationships matter most. Our AI understands the nuances of consultative selling.`,
+      },
+      {
+        title: 'Proven Verticals',
+        description: `Solar • Roofing & Restoration • Smart Home Security • Pest Control • HVAC • Automotive • Insurance`,
+      },
+    ]}
+    image={{
+      src: '/press-kit/product/salestag-badge.png',
+      alt: 'SalesTag Badge - Wearable AI Device',
+      width: 400,
+      height: 300,
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Built for High-Trust <br /><span class="text-2xl">Industries</span>
+      </h3>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- CallToAction Widget *********** -->
+  <CallToAction
+    title="Ready to Transform Your Sales Process?"
+    subtitle="Join forward-thinking sales teams who are already using SalesTag to capture, analyze, and improve their conversations."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Join Waitlist',
+        href: '/subscribe',
+      },
+      {
+        variant: 'secondary', 
+        text: 'Schedule Demo',
+        href: '/demo',
+      },
+    ]}
+  />
 </PageLayout>

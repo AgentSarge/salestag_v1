@@ -23,230 +23,246 @@ const metadata = {
 
 <Layout metadata={metadata}>
   <!-- HeroText Widget ******************* -->
-
   <HeroText
     tagline="Pricing"
-    title="Stellar Pricing for Every Journey"
-    subtitle="Choose the perfect plan that aligns with your cosmic goals."
+    title="Transform Your Sales Team with AI Intelligence"
+    subtitle="Choose the perfect plan that scales with your field sales organization."
   />
 
   <!-- Pricing Widget ******************* -->
-
   <Prices
-    title="Our prices"
-    subtitle="Only pay for what you need"
+    title="SalesTag Plans"
+    subtitle="Flexible pricing for teams of all sizes"
     prices={[
       {
-        title: 'basic',
-        subtitle: 'Optimal choice for personal use',
-        price: 29,
-        period: 'per month',
+        title: 'Starter',
+        subtitle: 'Perfect for small sales teams',
+        price: 99,
+        period: 'per rep/month',
         items: [
           {
-            description: 'Etiam in libero, et volutpat',
+            description: 'AI conversation capture & transcription',
           },
           {
-            description: 'Aenean ac nunc dolor tristique',
+            description: 'Basic objection detection',
           },
           {
-            description: 'Cras scelerisque accumsan lib',
+            description: 'Weekly performance reports',
           },
           {
-            description: 'In hac habitasse',
+            description: 'Up to 5 reps',
+          },
+          {
+            description: 'Email support',
           },
         ],
         callToAction: {
           target: '_blank',
-          text: 'Get started',
-          href: '#',
+          text: 'Join Waitlist',
+          href: '/subscribe',
         },
       },
       {
-        title: 'standard',
-        subtitle: 'Optimal choice for small teams',
-        price: 69,
-        period: 'Per Month',
+        title: 'Professional',
+        subtitle: 'Advanced AI for growing teams',
+        price: 149,
+        period: 'per rep/month',
         items: [
           {
-            description: 'Proin vel laoreet',
+            description: 'Everything in Starter',
           },
           {
-            description: 'Ut efficitur habitasse egestas',
+            description: 'Real-time coaching suggestions',
           },
           {
-            description: 'Volutpat hac curabitur',
+            description: 'Advanced sentiment analysis',
           },
           {
-            description: 'Pellentesque blandit ut nibh',
+            description: 'Custom coaching playbooks',
           },
           {
-            description: 'Donec fringilla sem',
+            description: 'Up to 25 reps',
+          },
+          {
+            description: 'Priority support & training',
           },
         ],
         callToAction: {
           target: '_blank',
-          text: 'Get started',
-          href: '#',
+          text: 'Join Waitlist',
+          href: '/subscribe',
         },
         hasRibbon: true,
         ribbonTitle: 'popular',
       },
       {
-        title: 'premium',
-        subtitle: 'Optimal choice for companies',
-        price: 199,
-        period: 'Per Month',
+        title: 'Enterprise',
+        subtitle: 'Complete AI sales intelligence',
+        price: 299,
+        period: 'per rep/month',
         items: [
           {
-            description: 'Curabitur suscipit risus',
+            description: 'Everything in Professional',
           },
           {
-            description: 'Aliquam habitasse malesuada',
+            description: 'Custom AI model training',
           },
           {
-            description: 'Suspendisse sit amet blandit',
+            description: 'Advanced analytics dashboard',
           },
           {
-            description: 'Suspendisse auctor blandit dui',
+            description: 'API access & integrations',
+          },
+          {
+            description: 'Unlimited reps',
+          },
+          {
+            description: 'Dedicated success manager',
           },
         ],
         callToAction: {
           target: '_blank',
-          text: 'Get started',
-          href: '#',
+          text: 'Contact Sales',
+          href: '/contact',
         },
       },
     ]}
   />
 
   <!-- Features3 Widget ************** -->
-
   <Features3
-    title="Price-related features"
-    subtitle="Discover the advantages of choosing our plans"
+    title="What's Included"
+    subtitle="Every SalesTag plan includes enterprise-grade features"
     columns={2}
     items={[
       {
-        title: 'Tiered Pricing Plans',
-        description: 'Choose from a range of pricing plans designed to accommodate different budgets and requirements.',
-        icon: 'tabler:stairs',
+        title: 'Wearable Badge Hardware',
+        description: 'Professional-grade recording device designed for field sales environments with all-day battery life.',
+        icon: 'tabler:device-watch',
       },
       {
-        title: 'Transparent Pricing',
-        description: 'Clearly displayed pricing details for each plan, with no hidden costs or unexpected charges.',
-        icon: 'tabler:flip-vertical',
+        title: 'AI-Powered Analysis',
+        description: 'Advanced LLM processing to identify objections, buying signals, and coaching opportunities.',
+        icon: 'tabler:brain',
       },
       {
-        title: 'Secure Payment Methods',
-        description: 'Secure payment gateways to protect your financial information during transactions.',
+        title: 'Secure Data Vault',
+        description: 'Enterprise-grade encryption and storage with SOC 2 compliance for all conversation data.',
         icon: 'tabler:shield-lock',
       },
       {
-        title: 'Instant Access',
-        description: `Immediate access to your chosen plan's features and templates upon subscription.`,
-        icon: 'tabler:accessible',
+        title: 'Real-time Insights',
+        description: 'Instant feedback during live conversations to help reps navigate objections and close deals.',
+        icon: 'tabler:clock',
       },
       {
-        title: 'Upgrade Value',
-        description: 'Upgrade to higher-tier plans to unlock more features and benefits for an enhanced experience.',
-        icon: 'tabler:chevrons-up',
+        title: 'Performance Tracking',
+        description: 'Comprehensive analytics to track improvement in close rates, objection handling, and rep development.',
+        icon: 'tabler:chart-line',
       },
       {
-        title: '24H support',
-        description: 'Questions answered via live chat, email or phone, every calendar day.',
-        icon: 'tabler:headset',
+        title: 'Industry Specialization',
+        description: 'Pre-trained models for solar, roofing, security, and other high-trust sales verticals.',
+        icon: 'tabler:building',
       },
     ]}
     classes={{ container: 'max-w-5xl' }}
   />
 
   <!-- Steps Widget ****************** -->
-
   <Steps
-    title="A guided journey from plans to creativity"
-    tagline="simplified process"
+    title="Getting Started with SalesTag"
+    tagline="Simple onboarding process"
     isReversed={true}
     items={[
       {
-        title: 'Explore plans',
+        title: 'Join Waitlist',
         icon: 'tabler:number-1',
       },
       {
-        title: 'Select a plan',
+        title: 'Schedule Demo',
         icon: 'tabler:number-2',
       },
       {
-        title: 'Sign Up / Log In',
+        title: 'Receive Hardware',
         icon: 'tabler:number-3',
       },
       {
-        title: 'Review order',
+        title: 'Team Training',
         icon: 'tabler:number-4',
       },
       {
-        title: 'Enter payment details',
+        title: 'Start Capturing',
         icon: 'tabler:number-5',
       },
       {
-        title: 'Confirmation',
+        title: 'Review Insights',
         icon: 'tabler:number-6',
       },
       {
-        title: 'Download and start using the template(s)',
+        title: 'Improve Performance',
         icon: 'tabler:number-7',
       },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1536816579748-4ecb3f03d72a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
-      alt: 'Steps image',
+      src: '/press-kit/product/salestag-badge.png',
+      alt: 'SalesTag Badge Setup Process',
     }}
   />
 
   <!-- FAQs Widget ******************* -->
-
   <FAQs
     title="Pricing FAQs"
-    subtitle="Choosing the right plan is important, and we're here to answer your questions. If you have queries about our pricing options, you're in the right place."
+    subtitle="Common questions about SalesTag plans and pricing. Have more questions? Contact our team."
     columns={1}
     items={[
       {
-        title: 'Do the plans come with customer support?',
+        title: 'Is there a setup fee or contract requirement?',
         description:
-          'Absolutely, all plans include access to our dedicated customer support to assist you with any queries or concerns.',
+          'No setup fees or long-term contracts. You can start with a monthly subscription and scale up or down as needed.',
       },
       {
-        title: 'Is there a trial period for the different plans?',
+        title: 'What happens to our data if we cancel?',
         description:
-          "Unfortunately, we don't offer trial periods for the plans. However, you can check out our demo section to preview the quality of our templates.",
+          'You maintain full ownership of your conversation data. We provide data export options and secure deletion upon request.',
       },
       {
-        title: 'Can I switch between plans?',
+        title: 'Can we try SalesTag before committing?',
         description:
-          'Certainly! You can easily upgrade or downgrade your plan, at any time, to find the one that best suits your evolving requirements.',
+          'Yes! We offer a 30-day pilot program for qualified sales teams. Schedule a demo to learn about trial options.',
       },
       {
-        title: 'What payment methods do you accept?',
+        title: 'Do you offer volume discounts for large teams?',
         description:
-          'We accept major credit cards and online payment methods to ensure a convenient and secure transaction process.',
+          'Absolutely. Enterprise customers with 50+ reps receive custom pricing and additional features. Contact our sales team.',
       },
       {
-        title: 'Are there any hidden fees beyond the displayed cost?',
+        title: 'What industries do you support?',
         description:
-          'No, the subscription cost covers all the features and templates listed under each plan. There are no hidden fees or extra charges.',
+          'We specialize in high-trust verticals including solar, roofing, security, pest control, HVAC, and automotive sales.',
+      },
+      {
+        title: 'How quickly can we see results?',
+        description:
+          'Most teams see measurable improvements in close rates within 30-60 days. Our AI models adapt to your specific sales process.',
       },
     ]}
   />
 
   <!-- CallToAction Widget *********** -->
-
   <CallToAction
-    title="Ready to boost your projects?"
-    subtitle="Join our community of satisfied customers who have transformed their work with our templates."
+    title="Ready to Transform Your Sales Process?"
+    subtitle="Join forward-thinking sales teams who are already using SalesTag to capture, analyze, and improve their conversations."
     actions={[
       {
         variant: 'primary',
-        text: 'Get started now',
-        href: '/',
+        text: 'Join Waitlist',
+        href: '/subscribe',
+      },
+      {
+        variant: 'secondary',
+        text: 'Schedule Demo',
+        href: '/demo',
       },
     ]}
   />

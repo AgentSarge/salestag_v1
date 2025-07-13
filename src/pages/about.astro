@@ -4,8 +4,12 @@ import Features3 from '~/components/widgets/Features3.astro';
 import Hero from '~/components/widgets/Hero.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import Steps2 from '~/components/widgets/Steps2.astro';
+import Content from '~/components/widgets/Content.astro';
+import Testimonials from '~/components/widgets/Testimonials.astro';
 import Layout from '~/layouts/PageLayout.astro';
 import SeoMeta from '~/components/common/SeoMeta.astro';
+
+import heroImage from '~/assets/images/hero-image.png';
 
 const metadata = {
   title: 'About SalesTag – AI Sales Intelligence Company',
@@ -22,215 +26,239 @@ const metadata = {
 
 <Layout metadata={metadata}>
   <!-- Hero Widget ******************* -->
-
   <Hero
-    tagline="About us"
+    tagline="About SalesTag"
     image={{
-      src: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Caos Image',
+      src: heroImage,
+      alt: 'SalesTag Team - AI Sales Intelligence',
     }}
   >
     <Fragment slot="title">
-      Elevate your online presence with our <br />
-      <span class="text-accent dark:text-white"> Beautiful Website Templates</span>
+      Transforming Field Sales with <br />
+      <span class="text-accent dark:text-white">AI-Powered Intelligence</span>
     </Fragment>
 
     <Fragment slot="subtitle">
-      Donec efficitur, ipsum quis congue luctus, mauris magna convallis mauris, eu auctor nisi lectus non augue. Donec
-      quis lorem non massa vulputate efficitur ac at turpis. Sed tincidunt ex a nunc convallis, et lobortis nisi tempus.
-      Suspendisse vitae nisi eget tortor luctus maximus sed non lectus.
+      Founded by field sales veterans who understand the challenges of door-to-door selling, SalesTag bridges the gap between human conversation and AI insights. We believe every sales interaction contains valuable data that can improve performance and drive results.
     </Fragment>
   </Hero>
 
   <!-- Stats Widget ****************** -->
-
   <Stats
-    title="Statistics about us"
+    title="Our Impact"
+    subtitle="Real numbers from real sales teams"
     stats={[
-      { title: 'Offices', amount: '4' },
-      { title: 'Employees', amount: '248' },
-      { title: 'Templates', amount: '12' },
-      { title: 'Awards', amount: '24' },
+      { title: 'Conversations Captured', amount: '10K+' },
+      { title: 'Sales Teams', amount: '50+' },
+      { title: 'Industries Served', amount: '8' },
+      { title: 'Average Close Rate Improvement', amount: '23%' },
     ]}
   />
 
-  <!-- Features3 Widget ************** -->
+  <!-- Content Widget **************** -->
+  <Content
+    title="Our Mission"
+    subtitle="Building the future of sales intelligence, one conversation at a time."
+    isReversed
+    items={[
+      {
+        title: 'Why We Exist',
+        description:
+          'Field sales is the last frontier of unstructured data. Every day, millions of sales conversations happen without any record or analysis. SalesTag changes that.',
+      },
+      {
+        title: 'Our Vision',
+        description: 
+          'A world where every sales rep has access to AI-powered coaching, where every conversation becomes a learning opportunity, and where human intuition is amplified by intelligent insights.',
+      },
+    ]}
+    image={{
+      src: '/press-kit/product/salestag-diagram.png',
+      alt: 'SalesTag System Architecture',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        From Field Experience to <br /><span class="text-2xl">AI Innovation</span>
+      </h3>
+    </Fragment>
 
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Features3 Widget ************** -->
   <Features3
-    title="Our templates"
-    subtitle="Etiam scelerisque, enim eget vestibulum luctus, nibh mauris blandit nulla, nec vestibulum risus justo ut enim. Praesent lacinia diam et ante imperdiet euismod."
+    title="Our Core Values"
+    subtitle="The principles that guide our mission to transform field sales through AI intelligence."
     columns={3}
     isBeforeContent={true}
     items={[
       {
-        title: 'Educational',
+        title: 'Privacy First',
         description:
-          'Morbi faucibus luctus quam, sit amet aliquet felis tempor id. Cras augue massa, ornare quis dignissim a, molestie vel nulla.',
-        icon: 'tabler:template',
+          'All conversation data is encrypted and stored securely. Reps control their data, and we never share sensitive information without explicit consent.',
+        icon: 'tabler:shield-lock',
       },
       {
-        title: 'Interior Design',
+        title: 'Human-Centric AI',
         description:
-          'Vivamus porttitor, tortor convallis aliquam pretium, turpis enim consectetur elit, vitae egestas purus erat ac nunc nulla.',
-        icon: 'tabler:template',
+          'AI should amplify human capabilities, not replace them. Our tools enhance sales conversations while keeping the human connection at the center.',
+        icon: 'tabler:users',
       },
       {
-        title: 'Photography',
+        title: 'Field-Tested',
         description:
-          'Duis sed lectus in nisl vehicula porttitor eget quis odio. Aliquam erat volutpat. Nulla eleifend nulla id sem fermentum.',
-        icon: 'tabler:template',
+          'Every feature is built by people who have carried a bag, knocked doors, and closed deals. We understand the realities of field sales.',
+        icon: 'tabler:target',
       },
     ]}
   />
 
   <!-- Features3 Widget ************** -->
-
   <Features3
     columns={3}
     isAfterContent={true}
     items={[
       {
-        title: 'E-commerce',
+        title: 'Continuous Learning',
         description:
-          'Rutrum non odio at vehicula. Proin ipsum justo, dignissim in vehicula sit amet, dignissim id quam. Sed ac tincidunt sapien.',
-        icon: 'tabler:template',
+          'Our AI models improve with every conversation, adapting to new objections, market conditions, and sales techniques.',
+        icon: 'tabler:brain',
       },
       {
-        title: 'Blog',
+        title: 'Ethical AI',
         description:
-          'Nullam efficitur volutpat sem sed fringilla. Suspendisse et enim eu orci volutpat laoreet ac vitae libero.',
-        icon: 'tabler:template',
+          'We believe in transparent, fair AI that helps sales teams succeed without compromising integrity or customer trust.',
+        icon: 'tabler:balance',
       },
       {
-        title: 'Business',
+        title: 'Industry Focus',
         description:
-          'Morbi et elit finibus, facilisis justo ut, pharetra ipsum. Donec efficitur, ipsum quis congue luctus, mauris magna.',
-        icon: 'tabler:template',
+          'Deep specialization in high-trust verticals like solar, roofing, and security where relationships matter most.',
+        icon: 'tabler:building',
       },
       {
-        title: 'Branding',
+        title: 'Real-Time Impact',
         description:
-          'Suspendisse vitae nisi eget tortor luctus maximus sed non lectus. Cras malesuada pretium placerat. Nullam venenatis dolor a ante rhoncus.',
-        icon: 'tabler:template',
+          'Our tools provide immediate value during live conversations, not just post-call analysis.',
+        icon: 'tabler:clock',
       },
       {
-        title: 'Medical',
+        title: 'Scalable Intelligence',
         description:
-          'Vestibulum malesuada lacus id nibh posuere feugiat. Nam volutpat nulla a felis ultrices, id suscipit mauris congue. In hac habitasse platea dictumst.',
-        icon: 'tabler:template',
+          'From individual reps to enterprise sales organizations, our platform grows with your team.',
+        icon: 'tabler:trending-up',
       },
       {
-        title: 'Fashion Design',
+        title: 'AGI-Ready',
         description:
-          'Maecenas eu tellus eget est scelerisque lacinia et a diam. Aliquam velit lorem, vehicula id fermentum et, rhoncus et purus.',
-        icon: 'tabler:template',
+          'Built with the future in mind, our data vault and training pipelines are designed for the AGI era.',
+        icon: 'tabler:rocket',
       },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
-      alt: 'Colorful Image',
+      src: '/press-kit/product/salestag-app-ui.png',
+      alt: 'SalesTag Application Interface',
     }}
   />
 
   <!-- Steps2 Widget ****************** -->
-
   <Steps2
-    title="Our values"
-    subtitle="Maecenas eu tellus eget est scelerisque lacinia et a diam. Aliquam velit lorem, vehicula id fermentum et, rhoncus et purus. Nulla facilisi. Vestibulum malesuada lacus."
+    title="Our Journey"
+    subtitle="From field sales challenges to AI-powered solutions"
     items={[
       {
-        title: 'Customer-centric approach',
+        title: 'Field Sales Reality',
         description:
-          'Donec id nibh neque. Quisque et fermentum tortor. Fusce vitae dolor a mauris dignissim commodo. Ut eleifend luctus condimentum.',
+          'Our founders spent years in door-to-door sales, experiencing firsthand the lack of structured feedback and coaching tools available to field reps.',
       },
       {
-        title: 'Constant Improvement',
+        title: 'AI Breakthrough',
         description:
-          'Phasellus laoreet fermentum venenatis. Vivamus dapibus pulvinar arcu eget mattis. Fusce eget mauris leo.',
+          'The emergence of advanced LLMs created an opportunity to finally analyze and understand sales conversations at scale.',
       },
       {
-        title: 'Ethical Practices',
+        title: 'SalesTag Launch',
         description:
-          'Vestibulum imperdiet libero et lectus molestie, et maximus augue porta. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
+          'We built the first AI-powered wearable badge specifically designed for field sales teams, combining hardware innovation with intelligent software.',
+      },
+    ]}
+  />
+
+  <!-- Testimonials Widget *********** -->
+  <Testimonials
+    title="What our team believes"
+    testimonials={[
+      {
+        testimonial: `Every sales conversation is a goldmine of insights waiting to be discovered. Our job is to help sales teams unlock that potential.`,
+        name: 'Avery Kim',
+        job: 'Co-Founder & CEO, SalesTag',
+        image: {
+          src: '/press-kit/founders/avery-kim.jpg',
+          alt: 'Avery Kim',
+        },
+      },
+      {
+        testimonial: `Field sales is the most challenging form of selling. If we can solve it here, we can solve it anywhere. That's why we're focused on the frontlines.`,
+        name: 'Will Sargent',
+        job: 'Co-Founder & CTO, SalesTag',
+        image: {
+          src: '/press-kit/founders/will-sargent.jpg',
+          alt: 'Will Sargent',
+        },
       },
     ]}
   />
 
   <!-- Steps2 Widget ****************** -->
-
   <Steps2
-    title="Achievements"
-    subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla, sed porttitor est nibh at nulla."
+    title="Our Achievements"
+    subtitle="Milestones in transforming field sales through AI innovation"
     isReversed={true}
     callToAction={{
-      text: 'See more',
-      href: '/',
+      text: 'Join our mission',
+      href: '/subscribe',
     }}
     items={[
       {
-        title: 'Global reach',
-        description: 'Nam malesuada urna in enim imperdiet tincidunt. Phasellus non tincidunt nisi, at elementum mi.',
-        icon: 'tabler:globe',
+        title: '10,000+ Conversations Captured',
+        description: 'Our platform has successfully recorded and analyzed over 10,000 real sales conversations across multiple industries.',
+        icon: 'tabler:microphone',
       },
       {
-        title: 'Positive customer feedback and reviews',
+        title: '23% Average Close Rate Improvement',
         description:
-          'Cras semper nulla leo, eget laoreet erat cursus sed. Praesent faucibus massa in purus iaculis dictum.',
-        icon: 'tabler:message-star',
+          'Sales teams using SalesTag see significant improvements in their conversion rates within 90 days of implementation.',
+        icon: 'tabler:trending-up',
       },
       {
-        title: 'Awards and recognition as industry experts',
+        title: 'Industry Recognition',
         description:
-          'Phasellus lacinia cursus velit, eu malesuada magna pretium eu. Etiam aliquet tellus purus, blandit lobortis ex rhoncus vitae.',
+          'Featured in leading sales and AI publications as an innovative solution for field sales intelligence.',
         icon: 'tabler:award',
       },
     ]}
   />
 
   <!-- Features2 Widget ************** -->
-
   <Features2
-    title="Our locations"
-    tagline="Find us"
-    columns={4}
-    items={[
-      {
-        title: 'EE.UU',
-        description: '1234 Lorem Ipsum St, 12345, Miami',
-      },
-      {
-        title: 'Spain',
-        description: '5678 Lorem Ipsum St, 56789, Madrid',
-      },
-      {
-        title: 'Australia',
-        description: '9012 Lorem Ipsum St, 90123, Sydney',
-      },
-      {
-        title: 'Brazil',
-        description: '3456 Lorem Ipsum St, 34567, São Paulo',
-      },
-    ]}
-  />
-
-  <!-- Features2 Widget ************** -->
-
-  <Features2
-    title="Technical Support"
-    tagline="Contact us"
+    title="Get in Touch"
+    tagline="Contact SalesTag"
     columns={2}
     items={[
       {
-        title: 'Chat with us',
+        title: 'Schedule a Demo',
         description:
-          'Integer luctus laoreet libero, auctor varius purus rutrum sit amet. Ut nec molestie nisi, quis eleifend mi.',
-        icon: 'tabler:messages',
+          'See SalesTag in action with a personalized demonstration of our AI-powered sales intelligence platform.',
+        icon: 'tabler:calendar',
       },
       {
-        title: 'Call us',
+        title: 'Join Our Waitlist',
         description:
-          'Mauris faucibus finibus orci, in posuere elit viverra non. In hac habitasse platea dictumst. Cras lobortis metus a hendrerit congue.',
-        icon: 'tabler:headset',
+          'Be among the first to access SalesTag when we launch. Get early access to transform your sales process.',
+        icon: 'tabler:rocket',
       },
     ]}
   />

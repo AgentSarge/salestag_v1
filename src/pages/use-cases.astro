@@ -1,6 +1,15 @@
 ---
 import PageLayout from '~/layouts/PageLayout.astro';
 import SeoMeta from '~/components/common/SeoMeta.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Content from '~/components/widgets/Content.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import Testimonials from '~/components/widgets/Testimonials.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Features from '~/components/widgets/Features.astro';
+
+import heroImage from '~/assets/images/hero-image.png';
 ---
 
 <SeoMeta 
@@ -12,44 +21,263 @@ import SeoMeta from '~/components/common/SeoMeta.astro';
 />
 
 <PageLayout>
-  <main class="px-4 py-16 mx-auto max-w-4xl">
-    <h1 class="text-4xl font-bold mb-6">Built for the Frontlines</h1>
-    
-    <p class="text-xl mb-12 text-gray-600">
-      SalesTag isn't just theory — it's deployed in high-stakes, face-to-face sales environments across industries. 
-      Anywhere a human talks to another human to sell — we belong.
-    </p>
+  <!-- Hero Widget ******************* -->
+  <Hero
+    tagline="Use Cases"
+    title="Built for the Frontlines"
+    subtitle="SalesTag isn't just theory — it's deployed in high-stakes, face-to-face sales environments across industries. Anywhere a human talks to another human to sell — we belong."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'See Your Industry',
+        href: '#industries',
+      },
+      { text: 'Schedule Demo', href: '/demo' },
+    ]}
+    image={{
+      src: heroImage,
+      alt: 'SalesTag Field Sales Applications',
+    }}
+  />
 
-    <section class="mb-12">
-      <h2 class="text-2xl font-semibold mb-4 scroll-mt-24">Solar Sales</h2>
-      <p class="text-lg leading-relaxed">
-        SalesTag was born on the roofs. We capture door-to-door solar consultations and in-home closes, 
-        label critical sales moments, and feed that data back into AI-powered training loops.
-      </p>
-    </section>
+  <!-- Features2 Widget ************** -->
+  <Features2
+    id="industries"
+    title="Industry Applications"
+    subtitle="Real-world success stories from high-trust sales environments"
+    columns={2}
+    items={[
+      {
+        title: 'Solar Sales',
+        description: 'SalesTag was born on the roofs. We capture door-to-door solar consultations and in-home closes, label critical sales moments, and feed that data back into AI-powered training loops.',
+        icon: 'tabler:sun',
+      },
+      {
+        title: 'Roofing & Restoration',
+        description: 'Insurance adjusters, damage inspectors, and sales reps operate in chaotic field conditions. SalesTag creates structured data from messy phone calls and walkthroughs, helping close more claims.',
+        icon: 'tabler:home',
+      },
+      {
+        title: 'Smart Home Security',
+        description: 'Fast-moving reps pitch high-emotion products like alarms and cameras. SalesTag flags pressure tactics, optimizes rebuttals, and ensures legal compliance — all while coaching reps live.',
+        icon: 'tabler:shield-check',
+      },
+      {
+        title: 'Pest Control',
+        description: 'Seasonal, emotional sales requiring immediate action. SalesTag helps reps handle urgency objections and build trust during high-pressure situations.',
+        icon: 'tabler:bug',
+      },
+      {
+        title: 'HVAC Services',
+        description: 'Emergency repairs and system replacements require consultative selling. SalesTag captures technical discussions and helps reps explain complex solutions clearly.',
+        icon: 'tabler:air-conditioning',
+      },
+      {
+        title: 'Automotive Sales',
+        description: 'Complex financing discussions and feature explanations. SalesTag analyzes negotiation patterns and helps reps handle price objections more effectively.',
+        icon: 'tabler:car',
+      },
+    ]}
+  />
 
-    <section class="mb-12">
-      <h2 class="text-2xl font-semibold mb-4 scroll-mt-24">Roofing & Restoration</h2>
-      <p class="text-lg leading-relaxed">
-        Insurance adjusters, damage inspectors, and sales reps operate in chaotic field conditions. 
-        SalesTag creates structured data from messy phone calls and walkthroughs, helping close more claims.
-      </p>
-    </section>
+  <!-- Content Widget **************** -->
+  <Content
+    title="Solar Sales Success Story"
+    subtitle="How SolarMax Energy increased close rates by 35% in 90 days"
+    isReversed
+    items={[
+      {
+        title: 'The Challenge',
+        description: 'Door-to-door solar reps struggled with price objections and competitor comparisons. No structured way to improve based on actual conversations.',
+      },
+      {
+        title: 'SalesTag Solution',
+        description: 'Captured 500+ conversations, identified top objection patterns, and created custom coaching playbooks for each rep.',
+      },
+      {
+        title: 'Results',
+        description: '35% increase in close rate, 60% reduction in training time for new reps, and $2.3M additional revenue in Q1.',
+      },
+    ]}
+    image={{
+      src: '/press-kit/product/salestag-badge.png',
+      alt: 'SalesTag Badge for Solar Sales',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Case Study: <br /><span class="text-2xl">SolarMax Energy</span>
+      </h3>
+    </Fragment>
 
-    <section class="mb-12">
-      <h2 class="text-2xl font-semibold mb-4 scroll-mt-24">Smart Home Alarms</h2>
-      <p class="text-lg leading-relaxed">
-        Fast-moving reps pitch high-emotion products like alarms and cameras. SalesTag flags pressure tactics, 
-        optimizes rebuttals, and ensures legal compliance — all while coaching reps live.
-      </p>
-    </section>
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
 
-    <section class="mb-12">
-      <h2 class="text-2xl font-semibold mb-4 scroll-mt-24">Other High-Touch Verticals</h2>
-      <p class="text-lg leading-relaxed">
-        Car sales, pest control, door-knocking home services — if it's face-to-face and fast-moving, 
-        SalesTag can listen, learn, and improve outcomes.
-      </p>
-    </section>
-  </main>
+  <!-- Stats Widget ****************** -->
+  <Stats
+    title="Industry Impact"
+    subtitle="Real results across different verticals"
+    stats={[
+      { amount: '35%', title: 'Avg Close Rate Improvement' },
+      { amount: '8', title: 'Industries Served' },
+      { amount: '50+', title: 'Sales Teams' },
+      { amount: '60%', title: 'Faster Rep Training' },
+    ]}
+  />
+
+  <!-- Content Widget **************** -->
+  <Content
+    isAfterContent
+    title="Roofing & Restoration Excellence"
+    subtitle="Apex Roofing transforms insurance claims with AI"
+    items={[
+      {
+        title: 'Complex Sales Environment',
+        description: 'Insurance adjusters, homeowners, and contractors all involved. Multiple stakeholders, emotional decisions, regulatory compliance.',
+      },
+      {
+        title: 'AI-Powered Insights',
+        description: 'SalesTag captures adjuster conversations, identifies coverage gaps, and helps reps position services more effectively.',
+      },
+      {
+        title: 'Measurable ROI',
+        description: '28% increase in claim approvals, 40% reduction in sales cycle time, improved customer satisfaction scores.',
+      },
+    ]}
+    image={{
+      src: '/press-kit/product/salestag-app-ui.png',
+      alt: 'SalesTag Analytics for Roofing',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Case Study: <br /><span class="text-2xl">Apex Roofing</span>
+      </h3>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Features Widget *************** -->
+  <Features
+    title="Why SalesTag Works Across Industries"
+    subtitle="Common challenges in field sales that our AI addresses"
+    items={[
+      {
+        title: 'Objection Handling',
+        description: 'Every industry has unique objections. Our AI learns your specific patterns and provides real-time coaching.',
+        icon: 'tabler:target',
+      },
+      {
+        title: 'Compliance Requirements',
+        description: 'Regulated industries need conversation records. SalesTag provides secure, searchable archives with audit trails.',
+        icon: 'tabler:certificate',
+      },
+      {
+        title: 'Training Consistency',
+        description: 'Scale your best performers across the team. Turn top rep conversations into training materials.',
+        icon: 'tabler:school',
+      },
+      {
+        title: 'Performance Analytics',
+        description: 'Track what actually drives results in your industry. Move beyond gut feelings to data-driven decisions.',
+        icon: 'tabler:chart-line',
+      },
+    ]}
+  />
+
+  <!-- Testimonials Widget *********** -->
+  <Testimonials
+    title="Success Across Industries"
+    testimonials={[
+      {
+        testimonial: `Our solar reps were struggling with price objections. SalesTag helped us identify exactly when and how to address them. Close rate went from 22% to 31% in two months.`,
+        name: 'Sarah Martinez',
+        job: 'Sales Director, SolarMax Energy',
+        image: {
+          src: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+          alt: 'Sarah Martinez',
+        },
+      },
+      {
+        testimonial: `Insurance claims are complex, but SalesTag helps our reps stay organized and compliant. The conversation analysis is incredible for training new adjusters.`,
+        name: 'Mike Thompson',
+        job: 'Regional Manager, Apex Roofing',
+        image: {
+          src: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+          alt: 'Mike Thompson',
+        },
+      },
+      {
+        testimonial: `Security sales is all about trust and timing. SalesTag's real-time coaching helps our reps read the room and close more deals without being pushy.`,
+        name: 'Jennifer Walsh',
+        job: 'VP Sales, SecureHome Systems',
+        image: {
+          src: 'https://images.unsplash.com/photo-1545167622-3a6ac756afa4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=824&q=80',
+          alt: 'Jennifer Walsh',
+        },
+      },
+    ]}
+  />
+
+  <!-- Content Widget **************** -->
+  <Content
+    title="Other High-Touch Verticals"
+    subtitle="Expanding beyond our core industries"
+    isReversed
+    items={[
+      {
+        title: 'Automotive Sales',
+        description: 'Complex financing discussions, feature explanations, and trade-in negotiations. SalesTag helps dealerships track what closes deals.',
+      },
+      {
+        title: 'Medical Device Sales',
+        description: 'Technical product demonstrations to healthcare professionals. Capture clinical discussions and improve technical selling.',
+      },
+      {
+        title: 'Real Estate',
+        description: 'High-value, emotional transactions with multiple stakeholders. Track buyer concerns and optimize presentation strategies.',
+      },
+      {
+        title: 'Business Services',
+        description: 'Consultative B2B sales requiring trust and expertise. Analyze discovery calls and improve needs assessment techniques.',
+      },
+    ]}
+    image={{
+      src: '/press-kit/product/salestag-diagram.png',
+      alt: 'SalesTag Multi-Industry Applications',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Expanding Our Reach
+      </h3>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- CallToAction Widget *********** -->
+  <CallToAction
+    title="Ready to Transform Your Industry?"
+    subtitle="Whether you're in solar, roofing, security, or another high-trust vertical, SalesTag can help your team close more deals."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Schedule Industry Demo',
+        href: '/demo',
+      },
+      {
+        variant: 'secondary',
+        text: 'Join Waitlist',
+        href: '/subscribe',
+      },
+    ]}
+  />
 </PageLayout> 

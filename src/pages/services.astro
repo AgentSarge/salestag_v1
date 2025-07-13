@@ -2,10 +2,14 @@
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import Content from '~/components/widgets/Content.astro';
 import Features2 from '~/components/widgets/Features2.astro';
+import Features from '~/components/widgets/Features.astro';
 import Hero from '~/components/widgets/Hero.astro';
 import Testimonials from '~/components/widgets/Testimonials.astro';
+import Steps from '~/components/widgets/Steps.astro';
 import Layout from '~/layouts/PageLayout.astro';
 import SeoMeta from '~/components/common/SeoMeta.astro';
+
+import heroImage from '~/assets/images/hero-image.png';
 
 const metadata = {
   title: 'SalesTag Services – AI Sales Intelligence Solutions',
@@ -22,212 +26,264 @@ const metadata = {
 
 <Layout metadata={metadata}>
   <!-- Hero Widget ******************* -->
-
   <Hero
     tagline="Services"
-    title="Elevate your projects with our stunning templates"
-    subtitle="Explore our meticulously crafted templates tailored to various industries and purposes. From captivating presentations to functional website designs, we offer the tools you need to succeed."
-    actions={[{ variant: 'primary', target: '_blank', text: 'Start exploring', href: '/' }]}
+    title="Complete AI Sales Intelligence Solutions"
+    subtitle="From conversation capture to performance coaching, SalesTag provides end-to-end AI-powered services to transform your field sales operations."
+    actions={[{ variant: 'primary', text: 'Explore Solutions', href: '#services' }]}
     image={{
-      src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
-      alt: 'AstroWind Hero Image',
+      src: '/press-kit/product/salestag-app-ui.png',
+      alt: 'SalesTag AI Sales Intelligence Platform',
     }}
   />
 
   <!-- Features2 Widget ************** -->
-
   <Features2
-    title="Explore our diverse templates"
-    subtitle="Discover our selection below to streamline and elevate your projects."
+    id="services"
+    title="Our Core Services"
+    subtitle="Comprehensive AI-powered solutions designed specifically for field sales teams."
     columns={3}
     items={[
       {
-        title: 'Educational',
+        title: 'Conversation Capture',
         description:
-          'By harmonizing instructional design and visual appeal, templates streamline content creation for varied materials, expediting development and cultivating engaging educational spaces.',
+          'Professional-grade wearable badges that seamlessly record sales conversations without interrupting your natural flow. All-day battery life and automatic cloud sync.',
+        icon: 'tabler:microphone',
+      },
+      {
+        title: 'AI-Powered Analysis',
+        description:
+          'Advanced LLM processing to identify objections, buying signals, emotional tone, and key conversation moments. Real-time insights during live calls.',
+        icon: 'tabler:brain',
+      },
+      {
+        title: 'Performance Coaching',
+        description: 
+          'Personalized coaching recommendations based on conversation analysis. Identify improvement areas and replicate successful patterns across your team.',
+        icon: 'tabler:users',
+      },
+      {
+        title: 'Sales Analytics',
+        description:
+          'Comprehensive dashboards tracking close rates, objection patterns, and rep performance. Turn conversations into actionable business intelligence.',
+        icon: 'tabler:chart-line',
+      },
+      {
+        title: 'Custom Training',
+        description:
+          'Industry-specific AI models trained on your vertical. Specialized objection handling for solar, roofing, security, and other high-trust sales environments.',
         icon: 'tabler:school',
       },
       {
-        title: 'Interior Design',
+        title: 'Data Vault Services',
         description:
-          'Crafting functional, visually appealing spaces for residential and commercial use. Templates emphasize layout, colors, and furniture setups, offering a versatile toolkit for your design vision.',
-        icon: 'tabler:home-star',
-      },
-      {
-        title: 'Photography',
-        description: `Empowering photographers, our templates facilitate captivating storytelling. With a keen focus on layout, galleries, and typography, they cater to both professionals and enthusiasts.`,
-        icon: 'tabler:photo',
-      },
-      {
-        title: 'E-commerce',
-        description:
-          'Developing engaging online stores, our E-commerce templates ensure a dynamic presence to effectively showcase products. Ideal for startups or revamps.',
-        icon: 'tabler:shopping-cart',
-      },
-      {
-        title: 'Blog',
-        description:
-          'With attention to typography, these templates empower effective content presentation for writers at any stage, ensuring visually engaging and user-friendly blogs.',
-        icon: 'tabler:article',
-      },
-      {
-        title: 'Business',
-        description:
-          'Providing polished options for effective visual communication, these templates empower both startups and established companies for a professional brand presence.',
-        icon: 'tabler:building-store',
-      },
-      {
-        title: 'Branding',
-        description:
-          'Offering pre-designed elements for a consistent brand identity, including logos and marketing materials. Ideal for new ventures or revamps.',
-        icon: 'tabler:arrow-big-up-lines',
-      },
-      {
-        title: 'Medical',
-        description: `From presentations to patient forms, these tools enhance communication effectiveness for healthcare professionals. Ideal for medical practices and research pursuits.`,
-        icon: 'tabler:vaccine',
-      },
-      {
-        title: 'Fashion Design',
-        description:
-          'With attention to detail, customization, and contemporary design, they empower designers to showcase ideas cohesively. Ideal for all levels of designers.',
-        icon: 'tabler:tie',
+          'Secure, encrypted storage of all conversation data with enterprise-grade compliance. Perfect for regulatory requirements and future AI training.',
+        icon: 'tabler:shield-lock',
       },
     ]}
   />
 
   <!-- Content Widget **************** -->
-
   <Content
     isReversed
     items={[
       {
-        title: 'High-Quality Designs',
+        title: 'Real-Time Intelligence',
         description:
-          'Our templates feature top-tier designs that ensure a professional and polished appearance for your projects.',
-        icon: 'tabler:wand',
+          'Get instant feedback during live conversations to help reps navigate objections and close more deals.',
+        icon: 'tabler:clock',
       },
       {
-        title: 'Customization Tools',
+        title: 'Industry Specialization',
         description:
-          'Tailor each template to your unique needs with user-friendly customization tools that let you personalize colors, fonts, and content.',
-        icon: 'tabler:settings',
+          'Pre-trained models for solar, roofing, security, and other verticals where trust and relationships matter most.',
+        icon: 'tabler:building',
       },
       {
-        title: 'Pre-Designed Elements',
+        title: 'Privacy-First Design',
         description:
-          'Save time and effort with our ready-to-use elements, including graphics, icons, and layouts that enhance the visual appeal of your creations.',
-        icon: 'tabler:presentation',
+          'Enterprise-grade encryption and data controls ensure your sensitive sales conversations remain secure and compliant.',
+        icon: 'tabler:shield-check',
       },
       {
-        title: 'Preview and Mockup Views',
+        title: 'Seamless Integration',
         description:
-          'Visualize the final outcome before making any changes using our preview and mockup views, ensuring your projects meet your expectations.',
-        icon: 'tabler:carousel-horizontal',
+          'Works with your existing CRM and sales tools. No disruption to current workflows or processes.',
+        icon: 'tabler:plug',
       },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1525909002-1b05e0c869d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80',
-      alt: 'Features Image',
+      src: '/press-kit/product/salestag-badge.png',
+      alt: 'SalesTag Wearable Badge Technology',
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Main Features</h3>
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Platform Features</h3>
     </Fragment>
   </Content>
 
-  <!-- Content Widget **************** -->
+  <!-- Features Widget *************** -->
+  <Features
+    title="Why Choose SalesTag Services?"
+    subtitle="Built by field sales veterans who understand the unique challenges of door-to-door and consultative selling."
+    items={[
+      {
+        title: 'Field-Tested Technology',
+        description:
+          'Our hardware and software are designed for real-world sales environments, from Arizona heat to Minnesota snow.',
+        icon: 'tabler:target',
+      },
+      {
+        title: 'Proven ROI',
+        description:
+          'Average 23% improvement in close rates within 90 days. Track your investment with detailed performance metrics.',
+        icon: 'tabler:trending-up',
+      },
+      {
+        title: 'Expert Support',
+        description:
+          'Dedicated customer success team with actual field sales experience. We understand your challenges because we\'ve lived them.',
+        icon: 'tabler:headset',
+      },
+      {
+        title: 'Continuous Learning',
+        description:
+          'Our AI models improve with every conversation, adapting to new objections and market conditions automatically.',
+        icon: 'tabler:refresh',
+      },
+    ]}
+  />
 
+  <!-- Steps Widget ****************** -->
+  <Steps
+    title="Our Service Process"
+    tagline="How we transform your sales team"
+    items={[
+      {
+        title: 'Discovery & Assessment',
+        description: 'We analyze your current sales process, team structure, and specific industry challenges.',
+        icon: 'tabler:search',
+      },
+      {
+        title: 'Custom Configuration',
+        description: 'Tailor our AI models and coaching frameworks to your specific vertical and sales methodology.',
+        icon: 'tabler:settings',
+      },
+      {
+        title: 'Team Training',
+        description: 'Comprehensive onboarding for reps and managers on using SalesTag effectively.',
+        icon: 'tabler:school',
+      },
+      {
+        title: 'Deployment & Monitoring',
+        description: 'Launch with full support and ongoing performance monitoring to ensure success.',
+        icon: 'tabler:rocket',
+      },
+      {
+        title: 'Optimization & Growth',
+        description: 'Continuous refinement based on results and expanding to additional teams or use cases.',
+        icon: 'tabler:chart-line',
+      },
+    ]}
+    image={{
+      src: '/press-kit/product/salestag-diagram.png',
+      alt: 'SalesTag Implementation Process',
+    }}
+  />
+
+  <!-- Content Widget **************** -->
   <Content
     isAfterContent
     items={[
       {
-        title: 'Time Savings',
+        title: 'Immediate Impact',
         description:
-          'Streamline your workflow, enabling you to create stunning materials efficiently and allocate more time to your core tasks.',
-        icon: 'tabler:clock',
+          'Start seeing improvements in rep performance within the first 30 days of implementation.',
+        icon: 'tabler:bolt',
       },
       {
-        title: 'Professional Appearance',
+        title: 'Scalable Solutions',
         description:
-          'Elevate your projects with the polished and sophisticated look that our templates provide, making a lasting impression on your audience.',
-        icon: 'tabler:school',
+          'From 5-person teams to enterprise organizations with hundreds of reps, our platform grows with you.',
+        icon: 'tabler:trending-up',
       },
       {
-        title: 'Cost-Efficiency',
+        title: 'Compliance Ready',
         description:
-          'Benefit from cost savings by avoiding the need for custom design work, as our templates offer professional-grade designs at a fraction of the cost.',
-        icon: 'tabler:coin',
+          'SOC 2 certified with enterprise-grade security. Perfect for regulated industries and large organizations.',
+        icon: 'tabler:certificate',
       },
       {
-        title: 'Instant Download',
+        title: 'Future-Proof Investment',
         description:
-          'Enjoy immediate access to your chosen templates upon purchase, enabling you to begin working on your projects without delay.',
-        icon: 'tabler:file-download',
+          'Built for the AGI era with extensible architecture that adapts to emerging AI capabilities.',
+        icon: 'tabler:rocket',
       },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1552664688-cf412ec27db2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
-      alt: 'Benefits Image',
+      src: heroImage,
+      alt: 'SalesTag Success Metrics',
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Benefits</h3>
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Service Benefits</h3>
     </Fragment>
   </Content>
 
   <!-- Testimonials Widget *********** -->
-
   <Testimonials
-    title="Words from real customers"
+    title="Success Stories"
     testimonials={[
       {
-        testimonial: `The designs are not only visually appealing but also highly professional. The templates have saved me a significant amount of time while helping me make a lasting impression on my clients.`,
-        name: 'Emily Kennedy',
-        job: 'Front-end developer',
+        testimonial: `SalesTag transformed our solar sales operation. The AI coaching helped our reps handle price objections 40% better, and our close rate jumped from 18% to 28% in just two months.`,
+        name: 'David Chen',
+        job: 'VP Sales, SolarMax Energy',
         image: {
-          src: 'https://images.unsplash.com/photo-1618835962148-cf177563c6c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=930&q=80',
-          alt: 'Emily Kennedy Image',
+          src: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+          alt: 'David Chen',
         },
       },
       {
-        testimonial: `It beautifully showcases my work, with its clean and elegant design that lets my photographs shine. Customization was a breeze, even for a non-tech person like me. The result is a professional and immersive portfolio that's garnered numerous compliments.`,
-        name: 'Sarah Hansen',
-        job: 'Photographer',
+        testimonial: `The real-time coaching is incredible. My reps get instant feedback on how to handle objections they've never heard before. It's like having a sales manager in their ear for every call.`,
+        name: 'Maria Rodriguez',
+        job: 'Sales Director, Apex Roofing',
         image: {
-          src: 'https://images.unsplash.com/photo-1561406636-b80293969660?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
-          alt: 'Sarah Hansen Image',
+          src: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+          alt: 'Maria Rodriguez',
         },
       },
       {
-        testimonial: `I discovered these templates and I'm impressed by their variety and quality. They've helped me establish a consistent brand image across my marketing and social platforms, elevating my business's overall appearance.`,
-        name: 'Mark Wilkinson',
-        job: 'Small business owner',
+        testimonial: `Finally, a tool built by people who understand field sales. The insights are actionable, the hardware is reliable, and our team actually wants to use it. ROI was clear within 60 days.`,
+        name: 'James Wilson',
+        job: 'Regional Manager, SecureHome',
         image: {
-          src: 'https://images.unsplash.com/photo-1545167622-3a6ac756afa4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=824&q=80',
-          alt: 'Mark Wilkinson Image',
+          src: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+          alt: 'James Wilson',
         },
       },
     ]}
     callToAction={{
-      target: '_blank',
-      text: 'More testimonials...',
-      href: 'https://github.com/onwidget/astrowind',
+      text: 'Read More Case Studies',
+      href: '/use-cases',
       icon: 'tabler:chevron-right',
     }}
   />
 
   <!-- CallToAction Widget *********** -->
-
   <CallToAction
     actions={[
       {
         variant: 'primary',
-        text: 'Start exploring',
-        href: '/',
+        text: 'Schedule Consultation',
+        href: '/demo',
+      },
+      {
+        variant: 'secondary',
+        text: 'Join Waitlist',
+        href: '/subscribe',
       },
     ]}
-    title="Dive into our template collection"
-    subtitle="Whether you're in business, design, or education, our templates are here to elevate your projects."
+    title="Ready to Transform Your Sales Process?"
+    subtitle="Let's discuss how SalesTag's AI-powered services can improve your team's performance and close rates."
   />
 </Layout>
