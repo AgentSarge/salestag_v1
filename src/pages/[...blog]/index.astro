@@ -52,25 +52,35 @@ const metadata = merge(
   { ...(post?.metadata ? { ...post.metadata, canonical: post.metadata?.canonical || url } : {}) }
 ) as MetaData;
 
-// Fetch view count from Supabase
-const supabase = createClient(
-  import.meta.env.PUBLIC_SUPABASE_URL!,
-  import.meta.env.PUBLIC_SUPABASE_ANON_KEY!
-);
-const slug = post.slug;
-const { count: viewCount } = await supabase
-  .from('blog_views')
-  .select('id', { count: 'exact', head: true })
-  .eq('slug', slug);
+// Fetch view count from Supabase (optional - requires Supabase setup)
+let viewCount = 0;
+let relatedPosts: any[] = [];
 
-// Get related posts for Features2 section
-const { data: allPosts } = await supabase
-  .from('blog_views')
-  .select('slug')
-  .neq('slug', slug)
-  .limit(6);
+const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL;
+const supabaseKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
 
-const relatedPosts = allPosts?.slice(0, 3) || [];
+if (supabaseUrl && supabaseKey) {
+  try {
+    const supabase = createClient(supabaseUrl, supabaseKey);
+    const slug = post.slug;
+    const { count } = await supabase
+      .from('blog_views')
+      .select('id', { count: 'exact', head: true })
+      .eq('slug', slug);
+    viewCount = count ?? 0;
+
+    // Get related posts for Features2 section
+    const { data: allPosts } = await supabase
+      .from('blog_views')
+      .select('slug')
+      .neq('slug', slug)
+      .limit(6);
+
+    relatedPosts = allPosts?.slice(0, 3) || [];
+  } catch (error) {
+    console.warn('Supabase not configured for blog view tracking:', error);
+  }
+}
 ---
 
 <Layout metadata={metadata} publishDate={post.publishDate}>

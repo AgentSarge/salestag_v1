@@ -35,22 +35,32 @@ const demoLeaderboard = [
 const metrics = demo;
 const reps = demoLeaderboard;
 
-const supabase = createClient(
-  import.meta.env.PUBLIC_SUPABASE_URL!,
-  import.meta.env.PUBLIC_SUPABASE_ANON_KEY!
-);
+// Fetch blog post view counts (optional - requires Supabase setup)
 const posts = await fetchPosts();
-const slugs = posts.map((post) => post.slug);
-const { data: allViews } = await supabase
-  .from('blog_views')
-  .select('slug');
-const viewCounts = {};
-if (Array.isArray(allViews)) {
-  for (const slug of slugs) {
-    viewCounts[slug] = allViews.filter((v) => v.slug === slug).length;
+let postsWithViews = posts.map((post) => ({ ...post, viewCount: 0 }));
+
+const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL;
+const supabaseKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
+
+if (supabaseUrl && supabaseKey) {
+  try {
+    const supabase = createClient(supabaseUrl, supabaseKey);
+    const slugs = posts.map((post) => post.slug);
+    const { data: allViews } = await supabase
+      .from('blog_views')
+      .select('slug');
+    const viewCounts = {};
+    if (Array.isArray(allViews)) {
+      for (const slug of slugs) {
+        viewCounts[slug] = allViews.filter((v) => v.slug === slug).length;
+      }
+    }
+    postsWithViews = posts.map((post) => ({ ...post, viewCount: viewCounts[post.slug] ?? 0 }));
+  } catch (error) {
+    console.warn('Supabase not configured for blog view tracking:', error);
   }
 }
-const postsWithViews = posts.map((post) => ({ ...post, viewCount: viewCounts[post.slug] ?? 0 }));
+
 const sortedPosts = postsWithViews.sort((a, b) => b.viewCount - a.viewCount);
 ---
 
