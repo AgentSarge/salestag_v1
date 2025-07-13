@@ -40,40 +40,49 @@ const metadata = {
   },
 };
 
-// Fetch view counts for all posts on this page
-const supabase = createClient(
-  import.meta.env.PUBLIC_SUPABASE_URL!,
-  import.meta.env.PUBLIC_SUPABASE_ANON_KEY!
-);
-const slugs = page.data.map((post: Post) => post.slug);
-const { data: allViews } = await supabase
-  .from('blog_views')
-  .select('slug', { count: 'exact' });
-const viewCounts: Record<string, number> = {};
-if (Array.isArray(allViews)) {
-  for (const slug of slugs) {
-    viewCounts[slug] = allViews.filter((v) => v.slug === slug).length;
-  }
-}
-const postsWithViews = page.data.map((post: Post) => ({ ...post, viewCount: viewCounts[post.slug] ?? 0 }));
+// Fetch view counts for all posts on this page (optional - requires Supabase setup)
+let postsWithViews = page.data.map((post: Post) => ({ ...post, viewCount: 0 }));
+let trendingPosts: any[] = [];
 
-// Fetch trending posts (by views in last 7 days)
-const since = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString();
-const { data: trendingViews } = await supabase
-  .from('blog_views')
-  .select('slug')
-  .gte('created_at', since);
-const trendingMap: Record<string, number> = {};
-if (Array.isArray(trendingViews)) {
-  for (const v of trendingViews) {
-    trendingMap[v.slug] = (trendingMap[v.slug] || 0) + 1;
+const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL;
+const supabaseKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
+
+if (supabaseUrl && supabaseKey) {
+  try {
+    const supabase = createClient(supabaseUrl, supabaseKey);
+    const slugs = page.data.map((post: Post) => post.slug);
+    const { data: allViews } = await supabase
+      .from('blog_views')
+      .select('slug', { count: 'exact' });
+    const viewCounts: Record<string, number> = {};
+    if (Array.isArray(allViews)) {
+      for (const slug of slugs) {
+        viewCounts[slug] = allViews.filter((v) => v.slug === slug).length;
+      }
+    }
+    postsWithViews = page.data.map((post: Post) => ({ ...post, viewCount: viewCounts[post.slug] ?? 0 }));
+
+    // Fetch trending posts (by views in last 7 days)
+    const since = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString();
+    const { data: trendingViews } = await supabase
+      .from('blog_views')
+      .select('slug')
+      .gte('created_at', since);
+    const trendingMap: Record<string, number> = {};
+    if (Array.isArray(trendingViews)) {
+      for (const v of trendingViews) {
+        trendingMap[v.slug] = (trendingMap[v.slug] || 0) + 1;
+      }
+    }
+    trendingPosts = postsWithViews
+      .map((post) => ({ ...post, trendingCount: trendingMap[post.slug] ?? 0 }))
+      .sort((a, b) => b.trendingCount - a.trendingCount)
+      .slice(0, 6)
+      .filter((p) => p.trendingCount > 0);
+  } catch (error) {
+    console.warn('Supabase not configured for blog view tracking:', error);
   }
 }
-const trendingPosts = postsWithViews
-  .map((post) => ({ ...post, trendingCount: trendingMap[post.slug] ?? 0 }))
-  .sort((a, b) => b.trendingCount - a.trendingCount)
-  .slice(0, 6)
-  .filter((p) => p.trendingCount > 0);
 ---
 
 <Layout metadata={metadata}>
