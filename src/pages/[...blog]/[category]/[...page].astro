@@ -3,9 +3,14 @@ import type { InferGetStaticPropsType, GetStaticPaths } from 'astro';
 import { blogCategoryRobots, getStaticPathsBlogCategory } from '~/utils/blog';
 
 import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
 import BlogList from '~/components/blog/List.astro';
 import Headline from '~/components/blog/Headline.astro';
 import Pagination from '~/components/blog/Pagination.astro';
+import Grid from '~/components/blog/Grid.astro';
+
+import defaultImage from '~/assets/images/default.png';
 
 export const prerender = true;
 
@@ -20,7 +25,8 @@ const { page, category } = Astro.props as Props;
 const currentPage = page.currentPage ?? 1;
 
 const metadata = {
-  title: `Category '${category.title}' ${currentPage > 1 ? ` — Page ${currentPage}` : ''}`,
+  title: `${category.title} Articles${currentPage > 1 ? ` — Page ${currentPage}` : ''} | SalesTag Blog`,
+  description: `Explore articles about ${category.title} in AI sales intelligence, coaching strategies, and field sales optimization.`,
   robots: {
     index: blogCategoryRobots?.index,
     follow: blogCategoryRobots?.follow,
@@ -29,9 +35,64 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
-  <section class="px-4 md:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-4xl">
-    <Headline>{category.title}</Headline>
-    <BlogList posts={page.data} />
-    <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
+  <!-- Hero Widget ******************* -->
+  <Hero
+    tagline="Blog Category"
+    actions={[
+      {
+        variant: 'primary',
+        text: 'All Articles',
+        href: '/blog',
+        icon: 'tabler:arrow-left',
+      },
+      { text: 'Subscribe', href: '/subscribe' },
+    ]}
+    image={{
+      src: defaultImage,
+      alt: `${category.title} Articles - SalesTag Blog`,
+    }}
+  >
+    <Fragment slot="title">
+      {category.title} <br />
+      <span class="text-accent dark:text-white">Articles</span>
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      Explore our expert insights and analysis on {category.title.toLowerCase()}. Deep dives into AI sales intelligence, coaching strategies, and the future of field sales.
+    </Fragment>
+  </Hero>
+
+  <!-- Blog Posts -->
+  <section class="px-6 sm:px-6 py-12 mx-auto max-w-6xl">
+    <div class="text-center mb-8">
+      <h2 class="text-3xl font-bold mb-4">Latest in {category.title}</h2>
+      <p class="text-xl text-gray-600 dark:text-gray-300">
+        {page.data.length} article{page.data.length !== 1 ? 's' : ''} in this category
+      </p>
+    </div>
+    
+    <Grid posts={page.data} />
+    
+    <div class="mt-12">
+      <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
+    </div>
   </section>
+
+  <!-- Newsletter CTA -->
+  <CallToAction
+    title="Stay Updated on {category.title}"
+    subtitle="Get the latest articles and insights delivered to your inbox. Never miss important updates in AI sales intelligence."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Subscribe to Newsletter',
+        href: '/subscribe',
+      },
+      {
+        variant: 'secondary',
+        text: 'Browse All Topics',
+        href: '/blog',
+      },
+    ]}
+  />
 </Layout>

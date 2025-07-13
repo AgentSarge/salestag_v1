@@ -50,11 +50,11 @@ const changelogSchemaData = {
     actions={[
       {
         variant: 'primary',
-        text: 'View Roadmap',
-        href: '/roadmap',
+        text: 'Latest Release',
+        href: '#latest',
         icon: 'tabler:telescope',
       },
-      { text: 'Join Waitlist', href: '/subscribe' },
+      { text: 'Coming Soon', href: '#upcoming' },
     ]}
     image={{
       src: defaultImage,
@@ -73,6 +73,7 @@ const changelogSchemaData = {
 
   <!-- Content Widget **************** -->
   <Content
+    id="latest"
     title="Latest Release: v1.0.0"
     subtitle="July 12, 2025 - Initial Public Launch"
     isReversed
@@ -162,6 +163,7 @@ const changelogSchemaData = {
 
   <!-- Features2 Widget ************** -->
   <Features2
+    id="upcoming"
     title="Coming Next"
     subtitle="Preview of upcoming features and improvements"
     columns={3}

@@ -2,6 +2,9 @@
 import type { InferGetStaticPropsType, GetStaticPaths } from 'astro';
 
 import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
 import BlogList from '~/components/blog/List.astro';
 import Headline from '~/components/blog/Headline.astro';
 import Pagination from '~/components/blog/Pagination.astro';
@@ -11,6 +14,8 @@ import type { Post } from '~/types';
 
 import { blogListRobots, getStaticPathsBlogList } from '~/utils/blog';
 import { createClient } from '@supabase/supabase-js';
+
+import defaultImage from '~/assets/images/default.png';
 
 export const prerender = true;
 
@@ -24,7 +29,8 @@ const { page } = Astro.props as Props;
 const currentPage = page.currentPage ?? 1;
 
 const metadata = {
-  title: `Blog${currentPage > 1 ? ` — Page ${currentPage}` : ''}`,
+  title: `SalesTag Blog${currentPage > 1 ? ` — Page ${currentPage}` : ''} | AI Sales Intelligence Insights`,
+  description: 'Insights on AI, sales coaching, field sales strategies, and the future of sales intelligence. Expert perspectives on transforming sales conversations into competitive advantages.',
   robots: {
     index: blogListRobots?.index && currentPage === 1,
     follow: blogListRobots?.follow,
@@ -66,36 +72,95 @@ if (Array.isArray(trendingViews)) {
 const trendingPosts = postsWithViews
   .map((post) => ({ ...post, trendingCount: trendingMap[post.slug] ?? 0 }))
   .sort((a, b) => b.trendingCount - a.trendingCount)
-  .slice(0, 3)
+  .slice(0, 6)
   .filter((p) => p.trendingCount > 0);
 ---
 
 <Layout metadata={metadata}>
-  <section class="px-6 sm:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-6xl">
-    <Headline
-      subtitle="Insights on AI, Sales Coaching, Product, and the future of field sales."
-    >
-      The Blog
-    </Headline>
-    <!-- Tag/Category Filter Bar -->
-    <div class="mb-8">
-      <Tags tags={Array.from(new Set(page.data.flatMap(post => post.tags || [])))} title="Filter by Tag:" />
+  <!-- Hero Widget ******************* -->
+  <Hero
+    tagline="SalesTag Blog"
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Subscribe to Updates',
+        href: '/subscribe',
+        icon: 'tabler:bell',
+      },
+      { text: 'Browse Topics', href: '#topics' },
+    ]}
+    image={{
+      src: defaultImage,
+      alt: 'SalesTag Blog - AI Sales Intelligence Insights',
+    }}
+  >
+    <Fragment slot="title">
+      AI Sales Intelligence <br />
+      <span class="text-accent dark:text-white">Insights & Analysis</span>
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      Expert perspectives on AI, sales coaching, field sales strategies, and the future of sales intelligence. Transform your understanding of modern sales technology and techniques.
+    </Fragment>
+  </Hero>
+
+  <!-- Tag Filter Section -->
+  <section class="px-6 sm:px-6 py-8 mx-auto max-w-6xl">
+    <div id="topics" class="mb-8">
+      <h2 class="text-xl font-bold mb-4 text-center">Filter by Topic</h2>
+      <Tags tags={Array.from(new Set(page.data.flatMap(post => post.tags || [])))} title="" />
     </div>
-    {trendingPosts.length > 0 && (
-      <section class="mb-10">
-        <h2 class="text-xl font-bold mb-4">Trending This Week</h2>
-        <div class="grid gap-6 row-gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {trendingPosts.map((post) => (
-            <div class="border rounded-lg p-4 bg-white dark:bg-slate-800">
-              <a href={post.permalink} class="font-semibold text-lg hover:text-primary">{post.title}</a>
-              <p class="text-xs text-gray-500 mt-1">{post.trendingCount} views in last 7 days</p>
-              <p class="text-sm text-muted mt-2">{post.excerpt}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-    )}
-    <Grid posts={postsWithViews} />
-    <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
   </section>
+
+  <!-- Trending Posts Widget -->
+  {trendingPosts.length > 0 && (
+    <Features2
+      title="Trending This Week"
+      subtitle="Most popular articles in the SalesTag community"
+      columns={3}
+      items={trendingPosts.map((post) => ({
+        title: post.title,
+        description: `${post.excerpt} • ${post.trendingCount} views in last 7 days`,
+        icon: 'tabler:trending-up',
+        callToAction: {
+          text: 'Read Article',
+          href: post.permalink,
+        }
+      }))}
+    />
+  )}
+
+  <!-- Blog Posts Grid -->
+  <section class="px-6 sm:px-6 py-12 mx-auto max-w-6xl">
+    <div class="text-center mb-8">
+      <h2 class="text-3xl font-bold mb-4">Latest Articles</h2>
+      <p class="text-xl text-gray-600 dark:text-gray-300">
+        Deep dives into sales AI, coaching strategies, and industry insights
+      </p>
+    </div>
+    
+    <Grid posts={postsWithViews} />
+    
+    <div class="mt-12">
+      <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
+    </div>
+  </section>
+
+  <!-- Newsletter CTA -->
+  <CallToAction
+    title="Stay Ahead of the Sales AI Revolution"
+    subtitle="Get the latest insights on AI-powered sales intelligence, coaching strategies, and industry trends delivered to your inbox."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Subscribe to Newsletter',
+        href: '/subscribe',
+      },
+      {
+        variant: 'secondary',
+        text: 'Join Community',
+        href: '/contact',
+      },
+    ]}
+  />
 </Layout>
