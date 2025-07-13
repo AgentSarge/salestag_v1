@@ -12,6 +12,7 @@ import { adaptOpenGraphImages } from '~/utils/images';
 
 export interface Props extends MetaData {
   dontUseTitleTemplate?: boolean;
+  publishDate?: Date;
 }
 
 const {
@@ -22,6 +23,7 @@ const {
   description,
   openGraph = {},
   twitter = {},
+  publishDate,
 } = Astro.props;
 
 const seoProps: AstroSeoProps = merge(
@@ -66,3 +68,21 @@ const seoProps: AstroSeoProps = merge(
 ---
 
 <AstroSeo {...{ ...seoProps, openGraph: await adaptOpenGraphImages(seoProps?.openGraph, Astro.site) }} />
+
+{openGraph?.type === 'article' && title && description && canonical && openGraph?.images?.[0]?.url && (
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": title,
+    "description": description,
+    "image": `${Astro.site?.href || 'https://salestag.io'}${openGraph.images[0].url}`,
+    "url": canonical,
+    "datePublished": publishDate ? publishDate.toISOString().split('T')[0] : new Date().toISOString().split('T')[0],
+    "author": { "@type": "Organization", "name": "SalesTag" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "SalesTag",
+      "logo": { "@type": "ImageObject", "url": `${Astro.site?.href || 'https://salestag.io'}/favicon.svg` }
+    }
+  })} />
+)}

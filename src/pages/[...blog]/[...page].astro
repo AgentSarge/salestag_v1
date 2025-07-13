@@ -5,9 +5,12 @@ import Layout from '~/layouts/PageLayout.astro';
 import BlogList from '~/components/blog/List.astro';
 import Headline from '~/components/blog/Headline.astro';
 import Pagination from '~/components/blog/Pagination.astro';
-// import PostTags from "~/components/blog/Tags.astro";
+import Grid from '~/components/blog/Grid.astro';
+import Tags from '~/components/blog/Tags.astro';
+import type { Post } from '~/types';
 
 import { blogListRobots, getStaticPathsBlogList } from '~/utils/blog';
+import { createClient } from '@supabase/supabase-js';
 
 export const prerender = true;
 
@@ -20,9 +23,6 @@ type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 const { page } = Astro.props as Props;
 const currentPage = page.currentPage ?? 1;
 
-// const allCategories = await findCategories();
-// const allTags = await findTags();
-
 const metadata = {
   title: `Blog${currentPage > 1 ? ` — Page ${currentPage}` : ''}`,
   robots: {
@@ -33,20 +33,69 @@ const metadata = {
     type: 'blog',
   },
 };
+
+// Fetch view counts for all posts on this page
+const supabase = createClient(
+  import.meta.env.PUBLIC_SUPABASE_URL!,
+  import.meta.env.PUBLIC_SUPABASE_ANON_KEY!
+);
+const slugs = page.data.map((post: Post) => post.slug);
+const { data: allViews } = await supabase
+  .from('blog_views')
+  .select('slug', { count: 'exact' });
+const viewCounts: Record<string, number> = {};
+if (Array.isArray(allViews)) {
+  for (const slug of slugs) {
+    viewCounts[slug] = allViews.filter((v) => v.slug === slug).length;
+  }
+}
+const postsWithViews = page.data.map((post: Post) => ({ ...post, viewCount: viewCounts[post.slug] ?? 0 }));
+
+// Fetch trending posts (by views in last 7 days)
+const since = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString();
+const { data: trendingViews } = await supabase
+  .from('blog_views')
+  .select('slug')
+  .gte('created_at', since);
+const trendingMap: Record<string, number> = {};
+if (Array.isArray(trendingViews)) {
+  for (const v of trendingViews) {
+    trendingMap[v.slug] = (trendingMap[v.slug] || 0) + 1;
+  }
+}
+const trendingPosts = postsWithViews
+  .map((post) => ({ ...post, trendingCount: trendingMap[post.slug] ?? 0 }))
+  .sort((a, b) => b.trendingCount - a.trendingCount)
+  .slice(0, 3)
+  .filter((p) => p.trendingCount > 0);
 ---
 
 <Layout metadata={metadata}>
-  <section class="px-6 sm:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-4xl">
+  <section class="px-6 sm:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-6xl">
     <Headline
-      subtitle="A statically generated blog example with news, tutorials, resources and other interesting content related to AstroWind"
+      subtitle="Insights on AI, Sales Coaching, Product, and the future of field sales."
     >
       The Blog
     </Headline>
-    <BlogList posts={page.data} />
+    <!-- Tag/Category Filter Bar -->
+    <div class="mb-8">
+      <Tags tags={Array.from(new Set(page.data.flatMap(post => post.tags || [])))} title="Filter by Tag:" />
+    </div>
+    {trendingPosts.length > 0 && (
+      <section class="mb-10">
+        <h2 class="text-xl font-bold mb-4">Trending This Week</h2>
+        <div class="grid gap-6 row-gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {trendingPosts.map((post) => (
+            <div class="border rounded-lg p-4 bg-white dark:bg-slate-800">
+              <a href={post.permalink} class="font-semibold text-lg hover:text-primary">{post.title}</a>
+              <p class="text-xs text-gray-500 mt-1">{post.trendingCount} views in last 7 days</p>
+              <p class="text-sm text-muted mt-2">{post.excerpt}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+    <Grid posts={postsWithViews} />
     <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
-    <!--
-      <PostTags tags={allCategories} class="mb-2" title="Search by Categories:" isCategory />
-      <PostTags tags={allTags}  title="Search by Tags:" />
-    -->
   </section>
 </Layout>

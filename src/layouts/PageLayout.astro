@@ -11,12 +11,13 @@ import type { MetaData } from '~/types';
 
 export interface Props {
   metadata?: MetaData;
+  publishDate?: Date;
 }
 
-const { metadata } = Astro.props;
+const { metadata, publishDate } = Astro.props;
 ---
 
-<Layout metadata={metadata}>
+<Layout metadata={metadata} publishDate={publishDate}>
   <slot name="announcement">
     <Announcement />
   </slot>

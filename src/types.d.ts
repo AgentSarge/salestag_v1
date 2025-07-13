@@ -42,6 +42,7 @@ export interface Post {
 
   /**  */
   readingTime?: number;
+  viewCount?: number;
 }
 
 export interface Taxonomy {

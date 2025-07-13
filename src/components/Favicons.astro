@@ -4,7 +4,27 @@ import favIconSvg from '~/assets/favicons/favicon.svg';
 import appleTouchIcon from '~/assets/favicons/apple-touch-icon.png';
 ---
 
+<!-- Standard Favicons -->
 <link rel="shortcut icon" href={favIcon} />
 <link rel="icon" type="image/svg+xml" href={favIconSvg.src} />
-<link rel="mask-icon" href={favIconSvg.src} color="#8D46E7" />
+<link rel="icon" type="image/x-icon" href={favIcon} />
+
+<!-- Apple Touch Icons -->
 <link rel="apple-touch-icon" sizes="180x180" href={appleTouchIcon.src} />
+<link rel="apple-touch-icon" sizes="152x152" href={appleTouchIcon.src} />
+<link rel="apple-touch-icon" sizes="144x144" href={appleTouchIcon.src} />
+<link rel="apple-touch-icon" sizes="120x120" href={appleTouchIcon.src} />
+<link rel="apple-touch-icon" sizes="114x114" href={appleTouchIcon.src} />
+<link rel="apple-touch-icon" sizes="76x76" href={appleTouchIcon.src} />
+<link rel="apple-touch-icon" sizes="72x72" href={appleTouchIcon.src} />
+<link rel="apple-touch-icon" sizes="60x60" href={appleTouchIcon.src} />
+<link rel="apple-touch-icon" sizes="57x57" href={appleTouchIcon.src} />
+
+<!-- Safari Mask Icon -->
+<link rel="mask-icon" href={favIconSvg.src} color="#1e40af" />
+
+<!-- Microsoft Tiles -->
+<meta name="msapplication-config" content="/browserconfig.xml" />
+
+<!-- Manifest for PWA -->
+<link rel="manifest" href="/site.webmanifest" />

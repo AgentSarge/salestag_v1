@@ -4,7 +4,7 @@ export interface Props {
   description?: string;
   url?: string;
   image?: string;
-  schemaType?: 'WebPage' | 'FAQPage' | 'ContactPage' | 'HowTo' | 'WebSite';
+  schemaType?: 'WebPage' | 'FAQPage' | 'ContactPage' | 'HowTo' | 'WebSite' | 'CreativeWorkSeries' | 'ItemList';
   schemaData?: any;
 }
 
@@ -72,6 +72,26 @@ const buildSchema = () => {
         "contactType": "sales",
         "availableLanguage": "English"
       }
+    };
+  }
+
+  if (schemaType === 'CreativeWorkSeries') {
+    return {
+      ...baseSchema,
+      "workExample": schemaData.releases || [],
+      "about": {
+        "@type": "SoftwareApplication",
+        "name": "SalesTag",
+        "applicationCategory": "Sales Analytics Software"
+      }
+    };
+  }
+
+  if (schemaType === 'ItemList') {
+    return {
+      ...baseSchema,
+      "itemListElement": schemaData.items || [],
+      "numberOfItems": schemaData.items?.length || 0
     };
   }
 

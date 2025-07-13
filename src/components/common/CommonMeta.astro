@@ -5,4 +5,20 @@ import { getAsset } from '~/utils/permalinks';
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+<!-- Theme and Mobile Optimization -->
+<meta name="theme-color" content="#1e40af" />
+<meta name="msapplication-TileColor" content="#1e40af" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+
+<!-- Security -->
+<meta http-equiv="X-Content-Type-Options" content="nosniff" />
+<meta http-equiv="X-Frame-Options" content="DENY" />
+<meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+
+<!-- Performance -->
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+
+<!-- Sitemap -->
 <link rel="sitemap" href={getAsset('/sitemap-index.xml')} />

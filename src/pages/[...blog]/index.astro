@@ -13,6 +13,8 @@ import { findImage } from '~/utils/images';
 import type { MetaData } from '~/types';
 import RelatedPosts from '~/components/blog/RelatedPosts.astro';
 
+import { createClient } from '@supabase/supabase-js';
+
 export const prerender = true;
 
 export const getStaticPaths = (async () => {
@@ -43,12 +45,36 @@ const metadata = merge(
   },
   { ...(post?.metadata ? { ...post.metadata, canonical: post.metadata?.canonical || url } : {}) }
 ) as MetaData;
+
+// Fetch view count from Supabase
+const supabase = createClient(
+  import.meta.env.PUBLIC_SUPABASE_URL!,
+  import.meta.env.PUBLIC_SUPABASE_ANON_KEY!
+);
+const slug = post.slug;
+const { count: viewCount } = await supabase
+  .from('blog_views')
+  .select('id', { count: 'exact', head: true })
+  .eq('slug', slug);
 ---
 
-<Layout metadata={metadata}>
+<Layout metadata={metadata} publishDate={post.publishDate}>
   <SinglePost post={{ ...post, image: image }} url={url}>
+    <p class="text-sm text-gray-500">{viewCount ?? 0} views</p>
     {post.Content ? <post.Content /> : <Fragment set:html={post.content || ''} />}
   </SinglePost>
   <ToBlogLink />
   <RelatedPosts post={post} />
 </Layout>
+
+<script>
+fetch('/api/track-view', {
+  method: 'POST',
+  body: JSON.stringify({
+    slug: window.location.pathname.replace('/blog/', ''),
+    referrer: document.referrer,
+    userAgent: navigator.userAgent
+  }),
+  headers: { 'Content-Type': 'application/json' }
+});
+</script>

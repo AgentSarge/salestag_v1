@@ -2,6 +2,39 @@
 import PageLayout from '~/layouts/PageLayout.astro';
 import SeoMeta from '~/components/common/SeoMeta.astro';
 import CallToActionBanner from '~/components/ui/CallToActionBanner.astro';
+
+const roadmapSchemaData = {
+  items: [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "AI Coaching Engine",
+      "description": "Transform conversations into actionable coaching insights with real-time AI analysis",
+      "url": "https://salestag.io/roadmap#ai-coaching-engine"
+    },
+    {
+      "@type": "ListItem", 
+      "position": 2,
+      "name": "iOS App",
+      "description": "Native mobile experience for field sales teams with seamless badge integration",
+      "url": "https://salestag.io/roadmap#ios-app"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3, 
+      "name": "Vault Pro Features",
+      "description": "Advanced enterprise features for teams managing large conversation datasets",
+      "url": "https://salestag.io/roadmap#vault-pro-features"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "AI Sales Agent", 
+      "description": "AGI-powered sales assistant trained on your vault's conversation data",
+      "url": "https://salestag.io/roadmap#ai-sales-agent"
+    }
+  ]
+};
 ---
 
 <SeoMeta 
@@ -9,7 +42,8 @@ import CallToActionBanner from '~/components/ui/CallToActionBanner.astro';
   description="Discover what's coming next for SalesTag. View our product roadmap including AI coaching engine, iOS app, and advanced vault features."
   url="https://salestag.io/roadmap"
   image="/og/roadmap.jpg"
-  schemaType="WebPage"
+  schemaType="ItemList"
+  schemaData={roadmapSchemaData}
 />
 
 <PageLayout>

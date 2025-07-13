@@ -1,4 +1,43 @@
 User-agent: *
 Allow: /
 
+# Disallow common unnecessary paths for crawlers
+Disallow: /api/
+Disallow: /_*
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.json$
+Disallow: /*?*
+Disallow: /search
+
+# Allow important paths explicitly
+Allow: /assets/
+Allow: /images/
+Allow: /og/
+Allow: /press-kit/
+
+# Crawl delay to be respectful
+Crawl-delay: 1
+
+# Sitemaps
 Sitemap: https://salestag.io/sitemap.xml
+Sitemap: https://salestag.io/sitemap-index.xml
+
+# Block common bots that aren't search engines
+User-agent: CCBot
+Disallow: /
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /

@@ -1,6 +1,8 @@
 ---
 import PageLayout from '~/layouts/PageLayout.astro';
 import SeoMeta from '~/components/common/SeoMeta.astro';
+import { createClient } from '@supabase/supabase-js';
+import { fetchPosts } from '~/utils/blog';
 
 function MetricCard({ label, value, positive }) {
   return (
@@ -32,6 +34,24 @@ const demoLeaderboard = [
 
 const metrics = demo;
 const reps = demoLeaderboard;
+
+const supabase = createClient(
+  import.meta.env.PUBLIC_SUPABASE_URL!,
+  import.meta.env.PUBLIC_SUPABASE_ANON_KEY!
+);
+const posts = await fetchPosts();
+const slugs = posts.map((post) => post.slug);
+const { data: allViews } = await supabase
+  .from('blog_views')
+  .select('slug');
+const viewCounts = {};
+if (Array.isArray(allViews)) {
+  for (const slug of slugs) {
+    viewCounts[slug] = allViews.filter((v) => v.slug === slug).length;
+  }
+}
+const postsWithViews = posts.map((post) => ({ ...post, viewCount: viewCounts[post.slug] ?? 0 }));
+const sortedPosts = postsWithViews.sort((a, b) => b.viewCount - a.viewCount);
 ---
 
 <SeoMeta 
@@ -81,6 +101,30 @@ const reps = demoLeaderboard;
             </div>
           </div>
         ))}
+      </div>
+    </section>
+
+    <section class="mt-16">
+      <h2 class="text-2xl font-semibold mb-6">Blog Post View Counts</h2>
+      <div class="overflow-x-auto">
+        <table class="min-w-full text-sm">
+          <thead>
+            <tr>
+              <th class="text-left px-2 py-1">Title</th>
+              <th class="text-left px-2 py-1">Slug</th>
+              <th class="text-left px-2 py-1">Views</th>
+            </tr>
+          </thead>
+          <tbody>
+            {sortedPosts.map((post) => (
+              <tr>
+                <td class="px-2 py-1"><a href={post.permalink} class="hover:underline">{post.title}</a></td>
+                <td class="px-2 py-1">{post.slug}</td>
+                <td class="px-2 py-1">{post.viewCount}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </section>
   </main>
