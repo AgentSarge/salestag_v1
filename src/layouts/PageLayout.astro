@@ -28,18 +28,6 @@ const { metadata, publishDate } = Astro.props;
     <slot />
   </main>
   
-  <!-- Global CTA Section -->
-  <section class="py-16 px-4 bg-gray-50 dark:bg-gray-900">
-    <div class="max-w-4xl mx-auto">
-      <CallToActionBanner 
-        title="Unlock SalesTag Today"
-        description="Join forward-thinking sales teams using AI to capture, analyze, and improve their conversations."
-        buttonText="Join Waitlist"
-        variant="footer"
-      />
-    </div>
-  </section>
-  
   <slot name="footer">
     <Footer {...footerData} />
   </slot>
