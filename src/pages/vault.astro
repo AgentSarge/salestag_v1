@@ -1,61 +1,160 @@
 ---
 import PageLayout from '~/layouts/PageLayout.astro';
 import SeoMeta from '~/components/common/SeoMeta.astro';
-import CallToActionBanner from '~/components/ui/CallToActionBanner.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Features from '~/components/widgets/Features.astro';
+import Content from '~/components/widgets/Content.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+import heroImage from '~/assets/images/hero-image.png';
+import defaultImage from '~/assets/images/default.png';
+
+const metadata = {
+  title: 'SalesTag Vault – AI Sales Intelligence Data Storage',
+};
 ---
 
 <SeoMeta 
-  title="SalesTag Vault – AI Sales Intelligence"
-  description="Unlock your team's top field sales moments with AI-tagged call insights, rep coaching, and performance tracking."
+  title="SalesTag Vault – AI Sales Intelligence Data Storage"
+  description="Unlock your team's top field sales moments with AI-tagged call insights, rep coaching, and performance tracking. Build the future of sales intelligence."
   url="https://salestag.io/vault"
   image="/og/vault.jpg"
   schemaType="WebPage"
 />
 
-<PageLayout>
-  <main class="px-4 py-16 mx-auto max-w-4xl">
-    <h1 class="text-4xl font-bold mb-6">The SalesTag Vault</h1>
-    
-    <p class="text-xl mb-12 text-gray-600">
-      Where human sales meets future intelligence. SalesTag captures every rep-to-homeowner conversation, 
-      processes it with advanced labeling pipelines, and stores it in a private, AGI-aligned vault. 
-      Perfect for fine-tuning LLMs or training safe autonomous agents.
-    </p>
+<PageLayout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+  <Hero
+    tagline="SalesTag Vault"
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Join Waitlist',
+        href: '/subscribe',
+        icon: 'tabler:database',
+      },
+      { text: 'Learn More', href: '#features' },
+    ]}
+    image={{
+      src: defaultImage,
+      alt: 'SalesTag Vault - AI Sales Intelligence Storage',
+    }}
+  >
+    <Fragment slot="title">
+      Where Human Sales Meets <br />
+      <span class="text-accent dark:text-white">Future Intelligence</span>
+    </Fragment>
 
-    <section class="mb-12">
-      <h2 class="text-2xl font-semibold mb-4 scroll-mt-24">Structured for Alignment</h2>
-      <p class="text-lg leading-relaxed">
-        Most data is noisy and unstructured. SalesTag organizes call audio, transcripts, objections, 
-        sentiment, trust moments, and outcome metadata — giving future AIs a crystal-clear record of 
-        how humans persuade, resist, and decide.
-      </p>
-    </section>
+    <Fragment slot="subtitle">
+      SalesTag captures every rep-to-homeowner conversation, processes it with advanced labeling pipelines, and stores it in a private, AGI-aligned vault. Perfect for fine-tuning LLMs or training safe autonomous agents.
+    </Fragment>
+  </Hero>
 
-    <section class="mb-12">
-      <h2 class="text-2xl font-semibold mb-4 scroll-mt-24">Vertical-Aware Vaults</h2>
-      <p class="text-lg leading-relaxed">
-        Every vertical behaves differently. That's why we maintain separate vaults for solar, roofing, 
-        alarms, and more — each with tailored labels, tags, and outcome taxonomies. Perfect for LLM 
-        fine-tuning, safety evals, or agent simulation.
-      </p>
-    </section>
+  <!-- Features Widget *************** -->
+  <Features
+    id="features"
+    title="Structured for Alignment"
+    subtitle="Transform raw conversations into valuable AI training data"
+    items={[
+      {
+        title: 'Clean Data Structure',
+        description: 'Organizes call audio, transcripts, objections, sentiment, trust moments, and outcome metadata.',
+        icon: 'tabler:database',
+      },
+      {
+        title: 'AGI-Ready Format',
+        description: 'Crystal-clear records of how humans persuade, resist, and decide - perfect for future AI systems.',
+        icon: 'tabler:brain',
+      },
+      {
+        title: 'Privacy & Security',
+        description: 'Enterprise-grade encryption ensures your valuable conversation data remains secure and compliant.',
+        icon: 'tabler:shield-lock',
+      },
+      {
+        title: 'Searchable Intelligence',
+        description: 'Advanced tagging and metadata make it easy to find specific conversations and patterns.',
+        icon: 'tabler:search',
+      },
+    ]}
+  />
 
-    <section class="mb-12">
-      <h2 class="text-2xl font-semibold mb-4 scroll-mt-24">Why It Matters</h2>
-      <p class="text-lg leading-relaxed">
-        Post-AGI, the greatest need will be high-signal human interaction data. Not scraped web content — 
-        real decisions, tension, conflict, alignment. SalesTag gives you ownership of the most valuable 
-        behavioral dataset in existence.
-      </p>
-    </section>
+  <!-- Content Widget **************** -->
+  <Content
+    title="Vertical-Aware Vaults"
+    subtitle="Industry-specific intelligence for maximum relevance"
+    isReversed
+    items={[
+      {
+        title: 'Industry Specialization',
+        description: 'Separate vaults for solar, roofing, alarms, and more — each with tailored labels, tags, and outcome taxonomies.',
+      },
+      {
+        title: 'Optimized Training',
+        description: 'Perfect for LLM fine-tuning, safety evaluations, or agent simulation in your specific vertical.',
+      },
+    ]}
+    image={{
+      src: heroImage,
+      alt: 'SalesTag Vertical-Specific Vaults',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Industry-Specific <br /><span class="text-2xl">Intelligence</span>
+      </h3>
+    </Fragment>
 
-    <!-- CTA Section -->
-    <section class="mt-16">
-      <CallToActionBanner 
-        title="Unlock Your Sales Intelligence Vault"
-        description="Start building your team's private vault of AI-tagged conversations and coaching insights today."
-        buttonText="Join Waitlist"
-      />
-    </section>
-  </main>
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Features2 Widget ************** -->
+  <Features2
+    title="Why the Vault Matters"
+    subtitle="Building the foundation for the future of AI-powered sales"
+    columns={2}
+    items={[
+      {
+        title: 'Post-AGI Value',
+        description: 'The greatest need will be high-signal human interaction data. Not scraped web content — real decisions, tension, conflict, alignment.',
+        icon: 'tabler:rocket',
+      },
+      {
+        title: 'Data Ownership',
+        description: 'You own the most valuable behavioral dataset in existence. Your conversations, your insights, your competitive advantage.',
+        icon: 'tabler:certificate',
+      },
+      {
+        title: 'Continuous Learning',
+        description: 'Every conversation adds to your vault, creating an ever-growing repository of sales intelligence and best practices.',
+        icon: 'tabler:trending-up',
+      },
+      {
+        title: 'Future-Proof Investment',
+        description: 'Built for tomorrow\'s AI systems while delivering value today through improved coaching and performance insights.',
+        icon: 'tabler:target',
+      },
+    ]}
+  />
+
+  <!-- CallToAction Widget *********** -->
+  <CallToAction
+    title="Unlock Your Sales Intelligence Vault"
+    subtitle="Start building your team's private vault of AI-tagged conversations and coaching insights today."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Join Waitlist',
+        href: '/subscribe',
+      },
+      {
+        variant: 'secondary',
+        text: 'Schedule Demo',
+        href: '/demo',
+      },
+    ]}
+  />
 </PageLayout> 

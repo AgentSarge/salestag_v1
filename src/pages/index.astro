@@ -7,9 +7,9 @@ import Content from '~/components/widgets/Content.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import Testimonials from '~/components/widgets/Testimonials.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
-import Brands from '~/components/widgets/Brands.astro';
 
 import heroImage from '~/assets/images/hero-image.png';
+import defaultImage from '~/assets/images/default.png';
 
 const metadata = {
   title: 'SalesTag — AI Sales Memory, Built for Field Teams',
@@ -145,26 +145,21 @@ const metadata = {
     ]}
   />
 
-  <!-- Brands Widget ***************** -->
-  <Brands
-    title="Trusted by Industry Leaders"
-    subtitle="Forward-thinking sales teams across high-trust verticals"
-    icons={[]}
-    images={[
-      {
-        src: '/press-kit/logos/SalesTag-logo-dark.png',
-        alt: 'Solar Company',
-      },
-      {
-        src: '/press-kit/logos/SalesTag-logo-dark.png',
-        alt: 'Roofing Company',
-      },
-      {
-        src: '/press-kit/logos/SalesTag-logo-dark.png',
-        alt: 'Security Company',
-      },
-    ]}
-  />
+  <!-- Industry Section ************** -->
+  <section class="py-16 bg-gray-50 dark:bg-gray-900">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold mb-4 dark:text-white">Trusted by Industry Leaders</h2>
+      <p class="text-xl text-gray-600 dark:text-gray-300 mb-8">Forward-thinking sales teams across high-trust verticals</p>
+      <div class="flex flex-wrap justify-center gap-6 text-lg font-medium text-gray-700 dark:text-gray-300">
+        <span class="px-4 py-2 bg-white dark:bg-gray-800 rounded-lg shadow-sm">Solar Energy</span>
+        <span class="px-4 py-2 bg-white dark:bg-gray-800 rounded-lg shadow-sm">Roofing & Restoration</span>
+        <span class="px-4 py-2 bg-white dark:bg-gray-800 rounded-lg shadow-sm">Home Security</span>
+        <span class="px-4 py-2 bg-white dark:bg-gray-800 rounded-lg shadow-sm">HVAC Services</span>
+        <span class="px-4 py-2 bg-white dark:bg-gray-800 rounded-lg shadow-sm">Pest Control</span>
+        <span class="px-4 py-2 bg-white dark:bg-gray-800 rounded-lg shadow-sm">Automotive</span>
+      </div>
+    </div>
+  </section>
 
   <!-- Testimonials Widget *********** -->
   <Testimonials
@@ -214,10 +209,8 @@ const metadata = {
       },
     ]}
     image={{
-      src: '/press-kit/product/salestag-badge.png',
+      src: defaultImage,
       alt: 'SalesTag Badge - Wearable AI Device',
-      width: 400,
-      height: 300,
     }}
   >
     <Fragment slot="content">

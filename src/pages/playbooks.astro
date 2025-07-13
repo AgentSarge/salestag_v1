@@ -1,47 +1,234 @@
 ---
 import PageLayout from '~/layouts/PageLayout.astro';
 import SeoMeta from '~/components/common/SeoMeta.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Features from '~/components/widgets/Features.astro';
+import Content from '~/components/widgets/Content.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+import heroImage from '~/assets/images/hero-image.png';
+import defaultImage from '~/assets/images/default.png';
+
+const metadata = {
+  title: 'Winning with SalesTag — Sales Playbooks',
+};
 ---
 
 <SeoMeta 
-  title="Winning with SalesTag — Sales Playbooks"
+  title="Winning with SalesTag — Sales Playbooks & Field Sales Strategies"
   description="Tactical guides for real-world field reps using the SalesTag system. Learn field sales blueprints, objection handling, daily review rituals, and vault-first mentality."
+  url="https://salestag.io/playbooks"
+  image="/og/playbooks.jpg"
+  schemaType="WebPage"
 />
 
-<PageLayout>
-  <main class="px-4 py-16 mx-auto max-w-4xl">
-    <h1 class="text-4xl font-bold mb-6">Winning with SalesTag</h1>
-    
-    <p class="text-xl mb-12 text-gray-600">
+<PageLayout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+  <Hero
+    tagline="Sales Playbooks"
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Explore Playbooks',
+        href: '#playbooks',
+        icon: 'tabler:book',
+      },
+      { text: 'Join Waitlist', href: '/subscribe' },
+    ]}
+    image={{
+      src: defaultImage,
+      alt: 'SalesTag Field Sales Playbooks',
+    }}
+  >
+    <Fragment slot="title">
+      Winning with <br />
+      <span class="text-accent dark:text-white">SalesTag</span>
+    </Fragment>
+
+    <Fragment slot="subtitle">
       Tactical guides for real-world field reps using the SalesTag system. These playbooks combine proven sales techniques with AI-powered insights to maximize your conversion rates.
-    </p>
+    </Fragment>
+  </Hero>
 
-    <section class="mb-12">
-      <h2 class="text-2xl font-semibold mb-4 scroll-mt-24">Field Sales Blueprint</h2>
-      <p class="text-lg leading-relaxed">
-        Covers the ideal door-to-door or in-home pitch flow using the SalesTag badge, from intro to close. Learn how to leverage real-time conversation analysis to adapt your approach and build trust with prospects.
-      </p>
-    </section>
+  <!-- Features Widget *************** -->
+  <Features
+    id="playbooks"
+    title="Core Sales Playbooks"
+    subtitle="Proven strategies enhanced by AI-powered insights"
+    items={[
+      {
+        title: 'Field Sales Blueprint',
+        description: 'Master the ideal door-to-door or in-home pitch flow using the SalesTag badge, from intro to close.',
+        icon: 'tabler:map',
+      },
+      {
+        title: 'Objection Handling Matrix',
+        description: 'Real-time strategies for pricing, spouse, and trust objections using AI insights and proven responses.',
+        icon: 'tabler:shield',
+      },
+      {
+        title: 'Daily Review Ritual',
+        description: 'Transform tagged conversations into coaching sessions that improve close rates and rep development.',
+        icon: 'tabler:calendar',
+      },
+      {
+        title: 'Vault-First Mentality',
+        description: 'Build valuable conversation data while maintaining the highest standards of professionalism.',
+        icon: 'tabler:database',
+      },
+    ]}
+  />
 
-    <section class="mb-12">
-      <h2 class="text-2xl font-semibold mb-4 scroll-mt-24">Objection Handling Matrix</h2>
-      <p class="text-lg leading-relaxed">
-        A guide to real-time tags and best practices when facing pricing, spouse, or trust objections. Use SalesTag's AI insights to identify objection patterns and respond with proven counter-strategies.
-      </p>
-    </section>
+  <!-- Content Widget **************** -->
+  <Content
+    title="Field Sales Blueprint"
+    subtitle="AI-enhanced strategies for door-to-door and in-home selling"
+    isReversed
+    items={[
+      {
+        title: 'Smart Badge Integration',
+        description: 'Learn how to leverage real-time conversation analysis to adapt your approach and build trust with prospects.',
+      },
+      {
+        title: 'Conversation Flow',
+        description: 'Proven pitch structures that work with SalesTag\'s AI coaching to maximize conversion opportunities.',
+      },
+      {
+        title: 'Trust Building',
+        description: 'Techniques for establishing credibility and rapport while the badge captures valuable coaching moments.',
+      },
+    ]}
+    image={{
+      src: heroImage,
+      alt: 'SalesTag Field Sales in Action',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Master the <br /><span class="text-2xl">Perfect Pitch</span>
+      </h3>
+    </Fragment>
 
-    <section class="mb-12">
-      <h2 class="text-2xl font-semibold mb-4 scroll-mt-24">Daily Review Ritual</h2>
-      <p class="text-lg leading-relaxed">
-        How reps and coaches can use tagged calls every evening to course-correct, improve close rate, and track growth. Transform your recorded conversations into actionable coaching sessions.
-      </p>
-    </section>
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
 
-    <section class="mb-12">
-      <h2 class="text-2xl font-semibold mb-4 scroll-mt-24">Vault-First Mentality</h2>
-      <p class="text-lg leading-relaxed">
-        Encourages reps to treat every pitch as a contribution to the Vault — emphasizing clarity, ethics, and confidence. Build valuable conversation data while maintaining the highest standards of professionalism.
-      </p>
-    </section>
-  </main>
+  <!-- Steps Widget ****************** -->
+  <Steps
+    title="Daily Review Ritual"
+    tagline="Turn Every Conversation into Growth"
+    items={[
+      {
+        title: 'End-of-Day Review',
+        description: 'Access your tagged conversations and AI-generated insights from the day\'s sales activities.',
+        icon: 'tabler:clock',
+      },
+      {
+        title: 'Pattern Analysis',
+        description: 'Identify successful approaches and areas for improvement using SalesTag\'s conversation analytics.',
+        icon: 'tabler:chart-line',
+      },
+      {
+        title: 'Coaching Focus',
+        description: 'Work with managers to address specific objections and refine techniques based on real data.',
+        icon: 'tabler:users',
+      },
+      {
+        title: 'Next-Day Planning',
+        description: 'Apply insights to tomorrow\'s conversations for continuous improvement and higher close rates.',
+        icon: 'tabler:target',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      alt: 'SalesTag Daily Review Process',
+    }}
+  />
+
+  <!-- Features2 Widget ************** -->
+  <Features2
+    title="Advanced Playbook Strategies"
+    subtitle="Professional techniques for high-trust sales environments"
+    columns={2}
+    items={[
+      {
+        title: 'Objection Prevention',
+        description: 'Use AI insights to identify and address concerns before they become objections, smoothing the sales process.',
+        icon: 'tabler:shield-check',
+      },
+      {
+        title: 'Emotional Intelligence',
+        description: 'Leverage sentiment analysis to read prospect emotions and adjust your approach in real-time.',
+        icon: 'tabler:heart',
+      },
+      {
+        title: 'Trust Acceleration',
+        description: 'Proven techniques for building credibility quickly in high-stakes, face-to-face sales situations.',
+        icon: 'tabler:handshake',
+      },
+      {
+        title: 'Closing Optimization',
+        description: 'AI-powered insights on timing, language, and techniques that lead to successful closes in your industry.',
+        icon: 'tabler:trophy',
+      },
+    ]}
+  />
+
+  <!-- Content Widget **************** -->
+  <Content
+    isAfterContent
+    items={[
+      {
+        title: 'Ethical Sales Standards',
+        description: 'Maintain integrity while maximizing performance - building long-term relationships that benefit everyone.',
+      },
+      {
+        title: 'Industry Adaptation',
+        description: 'Specialized strategies for solar, roofing, security, and other high-trust verticals.',
+      },
+      {
+        title: 'Team Collaboration',
+        description: 'Share successful techniques across your team using SalesTag\'s conversation vault and coaching tools.',
+      },
+      {
+        title: 'Continuous Improvement',
+        description: 'Use AI insights to constantly refine and optimize your sales approach based on real results.',
+      },
+    ]}
+    image={{
+      src: defaultImage,
+      alt: 'SalesTag Professional Sales Team',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Professional <br /><span class="text-2xl">Excellence</span>
+      </h3>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- CallToAction Widget *********** -->
+  <CallToAction
+    title="Master the Art of AI-Enhanced Sales"
+    subtitle="Join forward-thinking sales professionals who are combining proven techniques with cutting-edge AI insights."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Join Waitlist',
+        href: '/subscribe',
+      },
+      {
+        variant: 'secondary',
+        text: 'Schedule Demo',
+        href: '/demo',
+      },
+    ]}
+  />
 </PageLayout> 

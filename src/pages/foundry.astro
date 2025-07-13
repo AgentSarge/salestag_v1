@@ -1,20 +1,202 @@
 ---
 import PageLayout from '~/layouts/PageLayout.astro';
 import SeoMeta from '~/components/common/SeoMeta.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Features from '~/components/widgets/Features.astro';
+import Content from '~/components/widgets/Content.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+import heroImage from '~/assets/images/hero-image.png';
+import defaultImage from '~/assets/images/default.png';
+
+const metadata = {
+  title: 'SalesTag Foundry — Advanced AI Training Lab',
+};
 ---
 
 <SeoMeta 
   title="SalesTag Foundry — Advanced AI Training Lab"
   description="Where conversation data becomes intelligent systems. The SalesTag Foundry transforms raw sales interactions into fine-tuned AI models optimized for coaching and performance improvement."
+  url="https://salestag.io/foundry"
+  image="/og/foundry.jpg"
+  schemaType="WebPage"
 />
 
-<PageLayout>
-  <main>
-    <h1>SalesTag Foundry</h1>
-    <p>
-      The development and training environment for AI models using SalesTag data. The Foundry 
-      is where raw conversation data is processed, analyzed, and used to create specialized 
-      AI models for sales optimization and customer understanding.
-    </p>
-  </main>
+<PageLayout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+  <Hero
+    tagline="AI Training Lab"
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Explore Foundry',
+        href: '#process',
+        icon: 'tabler:flask',
+      },
+      { text: 'Join Waitlist', href: '/subscribe' },
+    ]}
+    image={{
+      src: defaultImage,
+      alt: 'SalesTag Foundry - AI Training Laboratory',
+    }}
+  >
+    <Fragment slot="title">
+      SalesTag <br />
+      <span class="text-accent dark:text-white">Foundry</span>
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      The development and training environment where conversation data becomes intelligent systems. The Foundry transforms raw sales interactions into fine-tuned AI models optimized for coaching and performance improvement.
+    </Fragment>
+  </Hero>
+
+  <!-- Features Widget *************** -->
+  <Features
+    id="process"
+    title="Data to Intelligence Pipeline"
+    subtitle="Advanced processing transforms conversations into actionable AI models"
+    items={[
+      {
+        title: 'Data Processing',
+        description: 'Raw conversation audio and transcripts are cleaned, labeled, and structured for optimal AI training.',
+        icon: 'tabler:database',
+      },
+      {
+        title: 'Pattern Recognition',
+        description: 'Advanced algorithms identify successful sales patterns, objection handling, and conversion triggers.',
+        icon: 'tabler:brain',
+      },
+      {
+        title: 'Model Training',
+        description: 'Custom AI models are fine-tuned for specific industries, products, and sales methodologies.',
+        icon: 'tabler:settings',
+      },
+      {
+        title: 'Performance Optimization',
+        description: 'Continuous testing and refinement ensure models deliver maximum coaching value and accuracy.',
+        icon: 'tabler:chart-line',
+      },
+    ]}
+  />
+
+  <!-- Content Widget **************** -->
+  <Content
+    title="Custom AI Model Development"
+    subtitle="Industry-specific intelligence for your sales team"
+    isReversed
+    items={[
+      {
+        title: 'Vertical Specialization',
+        description: 'Models trained specifically for solar, roofing, security, and other high-trust sales environments.',
+      },
+      {
+        title: 'Continuous Learning',
+        description: 'AI systems that improve with every conversation, adapting to new objections and market conditions.',
+      },
+      {
+        title: 'Quality Assurance',
+        description: 'Rigorous testing ensures model accuracy and reliability before deployment to your sales team.',
+      },
+    ]}
+    image={{
+      src: heroImage,
+      alt: 'SalesTag Custom AI Models',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Tailored for <br /><span class="text-2xl">Your Industry</span>
+      </h3>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Steps Widget ****************** -->
+  <Steps
+    title="Foundry Process"
+    tagline="From Raw Data to Intelligent Coaching"
+    items={[
+      {
+        title: 'Data Ingestion',
+        description: 'Conversations from the SalesTag Vault are processed and prepared for analysis.',
+        icon: 'tabler:upload',
+      },
+      {
+        title: 'Feature Extraction',
+        description: 'Key conversation elements like objections, sentiment, and outcomes are identified and labeled.',
+        icon: 'tabler:scan',
+      },
+      {
+        title: 'Model Training',
+        description: 'Advanced machine learning algorithms create custom models for your specific sales scenarios.',
+        icon: 'tabler:cpu',
+      },
+      {
+        title: 'Testing & Validation',
+        description: 'Rigorous quality assurance ensures models perform accurately in real-world conditions.',
+        icon: 'tabler:check',
+      },
+      {
+        title: 'Deployment',
+        description: 'Trained models are integrated into the SalesTag platform for immediate coaching impact.',
+        icon: 'tabler:rocket',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      alt: 'SalesTag AI Development Process',
+    }}
+  />
+
+  <!-- Features2 Widget ************** -->
+  <Features2
+    title="Foundry Capabilities"
+    subtitle="Advanced AI research and development for sales optimization"
+    columns={2}
+    items={[
+      {
+        title: 'LLM Fine-Tuning',
+        description: 'Custom language models trained on your industry\'s specific sales conversations and terminology.',
+        icon: 'tabler:brain',
+      },
+      {
+        title: 'Safety Evaluation',
+        description: 'Comprehensive testing to ensure AI recommendations are ethical, accurate, and aligned with best practices.',
+        icon: 'tabler:shield-check',
+      },
+      {
+        title: 'Agent Simulation',
+        description: 'Virtual environments for testing AI agents before deployment in real sales scenarios.',
+        icon: 'tabler:robot',
+      },
+      {
+        title: 'Performance Analytics',
+        description: 'Deep analysis of model performance and continuous optimization based on real-world results.',
+        icon: 'tabler:chart-dots',
+      },
+    ]}
+  />
+
+  <!-- CallToAction Widget *********** -->
+  <CallToAction
+    title="Ready to Build Your AI Advantage?"
+    subtitle="The Foundry transforms your sales conversations into competitive intelligence. Start building your custom AI models today."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Join Waitlist',
+        href: '/subscribe',
+      },
+      {
+        variant: 'secondary',
+        text: 'Explore Vault',
+        href: '/vault',
+      },
+    ]}
+  />
 </PageLayout> 

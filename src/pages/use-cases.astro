@@ -10,6 +10,7 @@ import CallToAction from '~/components/widgets/CallToAction.astro';
 import Features from '~/components/widgets/Features.astro';
 
 import heroImage from '~/assets/images/hero-image.png';
+import defaultImage from '~/assets/images/default.png';
 ---
 
 <SeoMeta 
@@ -100,8 +101,10 @@ import heroImage from '~/assets/images/hero-image.png';
       },
     ]}
     image={{
-      src: '/press-kit/product/salestag-badge.png',
+      src: defaultImage,
       alt: 'SalesTag Badge for Solar Sales',
+      width: 400,
+      height: 300,
     }}
   >
     <Fragment slot="content">
@@ -147,7 +150,7 @@ import heroImage from '~/assets/images/hero-image.png';
       },
     ]}
     image={{
-      src: '/press-kit/product/salestag-app-ui.png',
+      src: defaultImage,
       alt: 'SalesTag Analytics for Roofing',
     }}
   >
@@ -248,7 +251,7 @@ import heroImage from '~/assets/images/hero-image.png';
       },
     ]}
     image={{
-      src: '/press-kit/product/salestag-diagram.png',
+      src: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
       alt: 'SalesTag Multi-Industry Applications',
     }}
   >

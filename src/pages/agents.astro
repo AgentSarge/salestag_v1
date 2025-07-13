@@ -1,45 +1,195 @@
 ---
 import PageLayout from '~/layouts/PageLayout.astro';
 import SeoMeta from '~/components/common/SeoMeta.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Features from '~/components/widgets/Features.astro';
+import Content from '~/components/widgets/Content.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+import heroImage from '~/assets/images/hero-image.png';
+import defaultImage from '~/assets/images/default.png';
+
+const metadata = {
+  title: 'From Badge to Agent — SalesTag\'s AI Evolution',
+};
 ---
 
 <SeoMeta 
   title="From Badge to Agent — SalesTag's AI Evolution"
   description="SalesTag starts as a smart badge but becomes autonomous AI agents. Each captured conversation feeds systems that analyze, coach, and eventually act on sales insights."
+  url="https://salestag.io/agents"
+  image="/og/agents.jpg"
+  schemaType="WebPage"
 />
 
-<PageLayout>
-  <main class="px-4 py-16 mx-auto max-w-4xl">
-    <h1 class="text-4xl font-bold mb-6">From Badge to Agent</h1>
-    
-    <p class="text-xl mb-12 text-gray-600">
-      SalesTag starts as a smart badge — but it becomes something more. Each captured conversation feeds 
-      autonomous AI agents that analyze, summarize, coach, and eventually act.
-    </p>
+<PageLayout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+  <Hero
+    tagline="AI Evolution"
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Explore Agents',
+        href: '#evolution',
+        icon: 'tabler:robot',
+      },
+      { text: 'Join Waitlist', href: '/subscribe' },
+    ]}
+    image={{
+      src: defaultImage,
+      alt: 'SalesTag AI Agent Evolution',
+    }}
+  >
+    <Fragment slot="title">
+      From Badge to <br />
+      <span class="text-accent dark:text-white">Autonomous Agent</span>
+    </Fragment>
 
-    <section class="mb-12">
-      <h2 class="text-2xl font-semibold mb-4 scroll-mt-24">Light-Touch AI, Heavy Impact</h2>
-      <p class="text-lg leading-relaxed">
-        SalesTag uses lightweight local models and cloud agents to deliver:
-        Real-time rep coaching, post-call objection analysis, dynamic pitch tuning, and outcome prediction.
-        These aren't future dreams — they're happening now.
-      </p>
-    </section>
+    <Fragment slot="subtitle">
+      SalesTag starts as a smart badge — but it becomes something more. Each captured conversation feeds autonomous AI agents that analyze, summarize, coach, and eventually act.
+    </Fragment>
+  </Hero>
 
-    <section class="mb-12">
-      <h2 class="text-2xl font-semibold mb-4 scroll-mt-24">Your Agents, Your Loop</h2>
-      <p class="text-lg leading-relaxed">
-        Our system is designed around <em>human-in-the-loop swarms</em>. You approve what matters. 
-        The agents do the rest. We structure workflows so you're never babysitting, but always steering.
-      </p>
-    </section>
+  <!-- Features Widget *************** -->
+  <Features
+    id="evolution"
+    title="Light-Touch AI, Heavy Impact"
+    subtitle="Advanced AI systems delivering real-time insights and coaching"
+    items={[
+      {
+        title: 'Real-Time Coaching',
+        description: 'Lightweight local models provide instant feedback during live conversations to help reps navigate objections.',
+        icon: 'tabler:users',
+      },
+      {
+        title: 'Post-Call Analysis',
+        description: 'Cloud agents perform deep objection analysis and identify key conversation patterns and outcomes.',
+        icon: 'tabler:brain',
+      },
+      {
+        title: 'Dynamic Pitch Tuning',
+        description: 'AI continuously optimizes messaging based on what works best for your specific market and audience.',
+        icon: 'tabler:adjustments',
+      },
+      {
+        title: 'Outcome Prediction',
+        description: 'Advanced models predict deal likelihood and suggest next-best actions for maximum conversion.',
+        icon: 'tabler:chart-line',
+      },
+    ]}
+  />
 
-    <section class="mb-12">
-      <h2 class="text-2xl font-semibold mb-4 scroll-mt-24">AGI Amplification</h2>
-      <p class="text-lg leading-relaxed">
-        Post-AGI, SalesTag becomes your control layer. Want to run thousands of agents across millions of calls? 
-        Fine-tuned vaults, tested feedback loops, and human-grounded heuristics make it possible.
-      </p>
-    </section>
-  </main>
+  <!-- Content Widget **************** -->
+  <Content
+    title="Your Agents, Your Loop"
+    subtitle="Human-in-the-loop AI systems designed for sales excellence"
+    isReversed
+    items={[
+      {
+        title: 'Human-Controlled AI',
+        description: 'You approve what matters. The agents handle the repetitive analysis and insights generation.',
+      },
+      {
+        title: 'Workflow Optimization',
+        description: 'Structured workflows ensure you\'re never babysitting AI, but always steering the strategy.',
+      },
+      {
+        title: 'Scalable Intelligence',
+        description: 'From individual reps to entire sales organizations, our agent system grows with your needs.',
+      },
+    ]}
+    image={{
+      src: heroImage,
+      alt: 'SalesTag Human-AI Collaboration',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Human-AI <br /><span class="text-2xl">Collaboration</span>
+      </h3>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Steps Widget ****************** -->
+  <Steps
+    title="AGI Amplification Path"
+    tagline="The Future of Sales Intelligence"
+    items={[
+      {
+        title: 'Current: Smart Badge',
+        description: 'Real-time conversation capture and basic AI coaching for field sales teams.',
+        icon: 'tabler:device-watch',
+      },
+      {
+        title: 'Near-term: AI Agents',
+        description: 'Autonomous analysis, coaching recommendations, and performance optimization.',
+        icon: 'tabler:robot',
+      },
+      {
+        title: 'Future: AGI Control Layer',
+        description: 'Human-grounded systems managing thousands of agents across millions of conversations.',
+        icon: 'tabler:rocket',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      alt: 'SalesTag AI Evolution Timeline',
+    }}
+  />
+
+  <!-- Content Widget **************** -->
+  <Content
+    isAfterContent
+    items={[
+      {
+        title: 'Fine-Tuned Vaults',
+        description: 'Industry-specific AI models trained on your actual sales conversations and outcomes.',
+      },
+      {
+        title: 'Tested Feedback Loops',
+        description: 'Proven workflows for human oversight and continuous improvement of AI recommendations.',
+      },
+      {
+        title: 'Human-Grounded Heuristics',
+        description: 'Safety measures and ethical guidelines ensuring AI agents align with human values and business goals.',
+      },
+    ]}
+    image={{
+      src: defaultImage,
+      alt: 'SalesTag AGI Control Systems',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Post-AGI Ready
+      </h3>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- CallToAction Widget *********** -->
+  <CallToAction
+    title="Ready for the Future of Sales AI?"
+    subtitle="Join the evolution from simple recording to intelligent autonomous agents that amplify human sales performance."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Join Waitlist',
+        href: '/subscribe',
+      },
+      {
+        variant: 'secondary',
+        text: 'Learn About Vault',
+        href: '/vault',
+      },
+    ]}
+  />
 </PageLayout> 
